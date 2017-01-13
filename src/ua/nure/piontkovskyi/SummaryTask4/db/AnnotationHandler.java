@@ -94,7 +94,6 @@ public class AnnotationHandler implements InvocationHandler {
         connectionHolder.set(connection);
         try {
             connection.setAutoCommit(true);
-            System.out.printf("!!!");
             return method.invoke(serviceToInvoke, args);
         } catch (Exception e) {
             LOGGER.warn(INVOCATION_FAILED, e);

@@ -1,6 +1,8 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
+import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,16 +19,37 @@ public abstract class AbstractServlet<T> extends HttpServlet {
 
     private static final long serialVersionUID = -7053877476429245836L;
     private UserService userService;
-
+    private String defaultLocale;
+    private Locale translator;
+    private String[] locales;
 
     @Override
     public void init() throws ServletException {
         ServletContext context = getServletContext();
         userService = (UserService) context.getAttribute(UserService.class.getName());
+        translator = (Locale) context.getAttribute(Locale.class.getName());
+        defaultLocale = (String) context.getAttribute(Constants.Attributes.DEFAULT_LOCALE);
+        locales = (String[]) context.getAttribute(Constants.Attributes.LOCALES);
+    }
+
+    protected String getDefaultLocale() {
+        return defaultLocale;
+    }
+
+    protected String[] getLocales() {
+        return locales;
     }
 
     protected UserService getUserService() {
         return userService;
+    }
+
+    protected String getLocale(HttpServletRequest request) {
+        return (String) request.getAttribute(Constants.Attributes.CURRENT_LOCALE);
+    }
+
+    protected Locale getTranslator() {
+        return translator;
     }
 
     /**
@@ -47,7 +70,6 @@ public abstract class AbstractServlet<T> extends HttpServlet {
         }
     }
 
-
     /**
      * Retrieves integer parameter from request.
      * Sets to default if parameter is null
@@ -64,7 +86,6 @@ public abstract class AbstractServlet<T> extends HttpServlet {
         }
         return value;
     }
-
 
     /**
      * Retrieves specified integer parameters from request.

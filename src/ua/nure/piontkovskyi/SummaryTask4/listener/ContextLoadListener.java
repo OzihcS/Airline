@@ -3,7 +3,7 @@ package ua.nure.piontkovskyi.SummaryTask4.listener;
 import net.sf.ehcache.CacheManager;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ThreadLocalConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.db.manager.HikariCPManager;
-import ua.nure.piontkovskyi.SummaryTask4.listener.context.ContextLoader;
+import ua.nure.piontkovskyi.SummaryTask4.listener.loader.ContextLoader;
 import ua.nure.piontkovskyi.SummaryTask4.util.Settings;
 
 import javax.servlet.ServletContextEvent;

@@ -35,7 +35,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
         user.setName(resultSet.getString("name"));
         user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
-//        user.setRole(getRole(user.getId()));
+        user.setRole(getRole(user.getId()));
         return user;
     }
 
@@ -63,7 +63,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                return Role.valueOf(String.valueOf(rs.getInt("role_id") - 1));
+                return Role.values()[(rs.getInt("role_id") - 1)];
             }
             return null;
         } catch (SQLException e) {

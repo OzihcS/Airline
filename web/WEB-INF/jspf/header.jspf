@@ -1,0 +1,47 @@
+<%@ page import="ua.nure.piontkovskyi.SummaryTask4.model.enums.Role" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+
+<tr>
+    <td id="header">
+        <c:if test="${not empty user}">
+            <div id="leftHeader">
+                <c:choose>
+                    <c:when test="${userRole.name == 'Administrator' }">
+                        <a href="controller?command=listOrders">All orders</a> &nbsp;
+                    </c:when>
+
+
+                    <c:when test="${userRole.name == 'Dispatcher'}">
+                        <a href="controller?command=listMenu">Menu</a> &nbsp;
+                    </c:when>
+                </c:choose>
+
+                <a href="controller?command=viewSettings">Settings</a> &nbsp;
+
+            </div>
+
+            <div id="rightHeader">
+
+                <c:out value="${user.name}"/>
+                <c:if test="${not empty role}">
+                    <c:out value="(${role.name})"/>
+                </c:if>
+
+                <a href="controller?command=logout">
+                    Logout
+                </a>
+
+            </div>
+        </c:if>
+
+        <c:if test="${empty user and title ne 'Login'}">
+            <div id="rightHeader">
+                <a href="../../login.jsp">Login</a>
+            </div>
+        </c:if>
+
+    </td>
+</tr>
+
+
