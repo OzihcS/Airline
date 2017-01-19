@@ -213,7 +213,7 @@ public abstract class BaseServlet extends AbstractServlet {
 //
 //            validator.putIssue("login", "validator.loginTaken");
 //        }
-//        existingUser = getUserService().getByEmail(usr.getEmail(), usr.getId());
+//        existingUser = getService().getByEmail(usr.getEmail(), usr.getId());
 //        if (existingUser != null) {
 //
 //            validator.putIssue("email", "validator.emailTaken");

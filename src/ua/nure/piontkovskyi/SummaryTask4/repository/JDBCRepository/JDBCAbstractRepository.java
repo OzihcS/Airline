@@ -17,7 +17,6 @@ import java.util.List;
  */
 public abstract class JDBCAbstractRepository<T> {
 
-
     public static final Logger LOGGER = LoggerFactory.getLogger(JDBCAbstractRepository.class);
     protected static final String ERROR_MESSAGE = "Cannot handle sql ['{}']; Message: ";
     private final ConnectionHolder connectionHolder;

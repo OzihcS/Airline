@@ -7,4 +7,9 @@ public interface UserRepository {
 
     User getByLogin(String login);
 
+    boolean add(User user);
+
+    boolean remove(int id);
+
+    boolean update(User user);
 }

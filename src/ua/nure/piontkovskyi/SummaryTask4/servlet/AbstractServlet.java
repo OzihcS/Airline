@@ -1,5 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
+import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
 import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.util.Locale;
@@ -19,6 +20,7 @@ public abstract class AbstractServlet<T> extends HttpServlet {
 
     private static final long serialVersionUID = -7053877476429245836L;
     private UserService userService;
+    private FlightService flightService;
     private String defaultLocale;
     private Locale translator;
     private String[] locales;
@@ -27,6 +29,7 @@ public abstract class AbstractServlet<T> extends HttpServlet {
     public void init() throws ServletException {
         ServletContext context = getServletContext();
         userService = (UserService) context.getAttribute(UserService.class.getName());
+        flightService = (FlightService) context.getAttribute(FlightService.class.getName());
         translator = (Locale) context.getAttribute(Locale.class.getName());
         defaultLocale = (String) context.getAttribute(Constants.Attributes.DEFAULT_LOCALE);
         locales = (String[]) context.getAttribute(Constants.Attributes.LOCALES);
@@ -42,6 +45,10 @@ public abstract class AbstractServlet<T> extends HttpServlet {
 
     protected UserService getUserService() {
         return userService;
+    }
+
+    protected FlightService getFlightService() {
+        return flightService;
     }
 
     protected String getLocale(HttpServletRequest request) {

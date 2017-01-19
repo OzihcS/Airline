@@ -1,0 +1,7 @@
+<%@ include file="directive/page.jspf" %>
+<%@ include file="directive/taglib.jspf" %>
+<head>
+    <title>${title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="<c:url value="style/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>

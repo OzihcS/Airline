@@ -1,5 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.repository.JDBCRepository;
 
+import com.sun.org.apache.regexp.internal.RE;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
@@ -17,6 +18,9 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
 
     private static final String GET_BY_LOGIN = "user.get.by.login";
     private static final String GET_ROLES = "user.get.role.by.id";
+    private static final String ADD_USER = "user.add";
+    private static final String UPDATE_USER = "user.update";
+    private static final String REMOVE_USER = "user.remove";
 
     /**
      * Creates a new repository.
@@ -29,8 +33,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
 
     @Override
     protected User extractFromResultSet(ResultSet resultSet) throws SQLException {
-        User user;
-        user = new User();
+        User user = new User();
         user.setId(resultSet.getInt("id"));
         user.setName(resultSet.getString("name"));
         user.setLogin(resultSet.getString("login"));
@@ -54,6 +57,39 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             LOGGER.warn(ERROR_MESSAGE, sql, e);
             throw new DataAccessException(getMessage(sql), e);
         }
+    }
+
+    @Override
+    public boolean add(User user) {
+        String sql = Query.get(ADD_USER);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            int k = 1;
+            ps.setString(k++, user.getName());
+            ps.setString(k++, user.getLogin());
+            ps.setString(k++, user.getPassword());
+            //   ps.setInt(k++, user.getRole());
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean remove(int id) {
+        return delete(id, Query.get(REMOVE_USER));
+    }
+
+    @Override
+    public boolean update(User user) {
+        String sql = Query.get(UPDATE_USER);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+        }
+        return false;
     }
 
     private Role getRole(int id) {

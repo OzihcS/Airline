@@ -25,7 +25,7 @@ public final class Query {
         try (InputStream resource = Query.class.getResourceAsStream(SQL_FILE)) {
             PROPERTIES.load(resource);
         } catch (IOException e) {
-            LOGGER.error("Cannot load file: '{}'" + SQL_FILE);
+            LOGGER.error("Cannot load file: '{}'" , SQL_FILE);
             throw new FileProcessingException("Cannot load file: '" + SQL_FILE + "'", e);
         }
     }

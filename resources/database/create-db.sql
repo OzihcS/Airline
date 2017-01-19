@@ -46,11 +46,11 @@ CREATE TABLE IF NOT EXISTS flight_brigade (
   staff_id   INT NOT NULL
 );
 
-# CREATE TABLE IF NOT EXISTS requests (
-#   id      INT(11) UNIQUE    NOT NULL AUTO_INCREMENT,
-#   from_id INT(11)           NOT NULL,
-#   to_id   INT(11)           NOT NULL,
-#   message VARCHAR(100)      NOT NULL,
-#   is_read TINYINT(1)        NOT NULL DEFAULT '0',
-#   date    TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP
-# );
+-- # CREATE TABLE IF NOT EXISTS requests (
+-- #   id      INT(11) UNIQUE    NOT NULL AUTO_INCREMENT,
+-- #   from_id INT(11)           NOT NULL,
+-- #   to_id   INT(11)           NOT NULL,
+-- #   message VARCHAR(100)      NOT NULL,
+-- #   is_read TINYINT(1)        NOT NULL DEFAULT '0',
+-- #   date    TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- # );

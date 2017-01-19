@@ -1,17 +1,22 @@
 package ua.nure.piontkovskyi.SummaryTask4.service;
 
-
+import ua.nure.piontkovskyi.SummaryTask4.annotation.Cacheable;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.EvictCache;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Transactional;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
 
-public interface UserService {
+import java.util.List;
 
-    User getByLogin(String login);
+public interface FlightService {
+
+    @Cacheable
+    List<Flight> getAll();
+
+    Flight getById(int id);
 
     @Transactional
     @EvictCache
-    boolean add(User user);
+    boolean add(Flight flight);
 
     @Transactional
     @EvictCache
@@ -19,6 +24,6 @@ public interface UserService {
 
     @Transactional
     @EvictCache
-    boolean update(User user);
+    boolean update(Flight flight);
 
 }
