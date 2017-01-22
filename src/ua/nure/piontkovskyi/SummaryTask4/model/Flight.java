@@ -16,6 +16,20 @@ public class Flight {
     private Date arriveDate;
     private Brigade brigade;
 
+    public Flight() {
+    }
+
+    public Flight(int id, String name, String departureLocation, String arriveLocation, Status status, Date departureDate, Date arriveDate, Brigade brigade) {
+        this.id = id;
+        this.name = name;
+        this.departureLocation = departureLocation;
+        this.arriveLocation = arriveLocation;
+        this.status = status;
+        this.departureDate = departureDate;
+        this.arriveDate = arriveDate;
+        this.brigade = brigade;
+    }
+
     public int getId() {
         return id;
     }

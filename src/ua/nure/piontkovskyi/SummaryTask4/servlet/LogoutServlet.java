@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

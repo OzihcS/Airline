@@ -2,7 +2,7 @@ package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
 import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.util.Locale;
 
 import javax.servlet.ServletContext;
@@ -31,6 +31,7 @@ public abstract class AbstractServlet<T> extends HttpServlet {
         userService = (UserService) context.getAttribute(UserService.class.getName());
         flightService = (FlightService) context.getAttribute(FlightService.class.getName());
         translator = (Locale) context.getAttribute(Locale.class.getName());
+
         defaultLocale = (String) context.getAttribute(Constants.Attributes.DEFAULT_LOCALE);
         locales = (String[]) context.getAttribute(Constants.Attributes.LOCALES);
     }

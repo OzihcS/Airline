@@ -1,5 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Brigade {
@@ -42,8 +43,10 @@ public class Brigade {
         this.stewardess = stewardess;
     }
 
-    public void addStewardess(Staffer stewardess){
+    public void addStewardess(Staffer stewardess) {
+        if (this.stewardess == null) {
+            this.stewardess = new ArrayList<>();
+        }
         this.stewardess.add(stewardess);
     }
-
 }

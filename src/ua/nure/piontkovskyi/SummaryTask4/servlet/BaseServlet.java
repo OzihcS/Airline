@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.nure.piontkovskyi.SummaryTask4.exception.SerializerException;
 import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.util.FileService;
-import ua.nure.piontkovskyi.SummaryTask4.util.StreamSerializer;
+import ua.nure.piontkovskyi.SummaryTask4.util.serializer.StreamSerializer;
 import ua.nure.piontkovskyi.SummaryTask4.validator.Validator;
 
 import javax.servlet.ServletContext;
@@ -73,6 +73,7 @@ public abstract class BaseServlet extends AbstractServlet {
     }
 
     protected void redirectToAction(String uri, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(request.getContextPath());
         response.sendRedirect(request.getContextPath() + uri);
     }
 

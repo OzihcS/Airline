@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.annotation;
 
-import ua.nure.piontkovskyi.SummaryTask4.util.StreamSerializer;
+import ua.nure.piontkovskyi.SummaryTask4.util.serializer.StreamSerializer;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

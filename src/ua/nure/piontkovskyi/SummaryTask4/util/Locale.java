@@ -48,5 +48,4 @@ public class Locale {
 
         return bundle.getString(key);
     }
-
 }

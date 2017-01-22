@@ -9,9 +9,11 @@ import ua.nure.piontkovskyi.SummaryTask4.annotation.Service;
 import ua.nure.piontkovskyi.SummaryTask4.db.AnnotationHandler;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.db.manager.ConnectionManager;
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.util.FileServiceImpl;
-import ua.nure.piontkovskyi.SummaryTask4.util.Settings;
+import ua.nure.piontkovskyi.SummaryTask4.util.Locale;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Settings;
+import ua.nure.piontkovskyi.SummaryTask4.util.serializer.JSONSerializer;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
@@ -21,6 +23,9 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Loads all beans, services and serializers.
+ */
 public class ContextLoader extends AbstractContextLoader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContextLoader.class);
@@ -32,7 +37,7 @@ public class ContextLoader extends AbstractContextLoader {
     private Map<String, Object> services = new HashMap<>();
 
     /**
-     * Creates new {@link ContextLoader} object.
+     * Creates new {@code ContextLoader} object.
      *
      * @param holder       connection holder
      * @param manager      connection manager
@@ -40,14 +45,20 @@ public class ContextLoader extends AbstractContextLoader {
      * @param cacheManager
      */
     public ContextLoader(ConnectionHolder holder, ConnectionManager manager, ServletContext context, CacheManager cacheManager) {
+        String[] localesFromContext = (String[]) context.getAttribute(Constants.Attributes.LOCALES);
+        String[] defaultLocales = {"ru", "en"};
+        String[] localesToSet = localesFromContext == null ? defaultLocales : localesFromContext;
+
         this.cacheManager = cacheManager;
         this.servletContext = context;
         this.connectionHolder = holder;
         this.connectionManager = manager;
 
+        context.setAttribute(Locale.class.getName(), new Locale("/" + Settings.BUNDLE_PATH, localesToSet));
         context.setAttribute(Constants.Attributes.CONNECTION_MANAGER, manager);
         context.setAttribute(Constants.Service.FILE_PROC_SERVICE, new FileServiceImpl(Settings.getUploadDirectory()));
         context.setAttribute(Constants.Attributes.CACHE, cacheManager.getCache(Constants.Attributes.CACHE));
+        context.setAttribute(Constants.Attributes.SERIALIZER, new JSONSerializer());
 
         cacheManager.addCache(Constants.Attributes.CACHE);
     }
@@ -108,7 +119,7 @@ public class ContextLoader extends AbstractContextLoader {
         if (s != null) {
             beans.put(s, o);
         } else {
-            LOGGER.debug("Repository {} wasn't logged because its not repository" + o);
+            LOGGER.debug("Repository {} wasnt logged because its not repository", o);
         }
     }
 
@@ -125,7 +136,7 @@ public class ContextLoader extends AbstractContextLoader {
             services.put(s, o);
             return;
         }
-        LOGGER.debug("Service {} wasn't logged Because its not repository" + o);
+        LOGGER.debug("Service {} wasnt logged Because its not repository", o);
     }
 
     private void autowireBeans() throws IllegalAccessException {
@@ -153,4 +164,5 @@ public class ContextLoader extends AbstractContextLoader {
             servletContext.setAttribute(entry.getKey(), proxy);
         }
     }
+
 }

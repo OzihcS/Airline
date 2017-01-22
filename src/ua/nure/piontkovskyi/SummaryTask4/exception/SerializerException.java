@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.exception;
 
-import ua.nure.piontkovskyi.SummaryTask4.util.StreamSerializer;
+import ua.nure.piontkovskyi.SummaryTask4.util.serializer.StreamSerializer;
 
 /**
  * {@code SerializerException} is thrown by {@link StreamSerializer}

@@ -2,7 +2,7 @@ package ua.nure.piontkovskyi.SummaryTask4.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Settings;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -22,7 +22,7 @@ public abstract class AbstractValidator implements Validator {
 
     protected AbstractValidator(String locale) {
         this.locale = locale;
-        bundle = ResourceBundle.getBundle(Constants.ROUTES.BUNDLE_PATH, new Locale(locale));
+        bundle = ResourceBundle.getBundle(Settings.BUNDLE_PATH, new Locale(locale));
         errMessages = new HashMap<>();
     }
 

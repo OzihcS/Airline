@@ -33,15 +33,15 @@ INSERT INTO staff VALUE(DEFAULT, 'Michel', 'Renee', 4);
 INSERT INTO staff VALUE(DEFAULT, 'Margaret', 'Qualley', 4);
 
 INSERT INTO flight_brigade VALUE(1, 1);
-INSERT INTO flight_brigade VALUE(1, 2);
 INSERT INTO flight_brigade VALUE(1, 3);
-INSERT INTO flight_brigade VALUE(1, 4);
+INSERT INTO flight_brigade VALUE(1, 5);
+INSERT INTO flight_brigade VALUE(1, 7);
 
-INSERT INTO flight_brigade VALUE(2, 1);
 INSERT INTO flight_brigade VALUE(2, 2);
-INSERT INTO flight_brigade VALUE(2, 3);
 INSERT INTO flight_brigade VALUE(2, 4);
-INSERT INTO flight_brigade VALUE(2, 5);
+INSERT INTO flight_brigade VALUE(2, 6);
+INSERT INTO flight_brigade VALUE(2, 8);
+INSERT INTO flight_brigade VALUE(2, 9);
 
 
 

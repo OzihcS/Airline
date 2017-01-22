@@ -4,7 +4,7 @@ import net.sf.ehcache.CacheManager;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ThreadLocalConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.db.manager.HikariCPManager;
 import ua.nure.piontkovskyi.SummaryTask4.listener.loader.ContextLoader;
-import ua.nure.piontkovskyi.SummaryTask4.util.Settings;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Settings;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

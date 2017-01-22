@@ -2,17 +2,15 @@ package ua.nure.piontkovskyi.SummaryTask4.validator;
 
 import ua.nure.piontkovskyi.SummaryTask4.model.User;
 
-import java.util.Set;
 import java.util.regex.Pattern;
 
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
-import ua.nure.piontkovskyi.SummaryTask4.util.Constants.Validation;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants.Validation;
 
 /**
  * Performs validation of {@link User} objects.
  */
 public class UserValidator extends AbstractValidator {
-
 
     private static final Pattern LOGIN_TEMPLATE = Pattern.compile(
             "^[A-ZА-Яа-яa-z0-9_-]+$", Pattern.CASE_INSENSITIVE);
@@ -40,7 +38,6 @@ public class UserValidator extends AbstractValidator {
 
     /**
      * Instantiates a new UserValidator that validates only user's login and password immediately.
-     *
      * @param login    login to validate
      * @param password password to validate
      * @param locale   current locale value

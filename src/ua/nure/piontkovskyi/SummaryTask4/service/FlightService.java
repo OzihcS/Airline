@@ -3,7 +3,9 @@ package ua.nure.piontkovskyi.SummaryTask4.service;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Cacheable;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.EvictCache;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Transactional;
+import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
 import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
 
 import java.util.List;
 
@@ -25,5 +27,10 @@ public interface FlightService {
     @Transactional
     @EvictCache
     boolean update(Flight flight);
+
+    @Cacheable
+    Brigade getBrigade(int id);
+
+    Staffer getStaffer(int id);
 
 }

@@ -4,7 +4,10 @@ import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
+import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
 import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 
@@ -22,6 +25,8 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
     private static final String ADD_FLIGHT = "flight.add";
     private static final String UPDATE_FLIGHT = "flight.update";
     private static final String REMOVE_FLIGHT = "flight.delete";
+    private static final String GET_BRIGADE = "brigade.get";
+    private static final String GET_STAFFER_BY_ID = "staffer.get.by.id";
 
     /**
      * Creates a new repository.
@@ -39,10 +44,10 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
         flight.setName(rs.getString("name"));
         flight.setDepartureLocation(rs.getString("departure_location"));
         flight.setArriveLocation(rs.getString("arrive_location"));
-        flight.setStatus(Status.getStatus(rs.getString("status")));
+        flight.setStatus(Status.getStatus(rs.getString("status").toUpperCase()));
         flight.setDepartureDate(rs.getDate("departure_date"));
         flight.setArriveDate(rs.getDate("arrive_date"));
-        //TODO flight.setBrigade();
+        flight.setBrigade(getBrigade(flight.getId()));
         return flight;
     }
 
@@ -112,5 +117,66 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             LOGGER.warn(ERROR_MESSAGE, sql, e);
         }
         return false;
+    }
+
+    @Override
+    public Brigade getBrigade(int id) {
+        String sql = Query.get(GET_BRIGADE);
+        Brigade brigade;
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+            brigade = new Brigade();
+            while (resultSet.next()) {
+                createBrigade(brigade, getStaffer(resultSet.getInt("staff_id")));
+            }
+            return brigade;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+    }
+
+    @Override
+    public Staffer getStaffer(int id) {
+        String sql = Query.get(GET_STAFFER_BY_ID);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+            Staffer staffer = null;
+            if (resultSet.next()) {
+                staffer = new Staffer();
+                staffer.setId(resultSet.getInt("id"));
+                staffer.setFirstName(resultSet.getString("first_name"));
+                staffer.setLastName(resultSet.getString("last_name"));
+                staffer.setRole(StaffRole.values()[resultSet.getInt("role_id") - 1]);
+            }
+            return staffer;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+    }
+
+    private Brigade createBrigade(Brigade brigade, Staffer staffer) {
+        switch (staffer.getRole()) {
+            case "PILOT": {
+                brigade.setPilot(staffer);
+                break;
+            }
+            case "RADIOMAN": {
+                brigade.setRadioman(staffer);
+                break;
+            }
+            case "NAVIGATOR": {
+                brigade.setNavigator(staffer);
+                break;
+            }
+            case "STEWARDESS": {
+                brigade.addStewardess(staffer);
+                break;
+            }
+        }
+        return brigade;
     }
 }

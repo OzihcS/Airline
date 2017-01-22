@@ -16,4 +16,19 @@ public class JDBCUserService implements UserService {
     public User getByLogin(String login) {
         return repository.getByLogin(login);
     }
+
+    @Override
+    public boolean add(User user) {
+        return repository.add(user);
+    }
+
+    @Override
+    public boolean remove(int id) {
+        return repository.remove(id);
+    }
+
+    @Override
+    public boolean update(User user) {
+        return update(user);
+    }
 }

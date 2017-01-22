@@ -38,7 +38,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
         user.setName(resultSet.getString("name"));
         user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
-        user.setRole(getRole(user.getId()));
+        user.setRole(Role.values()[resultSet.getInt("role_id") - 1]);
         return user;
     }
 
@@ -92,20 +92,19 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
         return false;
     }
 
-    private Role getRole(int id) {
-        String sql = Query.get(GET_ROLES);
-        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return Role.values()[(rs.getInt("role_id") - 1)];
-            }
-            return null;
-        } catch (SQLException e) {
-            LOGGER.warn(ERROR_MESSAGE, sql, e);
-            throw new DataAccessException(getMessage(sql), e);
-        }
-    }
+//    private Role getRole(int id) {
+//        String sql = Query.get(GET_ROLES);
+//        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+//            ps.setInt(1, id);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                rs.getString("name");
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            LOGGER.warn(ERROR_MESSAGE, sql, e);
+//            throw new DataAccessException(getMessage(sql), e);
+//        }
+//    }
 
 }
