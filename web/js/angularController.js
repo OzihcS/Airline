@@ -3,10 +3,10 @@ app.controller('myController', ['$scope', 'translationService',
 
         //Выполняем перевод, если произошло событие смены языка
         $scope.translate = function () {
-            translationService.getTranslation($scope, $scope.selectedLanguage);
+            translationService.getTranslation($scope, $scope.currentLocale);
         };
         // Инициализация
-        $scope.selectedLanguage = 'en';
+        $scope.currentLocale = 'ru';
         $scope.translate();
 
     }]);

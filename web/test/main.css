@@ -1,0 +1,12 @@
+#spoiler, #close {
+    display: none;
+}
+#show:target #spoiler {
+    display: table-row;
+}
+#show:target #open {
+    display: none;
+}
+#show:target #close {
+    display: block;
+}

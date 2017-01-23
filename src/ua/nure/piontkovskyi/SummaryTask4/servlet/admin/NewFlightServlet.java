@@ -14,12 +14,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.NEW_FLIGHT)
 public class NewFlightServlet extends BaseServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(NewFlightServlet.class);
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        forward(Constants.Pages.Admin.ADD, req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,9 +42,14 @@ public class NewFlightServlet extends BaseServlet {
             return;
         }
 
-        getFlightService().add(new Flight(0, name, from, to, Status.UNCONFIRMED, Date.valueOf(departureDate),
-                Date.valueOf(arriveDate), null));
+        SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy");
+        try {
+            getFlightService().add(new Flight(0, name, from, to, Status.UNCONFIRMED,
+                    format.parse(departureDate), format.parse(arriveDate), null));
+        } catch (ParseException e) {
+            //TODO exception
+        }
         LOGGER.trace("New flight added");
-        //TODO forward
+        redirectToAction(Constants.ServletPaths.Admin.MAIN, req, resp);
     }
 }

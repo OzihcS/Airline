@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS flights (
   name               VARCHAR(25)            NOT NULL,
   departure_location VARCHAR(25)            NOT NULL,
   arrive_location    VARCHAR(25)            NOT NULL,
-  status             VARCHAR(15)            NOT NULL,
+  status             TINYINT                NOT NULL DEFAULT 0,
   departure_date     DATETIME               NOT NULL,
   arrive_date        DATETIME               NOT NULL
 );
@@ -43,14 +43,14 @@ CREATE TABLE staff_roles (
 
 CREATE TABLE IF NOT EXISTS flight_brigade (
   flight_id INT NOT NULL,
-  staff_id   INT NOT NULL
+  staff_id  INT NOT NULL
 );
 
--- # CREATE TABLE IF NOT EXISTS requests (
--- #   id      INT(11) UNIQUE    NOT NULL AUTO_INCREMENT,
--- #   from_id INT(11)           NOT NULL,
--- #   to_id   INT(11)           NOT NULL,
--- #   message VARCHAR(100)      NOT NULL,
--- #   is_read TINYINT(1)        NOT NULL DEFAULT '0',
--- #   date    TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP
--- # );
+CREATE TABLE IF NOT EXISTS requests (
+  id      INT UNIQUE    NOT NULL AUTO_INCREMENT,
+  from_id INT           NOT NULL,
+  to_id   INT           NOT NULL,
+  message VARCHAR(100)  NOT NULL,
+  status  TINYINT(1)    NOT NULL DEFAULT 0,
+  DATE    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

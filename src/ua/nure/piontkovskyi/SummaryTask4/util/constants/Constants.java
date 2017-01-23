@@ -14,6 +14,12 @@ public final class Constants {
         public static final String LOGIN = "login";
         public static final String PASSWORD = "password";
         public static final String LANG = "lang";
+        public static final String USERS = "users";
+        public static final java.lang.String NAME = "name";
+        public static final java.lang.String CONFIRM_PASSWORD = "confirmPassword";
+        public static final java.lang.String ROLE = "role";
+        public static final String REQUESTS = "requests";
+        public static final String ADMINS = "admins";
     }
 
     public static final class Service {
@@ -31,14 +37,21 @@ public final class Constants {
 
             public static final String MAIN = DISPATCHER + "home";
             public static final String FLIGHTS = DISPATCHER + "flights";
-            public static final String CREATE_BRIGADE = DISPATCHER + "create";
+            public static final String CREATE_BRIGADE = DISPATCHER + "newBrigade";
+            public static final String NEW_REQUEST = DISPATCHER + "newRequest";
+            public static final String CHANGE_STATUS = DISPATCHER + "changeStatus";
         }
 
         public static final class Admin {
             public static final String ADMIN = "/admin/";
 
             public static final String MAIN = ADMIN + "home";
-            public static final String NEW_FLIGHT = ADMIN + "newFlight";
+            public static final String NEW_FLIGHT = ADMIN + "add";
+            public static final String FLIGHT_LIST = ADMIN + "flights";
+            public static final String USER_LIST = ADMIN + "users";
+            public static final String NEW_USER = ADMIN + "newUser";
+            public static final String DELETE_USER = ADMIN + "delete";
+            public static final String DELETE_FLIGHT = ADMIN + "deleteFlight";
         }
     }
 
@@ -54,6 +67,7 @@ public final class Constants {
         public static final String CANT_BE_EMPTY = "validator.cannotBeEmpty";
         public static final String LEN_4_TO_100 = "validator.lengthFrom4to100";
         public static final String CANT_BE_THE_SAME = "validator.cannotBeTheSame";
+        public static final String DATE_EROR = "validator.dateError";
     }
 
     public static final class Pages {
@@ -64,12 +78,19 @@ public final class Constants {
         public static final class Dispatcher {
             private static final String USER_PREFIX = PREFIX + "dispatcher/";
             public static final String MAIN = USER_PREFIX + "home.jsp";
+            public static final String CREATE_BRIGADE = USER_PREFIX + "createBrigade.jsp";
+            public static final String NEW_REQUEST = USER_PREFIX + "newRequest.jsp";
+
         }
 
         public static final class Admin {
             private static final String USER_PREFIX = PREFIX + "admin/";
 
             public static final String MAIN = USER_PREFIX + "home.jsp";
+            public static final String ADD = USER_PREFIX + "add.jsp";
+            public static final String USERS = USER_PREFIX + "users.jsp";
+            public static final String ADD_USER = USER_PREFIX + "addUser.jsp";
+            public static final String FLIGHTS = USER_PREFIX + "flights.jsp";
         }
     }
 }

@@ -5,6 +5,8 @@ import ua.nure.piontkovskyi.SummaryTask4.annotation.Service;
 import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
 import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
 import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 
@@ -49,5 +51,20 @@ public class JDBCFlightService implements FlightService {
     @Override
     public Staffer getStaffer(int id) {
         return repository.getStaffer(id);
+    }
+
+    @Override
+    public List<Staffer> getStaffersByRole(StaffRole role) {
+        return repository.getStaffersByRole(role);
+    }
+
+    @Override
+    public boolean chaneStatus(int id, Status status) {
+        return repository.chaneStatus(id, status);
+    }
+
+    @Override
+    public boolean setBrigade(int id, Brigade brigade) {
+        return repository.setBrigade(id, brigade);
     }
 }

@@ -2,6 +2,18 @@ package ua.nure.piontkovskyi.SummaryTask4.model.enums;
 
 public enum Role {
 
-    ADMINISTRATOR, DISPATCHER
+    ADMINISTRATOR, DISPATCHER;
 
+    public static int getRoleId(Role role) {
+        switch (role){
+            case ADMINISTRATOR:{
+                return 1;
+            }
+            case DISPATCHER:{
+                return 2;
+            }
+        }
+        return 0;
+    }
 }
+

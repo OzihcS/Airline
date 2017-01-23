@@ -12,15 +12,18 @@ import ua.nure.piontkovskyi.SummaryTask4.repository.UserRepository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class JDBCUserRepository extends JDBCAbstractRepository implements UserRepository {
 
     private static final String GET_BY_LOGIN = "user.get.by.login";
-    private static final String GET_ROLES = "user.get.role.by.id";
     private static final String ADD_USER = "user.add";
     private static final String UPDATE_USER = "user.update";
     private static final String REMOVE_USER = "user.remove";
+    private static final String GET_ALL_USERS = "user.get.all";
+    private static final String GET_ADMINS = "user.get.all.admins";
 
     /**
      * Creates a new repository.
@@ -67,7 +70,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             ps.setString(k++, user.getName());
             ps.setString(k++, user.getLogin());
             ps.setString(k++, user.getPassword());
-            //   ps.setInt(k++, user.getRole());
+            ps.setInt(k++, Role.getRoleId(user.getRole()));
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -86,25 +89,42 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
     public boolean update(User user) {
         String sql = Query.get(UPDATE_USER);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            //TODO
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
         }
         return false;
     }
 
-//    private Role getRole(int id) {
-//        String sql = Query.get(GET_ROLES);
-//        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
-//            ps.setInt(1, id);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                rs.getString("name");
-//            }
-//            return null;
-//        } catch (SQLException e) {
-//            LOGGER.warn(ERROR_MESSAGE, sql, e);
-//            throw new DataAccessException(getMessage(sql), e);
-//        }
-//    }
+    @Override
+    public List<User> getAll() {
+        String sql = Query.get(GET_ALL_USERS);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ResultSet resultSet = ps.executeQuery();
+            List<User> list = new ArrayList<>();
+            while (resultSet.next()) {
+                list.add(extractFromResultSet(resultSet));
+            }
+            return list;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+    }
 
+    @Override
+    public List<User> getAdmins() {
+        String sql = Query.get(GET_ADMINS);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ResultSet resultSet = ps.executeQuery();
+            List<User> list = new ArrayList<>();
+            while (resultSet.next()) {
+                list.add(extractFromResultSet(resultSet));
+            }
+            return list;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+    }
 }

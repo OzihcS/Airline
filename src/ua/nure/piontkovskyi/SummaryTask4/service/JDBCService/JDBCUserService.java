@@ -6,6 +6,8 @@ import ua.nure.piontkovskyi.SummaryTask4.model.User;
 import ua.nure.piontkovskyi.SummaryTask4.repository.UserRepository;
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
 
+import java.util.List;
+
 @Service
 public class JDBCUserService implements UserService {
 
@@ -30,5 +32,15 @@ public class JDBCUserService implements UserService {
     @Override
     public boolean update(User user) {
         return update(user);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return repository.getAll();
+    }
+
+    @Override
+    public List<User> getAdmins() {
+        return repository.getAdmins();
     }
 }

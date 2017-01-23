@@ -3,6 +3,8 @@ package ua.nure.piontkovskyi.SummaryTask4.repository;
 
 import ua.nure.piontkovskyi.SummaryTask4.model.User;
 
+import java.util.List;
+
 public interface UserRepository {
 
     User getByLogin(String login);
@@ -12,4 +14,8 @@ public interface UserRepository {
     boolean remove(int id);
 
     boolean update(User user);
+
+    List<User> getAll();
+
+    List<User> getAdmins();
 }

@@ -3,7 +3,7 @@ package ua.nure.piontkovskyi.SummaryTask4.model;
 
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Flight {
 

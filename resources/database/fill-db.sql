@@ -16,9 +16,11 @@ INSERT INTO users VALUE(DEFAULT, 'Petrov Petr', 'petrov', 'petrov', 2);
 
 -- Flight
 INSERT INTO flights VALUE
-    (DEFAULT, 'London - Munich', 'London', 'Munich', 'unconfirmed', '2016-02-12 21:40:00', '2016-02-12 22:40:00');
+    (DEFAULT, 'London - Munich', 'London', 'Munich', 2, '2016-02-12 21:40:00', '2016-02-12 22:40:00');
 INSERT INTO flights VALUE
-    (DEFAULT, 'Istanbul - New York', 'Istanbul', 'New York', 'unconfirmed', '2016-02-12 19:40:00', '2016-02-13 04:40:00');
+    (DEFAULT, 'Istanbul - New York', 'Istanbul', 'New York', 0, '2016-02-12 19:40:00', '2016-02-13 04:40:00');
+INSERT INTO flights VALUE
+    (DEFAULT, 'Kiev - Moscow', 'Kiev', 'Moscow', 0, '2017-02-12 19:40:00', '2017-02-13 04:40:00');
 
 -- Staff
 
@@ -43,6 +45,10 @@ INSERT INTO flight_brigade VALUE(2, 6);
 INSERT INTO flight_brigade VALUE(2, 8);
 INSERT INTO flight_brigade VALUE(2, 9);
 
+INSERT INTO requests VALUE(DEFAULT, 2, 1, 'Test request', DEFAULT, DEFAULT);
+
+SELECT *
+FROM requests;
 
 
 SELECT *

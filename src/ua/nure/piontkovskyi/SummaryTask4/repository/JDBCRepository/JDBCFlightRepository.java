@@ -7,10 +7,12 @@ import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
 import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
 import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
 import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +29,9 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
     private static final String REMOVE_FLIGHT = "flight.delete";
     private static final String GET_BRIGADE = "brigade.get";
     private static final String GET_STAFFER_BY_ID = "staffer.get.by.id";
+    private static final String CHANGE_STATUS = "flight.change.status";
+    private static final String GET_BY_ROLE = "staffer.get.all.by.role";
+    private static final String ADD_BRIGADE = "flight.set.brigade";
 
     /**
      * Creates a new repository.
@@ -44,7 +49,7 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
         flight.setName(rs.getString("name"));
         flight.setDepartureLocation(rs.getString("departure_location"));
         flight.setArriveLocation(rs.getString("arrive_location"));
-        flight.setStatus(Status.getStatus(rs.getString("status").toUpperCase()));
+        flight.setStatus(Status.values()[rs.getInt("status")]);
         flight.setDepartureDate(rs.getDate("departure_date"));
         flight.setArriveDate(rs.getDate("arrive_date"));
         flight.setBrigade(getBrigade(flight.getId()));
@@ -77,13 +82,12 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
         String sql = Query.get(ADD_FLIGHT);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             int k = 1;
-            ps.setInt(k++, flight.getId());
             ps.setString(k++, flight.getName());
             ps.setString(k++, flight.getDepartureLocation());
             ps.setString(k++, flight.getArriveLocation());
-            ps.setString(k++, flight.getStatus());
-            ps.setDate(k++, flight.getDepartureDate());
-            ps.setDate(k++, flight.getArriveDate());
+            ps.setInt(k++, Status.index(Status.valueOf(flight.getStatus())));
+            ps.setDate(k++, new Date(flight.getDepartureDate().getTime()));
+            ps.setDate(k++, new Date(flight.getArriveDate().getTime()));
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -107,8 +111,8 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             ps.setString(k++, flight.getDepartureLocation());
             ps.setString(k++, flight.getArriveLocation());
             ps.setString(k++, flight.getStatus());
-            ps.setDate(k++, flight.getArriveDate());
-            ps.setDate(k++, flight.getArriveDate());
+            ps.setDate(k++, new Date(flight.getArriveDate().getTime()));
+            ps.setDate(k++, new Date(flight.getArriveDate().getTime()));
             ps.setInt(k++, flight.getId());
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -122,13 +126,16 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
     @Override
     public Brigade getBrigade(int id) {
         String sql = Query.get(GET_BRIGADE);
-        Brigade brigade;
+        Brigade brigade = null;
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
-            brigade = new Brigade();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
+                brigade = new Brigade();
                 createBrigade(brigade, getStaffer(resultSet.getInt("staff_id")));
+                while (resultSet.next()) {
+                    createBrigade(brigade, getStaffer(resultSet.getInt("staff_id")));
+                }
             }
             return brigade;
         } catch (SQLException e) {
@@ -157,6 +164,65 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             throw new DataAccessException(getMessage(sql), e);
         }
     }
+
+    @Override
+    public List<Staffer> getStaffersByRole(StaffRole role) {
+        String sql = Query.get(GET_BY_ROLE);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, StaffRole.getRoleId(role));
+            ResultSet resultSet = ps.executeQuery();
+            List<Staffer> list = new ArrayList<>();
+            while (resultSet.next()) {
+                list.add(getStaffer(resultSet.getInt("id")));
+            }
+            return list;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+    }
+
+    @Override
+    public boolean chaneStatus(int id, Status status) {
+        String sql = Query.get(CHANGE_STATUS);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            int k = 1;
+            ps.setInt(k++, Status.index(status));
+            ps.setInt(k++, id);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean setBrigade(int id, Brigade brigade) {
+        String sql = Query.get(ADD_BRIGADE);
+        List<Staffer> brigadeList = new ArrayList<>();
+        brigadeList.add(brigade.getPilot());
+        brigadeList.add(brigade.getNavigator());
+        brigadeList.add(brigade.getRadioman());
+        for (Staffer staffer : brigade.getStewardess()) {
+            brigadeList.add(staffer);
+        }
+        for (Staffer staffer : brigadeList) {
+            try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+                int k = 1;
+                ps.setInt(k++, id);
+                ps.setInt(k++, staffer.getId());
+                if (ps.executeUpdate() > 0) {
+                    continue;
+                }
+            } catch (SQLException e) {
+                LOGGER.warn(ERROR_MESSAGE, sql, e);
+            }
+        }
+        return true;
+    }
+
 
     private Brigade createBrigade(Brigade brigade, Staffer staffer) {
         switch (staffer.getRole()) {

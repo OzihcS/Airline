@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class FlightValidator extends AbstractValidator {
 
-    private static final Pattern TEMPLATE = Pattern.compile("^(\\p{L}+)(,\\s\\p{L}+\\s\\p{L}\\.)?(\\s?\\p{L}+)?$",
+    private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я-]+",
             Pattern.CASE_INSENSITIVE);
 
 
@@ -44,9 +44,17 @@ public class FlightValidator extends AbstractValidator {
         if (!TEMPLATE.matcher(departure).matches() || !TEMPLATE.matcher(arrive).matches()) {
             return Constants.Validation.LETTERS_ONLY;
         }
-        if (departure.equals(arrive)){
+        if (departure.equals(arrive)) {
             return Constants.Validation.CANT_BE_THE_SAME;
         }
         return null;
+    }
+
+    private String validateDates(Date depatrure, Date arrive) {
+        if (depatrure.getTime() < arrive.getTime())
+        {
+            return Constants.Validation.DATE_EROR;
+        }
+            return null;
     }
 }

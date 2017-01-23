@@ -17,7 +17,7 @@ public class MainPageServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Flight> flights = null;
+        List<Flight> flights;
         flights = getFlightService().getAll();
         req.setAttribute("flights", flights);
         forward(Constants.Pages.Dispatcher.MAIN, req, resp);

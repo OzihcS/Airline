@@ -5,7 +5,7 @@
          version="3.1">
 
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>log/login</welcome-file>
     </welcome-file-list>
 
     <listener>
@@ -34,7 +34,6 @@
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>*</url-pattern>
     </filter-mapping>
-
 
 
     <context-param>

@@ -1,0 +1,95 @@
+<html>
+<table id="tab1" class="sortable">
+    <thead>
+    <td width="100%">
+        <table border="1" width="100%" bgcolor="#F0F8FF">
+
+            <tr>
+                <th>№</th>
+                <th>{{translation.userName}}</th>
+                <th>{{translation.userLogin}}</th>
+                <th>{{translation.role}}</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+        </table>
+
+
+        <form action="" id="add_persons" method="post" onsubmit="addRow();return false;">
+            <fieldset>
+                <ul>
+                    <li>
+                        <input type="text" name="id" id="id" value="" size="22" />
+                    </li><li>
+                        <input type="text" name="name" id="name" value="" size="22"/>
+                    </li>
+                    <li>
+                        <input type="text" name="login" id="login" value="" size="28" />
+                    </li>
+                    <li>
+                        <input type="text" name="role" id="role" value="" size="30" />
+                    </li>
+                    <li>
+                        <input type="submit" name="subm" class="submit" value="Добавить" />
+                        <input type="reset" name="subm" class="submit" value="Очистить форму" />
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+
+
+        <script>
+            var d = document;
+
+            var id;
+            var name;
+            var login;
+            var role;
+
+            function addRow() {
+// Считываем значения с формы
+                id = d.getElementById('id').value;
+                name = d.getElementById('name').value;
+                login = d.getElementById('login').value;
+                role = d.getElementById('role').value;
+
+// Находим нужную таблицу
+                var tbody = d.getElementById('tab1').getElementsByTagName('TBODY')[0];
+
+// Создаем строку таблицы и добавляем ее
+                var row = d.createElement("TR");
+                tbody.appendChild(row);
+
+// Создаем ячейки в вышесозданной строке
+// и добавляем тх
+                var td1 = d.createElement("TD");
+                var td2 = d.createElement("TD");
+                var td3 = d.createElement("TD");
+                var td4 = d.createElement("TD");
+                var td5 = d.createElement("TD");
+
+
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                row.appendChild(td4);
+                row.appendChild(td5);
+
+                td5.setAttribute('onmousedown', 'this.parentNode.parentNode.removeChild (this.parentNode);');
+
+// Наполняем ячейки
+                td1.innerHTML = id;
+                td2.innerHTML = name;
+                td3.innerHTML = login;
+                td4.innerHTML = role
+                td5.innerHTML = 'Удалить';
+
+            }
+        </script>
+
+        </head>
+
+        <p><img src="тайд.jpg" align="left"></p>
+
+        </body>
+</html>

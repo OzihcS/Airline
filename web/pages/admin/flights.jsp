@@ -1,53 +1,37 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="../../jspf/directive.jspf" %>
-<html>
 <%@ include file="../../jspf/head.jspf" %>
 <%@ include file="../../jspf/user.jspf" %>
-<form action="dispatcher/home" method="post">
+
+<form action="admin/flights" method="post">
     <input type="text" name="id" class="placeholder" placeholder="{{translation.flightNum}}" required>
     <input type="submit" value="{{translation.search}}">
 </form>
 
-
 <table border="1">
     <tr>
         <td>{{translation.flight}}</td>
+        <%--<td>{{translation.flightName}}</td>--%>
         <td>{{translation.from}} / {{translation.to}}</td>
         <td>{{translation.departureDate}} / {{translation.arriveDate}}</td>
         <td>{{translation.status}}</td>
         <td>{{translation.brigade}}</td>
-    </tr>
+    </tr
     <c:forEach items="${flights}" var="flight">
         <tr>
             <td>${flight.id}</td>
             <td>${flight.departureLocation} / ${flight.arriveLocation}</td>
             <td>${flight.departureDate} / ${flight.arriveDate}</td>
+            <td>${flight.status}</td>
+                <%--<td>--%>
+                <%--<select name="status">--%>
+                <%--<option value="UNCONFIRMED">UNCONFIRMED</option>--%>
+                <%--<option value="IN_PROGRESS" selected="selected">IN PROGRESS</option>--%>
+                <%--<option value="FINISHED">FINISHED</option>--%>
+                <%--</select>--%>
+                <%--</td>--%>
             <td>
-                <c:if test="${flight.status == 'FINISHED'}">
-                    ${flight.status}
-                </c:if>
-                <c:if test="${flight.status != 'FINISHED'}">
-                <details>
-                    <summary>${flight.status} </summary>
-                        <form action="dispatcher/changeStatus" method="post">
-                            <input type="hidden" name="id" value="${flight.id}">
-                            <select name="status">
-                                <option value="IN_PROGRESS">In progress</option>
-                                <option selected value="FINISHED">Finished</option>
-                            </select>
-                            <input type="submit" value="Change">
-                        </form>
-                </details>
-                </c:if>
-            </td>
-            <td>
-                <c:if test="${flight.brigade == null}">
-                    <form action="dispatcher/newBrigade" method="get">
-                        <input type="text" name="id" value="${flight.id}" hidden="hidden">
-                        <input type="submit" value="{{translation.create}}">
-                    </form>
-                </c:if>
                 <c:if test="${flight.brigade != null}">
                     <details>
                         <summary>Show brigade</summary>
@@ -60,12 +44,20 @@
                     </details>
                 </c:if>
             </td>
+            <td>
+                <form action="admin/deleteFlight" method="get">
+                    <input name="id" value="${flight.id}" type="hidden">
+                    <input type="submit" value="{{translation.delete}}">
+                </form>
+            </td>
         </tr>
     </c:forEach>
 </table>
-<form action="dispatcher/home" method="post">
+<form action="admin/home" method="post">
     <input type="submit" value="{{translation.update}}">
 </form>
-</div>
+<form action="admin/add" method="get">
+    <input type="submit" value="{{translation.add}}">
+</form>
 </body>
 </html>
