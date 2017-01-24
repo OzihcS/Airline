@@ -7,7 +7,7 @@
 <c:if test="${sessionScope.currentUser.getRole() == 'ADMINISTRATOR'}">
     <form action="admin/home" method="get">
 </c:if>
-<c:if test="${sessionScope.currentUser.getRole() == 'ADMINISTRATOR'}">
+<c:if test="${sessionScope.currentUser.getRole() == 'DISPATCHER'}">
     <form action="dispatcher/home" method="get">
 </c:if>
 <input type="submit" value="{{translation.home}}">

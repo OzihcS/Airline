@@ -38,12 +38,28 @@ public class UserValidator extends AbstractValidator {
 
     /**
      * Instantiates a new UserValidator that validates only user's login and password immediately.
+     *
      * @param login    login to validate
      * @param password password to validate
      * @param locale   current locale value
      */
     public UserValidator(String login, String password, String locale) {
         super(locale);
+        putIssue("login", validateLogin(login));
+        putIssue("password", validatePassword(password));
+    }
+
+    /**
+     * Instantiates a new UserValidator that validates only user's login and password immediately.
+     *
+     * @param name     name to validate
+     * @param login    login to validate
+     * @param password password to validate
+     * @param locale   current locale value
+     */
+    public UserValidator(String name, String login, String password, String locale) {
+        super(locale);
+        putIssue("name", validateName(name));
         putIssue("login", validateLogin(login));
         putIssue("password", validatePassword(password));
     }

@@ -18,4 +18,6 @@ public interface UserRepository {
     List<User> getAll();
 
     List<User> getAdmins();
+
+    User getById(int i);
 }

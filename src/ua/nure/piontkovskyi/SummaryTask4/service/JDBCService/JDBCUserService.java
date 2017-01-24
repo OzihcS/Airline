@@ -31,7 +31,7 @@ public class JDBCUserService implements UserService {
 
     @Override
     public boolean update(User user) {
-        return update(user);
+        return repository.update(user);
     }
 
     @Override
@@ -42,5 +42,10 @@ public class JDBCUserService implements UserService {
     @Override
     public List<User> getAdmins() {
         return repository.getAdmins();
+    }
+
+    @Override
+    public User getById(int i) {
+        return repository.getById(i);
     }
 }

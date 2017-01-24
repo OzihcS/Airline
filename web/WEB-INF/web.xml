@@ -24,6 +24,10 @@
         <filter-name>LocaleFilter</filter-name>
         <filter-class>ua.nure.piontkovskyi.SummaryTask4.filter.LocaleFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>ua.nure.piontkovskyi.SummaryTask4.filter.AccessFilter</filter-class>
+    </filter>
 
     <filter-mapping>
         <filter-name>LocaleFilter</filter-name>
@@ -33,6 +37,11 @@
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 

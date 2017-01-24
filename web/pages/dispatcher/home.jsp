@@ -10,7 +10,8 @@
 </form>
 
 
-<table border="1">
+<table border="1" class="sortable">
+    <thead>
     <tr>
         <td>{{translation.flight}}</td>
         <td>{{translation.from}} / {{translation.to}}</td>
@@ -18,6 +19,8 @@
         <td>{{translation.status}}</td>
         <td>{{translation.brigade}}</td>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach items="${flights}" var="flight">
         <tr>
             <td>${flight.id}</td>
@@ -28,8 +31,8 @@
                     ${flight.status}
                 </c:if>
                 <c:if test="${flight.status != 'FINISHED'}">
-                <details>
-                    <summary>${flight.status} </summary>
+                    <details>
+                        <summary>${flight.status} </summary>
                         <form action="dispatcher/changeStatus" method="post">
                             <input type="hidden" name="id" value="${flight.id}">
                             <select name="status">
@@ -38,7 +41,7 @@
                             </select>
                             <input type="submit" value="Change">
                         </form>
-                </details>
+                    </details>
                 </c:if>
             </td>
             <td>
@@ -62,6 +65,7 @@
             </td>
         </tr>
     </c:forEach>
+    </tbody>
 </table>
 <form action="dispatcher/home" method="post">
     <input type="submit" value="{{translation.update}}">

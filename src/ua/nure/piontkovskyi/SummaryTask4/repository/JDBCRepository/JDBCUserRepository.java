@@ -9,6 +9,7 @@ import ua.nure.piontkovskyi.SummaryTask4.model.User;
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.repository.UserRepository;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
     private static final String REMOVE_USER = "user.remove";
     private static final String GET_ALL_USERS = "user.get.all";
     private static final String GET_ADMINS = "user.get.all.admins";
+    private static final String GET_USER_BY_ID = "user.get.by.id";
 
     /**
      * Creates a new repository.
@@ -89,7 +91,15 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
     public boolean update(User user) {
         String sql = Query.get(UPDATE_USER);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
-            //TODO
+            int k = 1;
+            ps.setString(k++, user.getName());
+            ps.setString(k++, user.getLogin());
+            ps.setString(k++, user.getPassword());
+            ps.setInt(k++, Role.getRoleId(user.getRole()));
+            ps.setInt(k++, user.getId());
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
         }
@@ -117,14 +127,20 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
         String sql = Query.get(GET_ADMINS);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
-            List<User> list = new ArrayList<>();
+            List<User> admins = new ArrayList<>();
             while (resultSet.next()) {
-                list.add(extractFromResultSet(resultSet));
+                admins.add(extractFromResultSet(resultSet));
             }
-            return list;
+            return admins;
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
             throw new DataAccessException(getMessage(sql), e);
         }
+    }
+
+    @Override
+    public User getById(int id) {
+        return (User) get(id, Query.get(GET_USER_BY_ID));
+
     }
 }

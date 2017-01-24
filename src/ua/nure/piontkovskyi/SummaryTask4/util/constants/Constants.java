@@ -20,6 +20,7 @@ public final class Constants {
         public static final java.lang.String ROLE = "role";
         public static final String REQUESTS = "requests";
         public static final String ADMINS = "admins";
+        public static final String FLIGHTS = "flights";
     }
 
     public static final class Service {
@@ -31,6 +32,7 @@ public final class Constants {
 
         public static final String LOGIN = "/log/login";
         public static final String LOGOUT = "/log/logout";
+        public static final String ERROR = "/error";
 
         public static final class Dispatcher {
             public static final String DISPATCHER = "/dispatcher/";
@@ -52,6 +54,9 @@ public final class Constants {
             public static final String NEW_USER = ADMIN + "newUser";
             public static final String DELETE_USER = ADMIN + "delete";
             public static final String DELETE_FLIGHT = ADMIN + "deleteFlight";
+            public static final String PICK_UP = ADMIN + "pickUp";
+            public static final String EDIT_USER = ADMIN + "editUser";
+            public static final String EDIT_FLIGHT = ADMIN + "editFlight";
         }
     }
 
@@ -91,6 +96,8 @@ public final class Constants {
             public static final String USERS = USER_PREFIX + "users.jsp";
             public static final String ADD_USER = USER_PREFIX + "addUser.jsp";
             public static final String FLIGHTS = USER_PREFIX + "flights.jsp";
+            public static final String EDIT_USER = USER_PREFIX + "editUser.jsp";
+            public static final String EDIT_FLIGHT = USER_PREFIX + "editFlight.jsp";
         }
     }
 }

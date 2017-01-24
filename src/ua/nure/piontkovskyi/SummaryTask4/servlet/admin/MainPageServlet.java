@@ -29,5 +29,6 @@ public class MainPageServlet extends BaseServlet {
         request.setStatus(RequestStatus.valueOf(req.getParameter("status")));
         getRequestService().update(request);
         redirectToAction(Constants.ServletPaths.Admin.MAIN, req, resp);
+
     }
 }

@@ -50,6 +50,6 @@ public class NewFlightServlet extends BaseServlet {
             //TODO exception
         }
         LOGGER.trace("New flight added");
-        redirectToAction(Constants.ServletPaths.Admin.MAIN, req, resp);
+        redirectToAction(Constants.ServletPaths.Admin.FLIGHT_LIST, req, resp);
     }
 }

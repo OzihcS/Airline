@@ -16,7 +16,7 @@
     <script src="js/angularApp.js"></script>
     <script src="js/angularController.js"></script>
     <script src="js/angularTranslationService.js"></script>
-
+    <script src="js/sorttable.js"></script>
     <style type="text/css">
         [ng\:cloak], [ng-cloak], .ng-cloak {
             display: none !important;
@@ -25,11 +25,9 @@
 </head>
 <body>
 <div ng-app="myApp" ng-controller="myController">
-    <div class="styled-select black rounded">
-        <section>
-            <select ng-change="translate()" ng-model="selectedLanguage">
-                <option value="en">English</option>
-                <option value="ru">Русский</option>
-            </select>
-        </section>
-    </div>
+    <section>
+        <select ng-change="translate()" ng-model="selectedLanguage">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+        </select>
+    </section>

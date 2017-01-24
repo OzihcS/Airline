@@ -35,18 +35,16 @@ public class CreateBrigadeServlet extends BaseServlet {
         String pilot = req.getParameter("pilot");
         String radioman = req.getParameter("radioman");
         String navigator = req.getParameter("navigator");
-        String stewardess = req.getParameter("firstStewardess");
+        String firstStewardess = req.getParameter("firstStewardess");
+       //TODO String secondStewardess = req.getP
 
         Brigade brigade = new Brigade();
         brigade.setRadioman(getFlightService().getStaffer(Integer.parseInt(radioman)));
         brigade.setNavigator(getFlightService().getStaffer(Integer.parseInt(navigator)));
         brigade.setPilot(getFlightService().getStaffer(Integer.parseInt(pilot)));
-        brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(stewardess)));
+        brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(firstStewardess)));
 
         getFlightService().setBrigade(Integer.parseInt(String.valueOf(req.getSession().getAttribute("flightId"))), brigade);
-
         redirectToAction(Constants.ServletPaths.Dispatcher.MAIN, req, resp);
     }
-
-
 }

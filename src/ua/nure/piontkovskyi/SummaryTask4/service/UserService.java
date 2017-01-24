@@ -24,8 +24,9 @@ public interface UserService {
     @EvictCache
     boolean update(User user);
 
-//    @Cacheable
     List<User> getAll();
 
     List<User> getAdmins();
+
+    User getById(int i);
 }
