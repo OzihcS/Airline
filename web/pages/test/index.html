@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="table.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<form class="brigade" action="dispatcher/newBrigade" method="post">
+    <input type="hidden" name="id" value="${flightId}">
+    <div>
+        <fieldset>
+            <legend class="label">Pilot</legend>
+            <select name="pilot">
+                <option disabled>Pilot</option>
+                <c:forEach items="${pilots}" var="pilot">
+                    <option selected value="${pilot.id}">${pilot.lastName}</option>
+                </c:forEach>
+            </select>
+        </fieldset>
+    </div>
+
+    <div>
+        <select name="radioman">
+            <option disabled>Radioman</option>
+            <c:forEach items="${radiomen}" var="radioman">
+                <option selected value="${radioman.id}">${radioman.lastName}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div>
+        <select name="navigator">
+            <option disabled>Navigator</option>
+            <c:forEach items="${navigators}" var="navigator">
+                <option selected value="${navigator.id}">${navigator.lastName}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div>
+        <select name="firstStewardess">
+            <option disabled>Stewardess</option>
+            <c:forEach items="${stewardesses}" var="stewardess">
+                <option selected value="${stewardess.id}">${stewardess.lastName}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div>
+        <select name="secondStewardess">
+            <option disabled>Stewardess</option>
+            <c:forEach items="${stewardesses}" var="stewardess">
+                <option selected value="${stewardess.id}">${stewardess.lastName}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div>
+        <select name="thirdStewardess">
+            <option disabled>Stewardess</option>
+            <c:forEach items="${stewardesses}" var="stewardess">
+                <option selected value="${stewardess.id}">${stewardess.lastName}</option>
+            </c:forEach>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="{{translation.add}}">
+    </div>
+</form>
+<form  action="dispatcher/newRequest" method="get">
+    <input type="submit" value="{{translation.sendRequest}}">
+</form>
+</body>
+</html>

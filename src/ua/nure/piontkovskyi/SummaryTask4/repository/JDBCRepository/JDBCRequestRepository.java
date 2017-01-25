@@ -37,6 +37,7 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
         request.setId(rs.getInt("id"));
         request.setFromId(rs.getInt("from_id"));
         request.setToId(rs.getInt("to_id"));
+        request.setTitle(rs.getString("title"));
         request.setMessage(rs.getString("message"));
         request.setStatus(RequestStatus.values()[rs.getInt("status")]);
         request.setDate(rs.getDate("date"));
@@ -84,6 +85,7 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
             int k = 1;
             ps.setInt(k++, request.getFromId());
             ps.setInt(k++, request.getToId());
+            ps.setString(k++, request.getTitle());
             ps.setString(k++, request.getMessage());
             ps.setInt(k++, RequestStatus.index((request.getStatus())));
             if (ps.executeUpdate() > 0) {

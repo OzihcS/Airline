@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS requests (
   id      INT UNIQUE    NOT NULL AUTO_INCREMENT,
   from_id INT           NOT NULL,
   to_id   INT           NOT NULL,
+  title   VARCHAR(25)   NOT NULL,
   message VARCHAR(100)  NOT NULL,
   status  TINYINT(1)    NOT NULL DEFAULT 0,
   DATE    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP

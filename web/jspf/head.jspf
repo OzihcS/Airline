@@ -5,7 +5,6 @@
 <fmt:setLocale value="${sessionScope.currentLocale}" scope="request"/>
 <fmt:setBundle basename="messages" scope="request"/>
 <head>
-    <%--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><fmt:message key="app.title"/></title>
     <c:set var="url">${pageContext.request.requestURL}</c:set>
@@ -17,17 +16,17 @@
     <script src="js/angularController.js"></script>
     <script src="js/angularTranslationService.js"></script>
     <script src="js/sorttable.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>jQuery(document).ready(function () {
+        jQuery('.spoiler-text').hide()
+        jQuery('.spoiler').click(function () {
+            jQuery(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle()
+        })
+    })
+    </script>
     <style type="text/css">
         [ng\:cloak], [ng-cloak], .ng-cloak {
             display: none !important;
         }
     </style>
 </head>
-<body>
-<div ng-app="myApp" ng-controller="myController">
-    <section>
-        <select ng-change="translate()" ng-model="selectedLanguage">
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-        </select>
-    </section>

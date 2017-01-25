@@ -17,11 +17,20 @@ public class PickUpServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        List<Flight> flights;
+        if (!(id == null)) {
+            flights = new ArrayList<>();
+            flights.add(getFlightService().getById(Integer.parseInt(id)));
+            req.setAttribute("flights", flights);
+            forward(Constants.Pages.Admin.FLIGHTS, req, resp);
+            return;
+        }
         String from = req.getParameter("from");
         String to = req.getParameter("to");
         String departure = req.getParameter("departure");
 
-        List<Flight> flights = getFlightService().getAll();
+        flights = getFlightService().getAll();
         flights = pickUpFrom(flights, from);
         flights = pickUpTo(flights, to);
         flights = pickUpFromDeparture(flights, departure);

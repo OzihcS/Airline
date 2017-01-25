@@ -3,7 +3,7 @@
 <%@include file="../../jspf/directive.jspf" %>
 <html>
 <%@ include file="../../jspf/head.jspf" %>
-<%@ include file="../../jspf/user.jspf" %>
+<%@ include file="../../jspf/header.jspf" %>
 
 <form action="dispatcher/newRequest" method="post">
     <input type="hidden" name="fromId" value="${sessionScope.currentUser.id}">

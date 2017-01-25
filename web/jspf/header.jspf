@@ -1,0 +1,35 @@
+<%@ include file="head.jspf" %>
+<div ng-app="myApp" ng-controller="myController">
+    <header>
+        <div class="box">
+            <div><label id="logged">
+                {{translation.logged}}:
+                <c:out value="${sessionScope.currentUser.getRole()}"/>
+                <c:out value="${sessionScope.currentUser.getLogin()}"/>
+            </label></div>
+            <div>
+                <c:if test="${sessionScope.currentUser.getRole() == 'ADMINISTRATOR'}">
+                <form action="admin/home" method="get">
+                    </c:if>
+                    <c:if test="${sessionScope.currentUser.getRole() == 'DISPATCHER'}">
+                    <form action="dispatcher/home" method="get">
+                        </c:if>
+                        <input id="home" type="submit" value="{{translation.home}}">
+                    </form>
+            </div>
+            <div>
+                <form action="log/logout" method="get">
+                    <input id="logout" type="submit" value="{{translation.logout}}">
+                </form>
+            </div>
+            </form>
+            <div>
+                <section>
+                    <select id="language" ng-change="translate()" ng-model="selectedLanguage">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </section>
+            </div>
+        </div>
+    </header>

@@ -8,9 +8,18 @@ public class Request {
     private int id;
     private int fromId;
     private int toId;
+    private String title;
     private String message;
     private RequestStatus status;
     private Date date;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getId() {
         return id;

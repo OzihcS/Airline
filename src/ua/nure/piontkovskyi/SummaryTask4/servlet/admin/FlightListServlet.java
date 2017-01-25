@@ -21,20 +21,4 @@ public class FlightListServlet extends BaseServlet {
         req.setAttribute("flights", flights);
         forward(Constants.Pages.Admin.FLIGHTS, req, resp);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
-        List<Flight> flights;
-        if (!(id == null)) {
-            flights = new ArrayList<>();
-            flights.add(getFlightService().getById(Integer.parseInt(id)));
-            req.setAttribute("flights", flights);
-            forward(Constants.Pages.Admin.FLIGHTS, req, resp);
-            return;
-        }
-        flights = getFlightService().getAll();
-        req.setAttribute("flights", flights);
-        forward(Constants.Pages.Admin.FLIGHTS, req, resp);
-    }
 }

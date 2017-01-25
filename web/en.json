@@ -33,5 +33,7 @@
   "home": "Home",
   "flights": "Flights",
   "send": "Send",
-  "sendRequest": "Send request"
+  "sendRequest": "Send request",
+  "edit" : "Edit",
+  "noBrigade": "No brigade"
 }
