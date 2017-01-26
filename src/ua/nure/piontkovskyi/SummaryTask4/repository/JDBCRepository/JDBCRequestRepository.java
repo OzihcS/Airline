@@ -35,7 +35,7 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
     protected Request extractFromResultSet(ResultSet rs) throws SQLException {
         Request request = new Request();
         request.setId(rs.getInt("id"));
-        request.setFromId(rs.getInt("from_id"));
+        request.setFrom(rs.getString("fromUser"));
         request.setToId(rs.getInt("to_id"));
         request.setTitle(rs.getString("title"));
         request.setMessage(rs.getString("message"));
@@ -83,7 +83,7 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
         String sql = Query.get(ADD_REQUEST);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             int k = 1;
-            ps.setInt(k++, request.getFromId());
+            ps.setString(k++, request.getFrom());
             ps.setInt(k++, request.getToId());
             ps.setString(k++, request.getTitle());
             ps.setString(k++, request.getMessage());

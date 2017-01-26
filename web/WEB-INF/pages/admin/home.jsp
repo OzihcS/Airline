@@ -1,15 +1,22 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
 <%@ include file="../../jspf/header.jspf" %>
 
+<form action="admin/users" method="get">
+    <input class="btn" type="submit" value="{{translation.users}}">
+</form>
+<form action="admin/flights" method="get">
+    <input class="btn" type="submit" value="{{translation.flights}}">
+</form>
+
 <div class="spoiler-wrapper">
     <c:forEach items="${requests}" var="request">
-        <div class="spoiler folded" href="javascript:void(0);"><a>${request.title} ({{translation.from
-            }} ${request.fromId}</a>
+        <div class="spoiler folded" href="javascript:void(0);">
+            № ${request.id}          ${request.title}
         </div>
-        <div class="spoiler-text"><p>${request.message}</p>
+        <div class="spoiler-text">
+            <label>From: ${request.from}</label><hr>
+            <label>Message: ${request.message}</label>
             <c:if test="${request.status == 'UNCONFIRMED'}">
                 <form action="admin/home" method="post">
                     <input type="hidden" name="id" value="${request.id}">
@@ -26,11 +33,4 @@
         </div>
     </c:forEach>
 </div>
-<form action="admin/users" method="get">
-    <input class="btn" type="submit" value="{{translation.users}}">
-</form>
-<form action="admin/flights" method="get">
-    <input class="btn" type="submit" value="{{translation.flights}}">
-</form>
-
 </html>

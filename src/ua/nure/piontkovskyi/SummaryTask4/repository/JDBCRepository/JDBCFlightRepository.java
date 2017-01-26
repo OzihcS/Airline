@@ -93,6 +93,7 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             }
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
         }
         return false;
     }
@@ -110,8 +111,8 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             ps.setString(k++, flight.getName());
             ps.setString(k++, flight.getDepartureLocation());
             ps.setString(k++, flight.getArriveLocation());
-            ps.setString(k++, flight.getStatus());
-            ps.setDate(k++, new Date(flight.getArriveDate().getTime()));
+            ps.setInt(k++, Status.index(Status.valueOf(flight.getStatus())));
+            ps.setDate(k++, new Date(flight.getDepartureDate().getTime()));
             ps.setDate(k++, new Date(flight.getArriveDate().getTime()));
             ps.setInt(k++, flight.getId());
             if (ps.executeUpdate() > 0) {
@@ -119,6 +120,7 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
             }
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
         }
         return false;
     }

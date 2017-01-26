@@ -6,12 +6,20 @@ import java.util.Date;
 
 public class Request {
     private int id;
-    private int fromId;
+    private String from;
     private int toId;
     private String title;
     private String message;
     private RequestStatus status;
     private Date date;
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
     public String getTitle() {
         return title;
@@ -29,15 +37,7 @@ public class Request {
         this.id = id;
     }
 
-    public int getFromId() {
-        return fromId;
-    }
-
-    public void setFromId(int fromId) {
-        this.fromId = fromId;
-    }
-
-    public int getToId() {
+  public int getToId() {
         return toId;
     }
 

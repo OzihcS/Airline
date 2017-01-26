@@ -36,14 +36,25 @@ public class CreateBrigadeServlet extends BaseServlet {
         String radioman = req.getParameter("radioman");
         String navigator = req.getParameter("navigator");
         String firstStewardess = req.getParameter("firstStewardess");
-       //TODO String secondStewardess = req.getP
+        String secondStewardess = getStringParam(req, "secondStewardess");
+        String thirdStewardess = getStringParam(req, "thirdStewardess");
 
         Brigade brigade = new Brigade();
+
+        //TODO validate
+
         brigade.setRadioman(getFlightService().getStaffer(Integer.parseInt(radioman)));
         brigade.setNavigator(getFlightService().getStaffer(Integer.parseInt(navigator)));
         brigade.setPilot(getFlightService().getStaffer(Integer.parseInt(pilot)));
-        brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(firstStewardess)));
-
+        if (!firstStewardess.isEmpty()) {
+            brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(firstStewardess)));
+        }
+        if (!secondStewardess.isEmpty()) {
+            brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(secondStewardess)));
+        }
+        if (!thirdStewardess.isEmpty()) {
+            brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(thirdStewardess)));
+        }
         getFlightService().setBrigade(Integer.parseInt(String.valueOf(req.getSession().getAttribute("flightId"))), brigade);
         redirectToAction(Constants.ServletPaths.Dispatcher.MAIN, req, resp);
     }

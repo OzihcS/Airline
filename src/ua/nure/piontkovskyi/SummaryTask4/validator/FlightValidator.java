@@ -15,8 +15,11 @@ public class FlightValidator extends AbstractValidator {
             Pattern.CASE_INSENSITIVE);
 
 
-    protected FlightValidator(Flight flight, String locale) {
+    public FlightValidator(Flight flight, String locale) {
         super(locale);
+        if (flight == null) {
+            return;
+        }
         putIssue("name", validateName(flight.getName()));
         putIssue("locations", validateLocations(flight.getDepartureLocation(), flight.getArriveLocation()));
     }
@@ -34,6 +37,10 @@ public class FlightValidator extends AbstractValidator {
         if (!TEMPLATE.matcher(name).matches()) {
             return Constants.Validation.LETTERS_ONLY;
         }
+        if (name.length() < 3 || name.length() > 100) {
+            return Constants.Validation.LEN_3_TO_100;
+        }
+
         return null;
     }
 
@@ -50,11 +57,4 @@ public class FlightValidator extends AbstractValidator {
         return null;
     }
 
-    private String validateDates(Date depatrure, Date arrive) {
-        if (depatrure.getTime() < arrive.getTime())
-        {
-            return Constants.Validation.DATE_EROR;
-        }
-            return null;
-    }
 }

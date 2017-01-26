@@ -1,9 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="../../jspf/head.jspf" %>
+<%@include file="../../jspf/directive.jspf" %>
+<html>
 <%@ include file="../../jspf/header.jspf" %>
-
 <form id="slick-login" action="admin/editFlight" method="post">
     <input type="hidden" name="id" value="${flight.id}">
     <input type="text" name="name" value="${flight.name}">

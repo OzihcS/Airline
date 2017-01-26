@@ -76,9 +76,9 @@ public final class Constants {
     }
 
     public static final class Pages {
-        private static final String PREFIX = "/pages/";
+        private static final String PREFIX = "/WEB-INF/pages/";
 
-        public static final String LOGIN = "/login.jsp";
+        public static final String LOGIN = PREFIX + "/login.jsp";
 
         public static final class Dispatcher {
             private static final String USER_PREFIX = PREFIX + "dispatcher/";

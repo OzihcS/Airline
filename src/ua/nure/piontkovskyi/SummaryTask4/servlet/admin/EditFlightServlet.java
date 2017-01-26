@@ -31,7 +31,7 @@ public class EditFlightServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Flight flightToEdit = getFlightService().getById(Integer.parseInt(getStringParam(req, "id")));
-        SimpleDateFormat format = new SimpleDateFormat("dd.mm.yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 
         String name = getStringParam(req, "name");
         String departureLocation = getStringParam(req, "departureLocation");
@@ -40,6 +40,7 @@ public class EditFlightServlet extends BaseServlet {
         Date arriveDate = null;
         try {
             departureDate = format.parse(getStringParam(req, "departureDate"));
+            System.out.println("D"+ departureDate);
             arriveDate = format.parse(getStringParam(req, "arriveDate"));
         } catch (ParseException e) {
             //TODO exc

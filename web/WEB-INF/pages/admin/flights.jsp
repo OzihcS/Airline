@@ -1,24 +1,35 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@include file="../../jspf/directive.jspf" %>
+<html>
 <%@ include file="../../jspf/header.jspf" %>
+
+<table>
+    <thead>
+    <tr>
+        <th>{{translation.flight}}</th>
+        <th>{{translation.from}} / {{translation.to}}</th>
+        <th>{{translation.departureDate}} / {{translation.arriveDate}}</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form action="admin/pickUp" method="post">
+            <td><input class="sinput" type="text" name="id" class="placeholder" placeholder="№"></td>
+            <section>
+                <div class="style-5">
+                    <td><input class="input" type="text" name="from" placeholder="{{translation.from}} ">
+                        <input class="input" type="text" name="to" placeholder="{{translation.to}}"></td>
+                    <td><input class="input" type="text" name="departure" placeholder="{{translation.departureDate}}">
+                        <input class="input" type="text" name="arrive" placeholder="{{translation.arriveDate}}">
+                    </td>
+                </div>
+            </section>
+            <td><input class="btn" type="submit" value="{{translation.search}}"></td>
+        </form>
+    </tr>
+    </tbody>
+</table>
 <table class="sortable">
-    <form action="admin/pickUp" method="post">
-        <td><input class="sinput" type="text" name="id" class="placeholder" placeholder="№">
-        </td>
-        <section>
-            <ul class="style-5">
-                <td><input class="input" type="text" name="from" placeholder="{{translation.from}} ">
-                    <input class="input" type="text" name="to" placeholder="{{translation.to}}"></td>
-                <td><input class="input" type="text" name="departure" placeholder="{{translation.departureDate}}">
-                    <input class="input" type="text" name="arrive" placeholder="{{translation.arriveDate}}">
-                </td>
-            </ul>
-        </section>
-        <td></td>
-        <td></td>
-        <td><input class="btn" type="submit" value="{{translation.search}}"></td>
-    </form>
     <thead>
     <tr>
         <th>{{translation.flight}}</th>

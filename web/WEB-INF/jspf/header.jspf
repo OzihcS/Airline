@@ -26,8 +26,9 @@
             <div>
                 <section>
                     <select id="language" ng-change="translate()" ng-model="selectedLanguage">
-                        <option value="en">English</option>
-                        <option value="ru">Русский</option>
+                        <c:forEach items="${applicationScope.locales}" var="locale" varStatus="status">
+                            <option value="${locale}">${locale}</option>
+                        </c:forEach>
                     </select>
                 </section>
             </div>

@@ -34,6 +34,8 @@
   "flights": "Flights",
   "send": "Send",
   "sendRequest": "Send request",
-  "edit" : "Edit",
-  "noBrigade": "No brigade"
+  "edit": "Edit",
+  "noBrigade": "No brigade",
+  "title": "Theme",
+  "message": "Message..."
 }

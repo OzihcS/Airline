@@ -1,15 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="../../jspf/head.jspf" %>
+<%@include file="../../jspf/directive.jspf" %>
+<html>
 <%@ include file="../../jspf/header.jspf" %>
 
 <%--<form action="admin/users" method="post">--%>
     <%--<input type="text" name="id">--%>
     <%--<input type="submit" value="{{translation.search}}">--%>
 <%--</form>--%>
-
-
 <table class="sortable">
     <thead>
     <tr>

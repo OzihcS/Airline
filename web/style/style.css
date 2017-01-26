@@ -414,7 +414,6 @@ select#status, select#status {
     padding-left: 20px;
 }
 
-
 #logout {
     -webkit-appearance: button;
     -webkit-border-radius: 2px;
@@ -427,7 +426,6 @@ select#status, select#status {
     background-repeat: no-repeat;
     border: 1px solid #AAA;
     color: #555;
-    font-family: Georgia;
     font-size: inherit;
     position: relative;
     left: 860px;
@@ -436,7 +434,7 @@ select#status, select#status {
     padding: 5px 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 125px;
+    width: 120px;
 }
 
 #home {
@@ -451,7 +449,6 @@ select#status, select#status {
     background-repeat: no-repeat;
     border: 1px solid #AAA;
     color: #555;
-    font-family: Georgia;
     font-size: inherit;
     position: relative;
     left: 835px;
@@ -460,7 +457,7 @@ select#status, select#status {
     padding: 5px 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 125px;
+    width: 120px;
     margin-left: 5px;
 }
 
@@ -512,8 +509,8 @@ select#status, select#status {
 /*Spoiler*/
 .spoiler {
     position: relative;
-    top: 140px;
-    left: 150px;
+    top: 50px;
+    left: 225px;
     width: 900px;
     border-bottom: #F2F2F2 double 2px;
     text-decoration: none;
@@ -538,8 +535,8 @@ select#status, select#status {
 
 .spoiler-text {
     position: relative;
-    top: 140px;
-    left: 150px;
+    top: 50px;
+    left: 225px;
     width: 890px;
     background-color: #f0f3f5;
     margin: 15px;
@@ -581,4 +578,47 @@ select#status, select#status {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.request {
+    display: block;
+    position: relative;
+    top: 150px;
+    left: 550px;
+    width: 300px;
+    text-align: center;
+}
+
+.request select {
+    width: 100%;
+}
+
+.request input{
+    width: 100%;
+    height:40px;
+}
+.request textarea input {
+    resize: none;
+
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-left: 2px solid #d2bf94;
+    padding: 10px 20px;
+    color: #888;
+    background-color: #eee;
+    -moz-transition: color 1s, background-color 1s;
+    -webkit-transition: color 1s, background-color 1s;
+    -o-transition: color 1s, background-color 1s;
+    transition: color 1s, background-color 1s;
+}
+
+.request .textarea:focus .input:focus {
+    resize: both;
+    overflow: auto;
+    max-height: 100%;
+    color: #000;
+    background-color: #fff;
 }

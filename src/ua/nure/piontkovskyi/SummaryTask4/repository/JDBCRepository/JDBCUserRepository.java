@@ -78,6 +78,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             }
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
         }
         return false;
     }
@@ -102,6 +103,7 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             }
         } catch (SQLException e) {
             LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
         }
         return false;
     }

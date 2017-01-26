@@ -24,15 +24,22 @@ public class NewRequestServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fromId = req.getParameter("fromId");
+        String from = req.getParameter("fromId");
         String toId = req.getParameter("toId");
         String message = req.getParameter("message");
+        String title = getStringParam(req, "title");
+
+        if (from.isEmpty()) {
+            //TODO exc
+            return;
+        }
 
         Request request = new Request();
         request.setToId(Integer.parseInt(toId));
-        request.setFromId(Integer.parseInt(fromId));
+        request.setFrom(from);
         request.setMessage(message);
         request.setDate(new Date());
+        request.setTitle(title);
         request.setStatus(RequestStatus.UNCONFIRMED);
 
         getRequestService().add(request);
