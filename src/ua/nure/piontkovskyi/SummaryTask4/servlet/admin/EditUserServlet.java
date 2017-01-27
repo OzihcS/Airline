@@ -18,20 +18,20 @@ public class EditUserServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = getStringParam(req, "id");
+        String id = getStringParam(req, Constants.Attributes.ID);
         User user = getUserService().getById(Integer.parseInt(id));
-        req.setAttribute("user", user);
+        req.setAttribute(Constants.Attributes.USER, user);
         forward(Constants.Pages.Admin.EDIT_USER, req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User userToEdit = getUserService().getById(Integer.parseInt(req.getParameter("id")));
+        User userToEdit = getUserService().getById(Integer.parseInt(getStringParam(req, Constants.Attributes.ID)));
 
-        String name = req.getParameter("name");
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        Role role = Role.valueOf(req.getParameter("role"));
+        String name = getStringParam(req, Constants.Attributes.NAME);
+        String login = getStringParam(req, Constants.Attributes.LOGIN);
+        String password = getStringParam(req, Constants.Attributes.PASSWORD);
+        Role role = Role.valueOf(getStringParam(req, Constants.Attributes.ROLE));
 
         if (password.isEmpty()) {
             password = userToEdit.getPassword();

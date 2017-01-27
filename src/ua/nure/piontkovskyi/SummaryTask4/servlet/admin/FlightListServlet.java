@@ -18,7 +18,7 @@ public class FlightListServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Flight> flights = getFlightService().getAll();
-        req.setAttribute("flights", flights);
+        req.setAttribute(Constants.Attributes.FLIGHTS, flights);
         forward(Constants.Pages.Admin.FLIGHTS, req, resp);
     }
 }

@@ -10,7 +10,7 @@
     <section>
         <select id="role" name="role">
             <option disabled>{{translation.role}}</option>
-            <option value="ADMIN">{{translation.admin}}</option>
+            <option value="ADMINISTRATOR">{{translation.admin}}</option>
             <option selected value="DISPATCHER">{{translation.dispatcher}}</option>
         </select>
     </section>

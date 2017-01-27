@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * Indicates a service. Service must implement some interface for transaction handling.
+ *
  * @see Transactional
  * @see AnnotationHandler
  */

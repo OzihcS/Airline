@@ -12,13 +12,14 @@
 <div class="spoiler-wrapper">
     <c:forEach items="${requests}" var="request">
         <div class="spoiler folded" href="javascript:void(0);">
-            № ${request.id}          ${request.title}
+            № ${request.id} ${request.title}
         </div>
         <div class="spoiler-text">
-            <label>From: ${request.from}</label><hr>
+            <label>From: ${request.from}</label>
+            <hr>
             <label>Message: ${request.message}</label>
             <c:if test="${request.status == 'UNCONFIRMED'}">
-                <form action="admin/home" method="post">
+                <form class="st-change" action="admin/home" method="post">
                     <input type="hidden" name="id" value="${request.id}">
                     <select id="status" name="status">
                         <option value="EXECUTED">Executed</option>

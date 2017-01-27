@@ -5,11 +5,11 @@ public enum Role {
     ADMINISTRATOR, DISPATCHER;
 
     public static int getRoleId(Role role) {
-        switch (role){
-            case ADMINISTRATOR:{
+        switch (role) {
+            case ADMINISTRATOR: {
                 return 1;
             }
-            case DISPATCHER:{
+            case DISPATCHER: {
                 return 2;
             }
         }

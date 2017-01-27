@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * Indicates that annotated class is serializer.
+ *
  * @see StreamSerializer
  */
 @Target(ElementType.TYPE)
@@ -17,6 +18,7 @@ public @interface Serializer {
 
     /**
      * Prefix that indicates the name of the returned type if strongly recommended
+     *
      * @return prefix for serializer
      */
     String value();

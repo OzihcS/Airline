@@ -8,8 +8,8 @@ public interface RequestRepository {
 
     List<Request> get(int id);
 
-   boolean update(Request request);
+    boolean update(Request request);
 
-   boolean add(Request request);
+    boolean add(Request request);
 
 }

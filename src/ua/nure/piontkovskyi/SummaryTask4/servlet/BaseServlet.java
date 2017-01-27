@@ -77,52 +77,34 @@ public abstract class BaseServlet extends AbstractServlet {
         response.sendRedirect(request.getContextPath() + uri);
     }
 
-    protected void print(HttpServletRequest request, HttpServletResponse response, Object o) throws IOException {
-        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
-        if (serializer == null) {
-            response.sendError(404);
-            return;
-        }
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType(serializer.getContentType());
-        try {
-            serializer.serialize(response.getOutputStream(), o);
-        } catch (SerializerException e) {
-            LOGGER.warn("Cannot serialize object", e);
-            response.setContentType("text/html");
-            response.sendError(500);
-        }
-
-    }
-
-/*    */
-
-    /**
-     * Prints a list of items to response
-     *
-     * @param request  request
-     * @param response response
-     * @param list     of items to print
-     * @param c        class of items stored in the list
-     * @param <T>      type of items stored in the list
-     * @throws IOException if an input or output exception occurred
-     */
-    protected <T> void print(HttpServletRequest request, HttpServletResponse response, List<T> list, Class<T> c) throws IOException {
-        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
-        if (serializer == null) {
-            response.sendError(404);
-            return;
-        }
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType(serializer.getContentType());
-        try {
-            serializer.serializeList(response.getOutputStream(), list, c);
-        } catch (SerializerException e) {
-            LOGGER.warn("Cannot serialize list of objects", e);
-            response.setContentType("text/html");
-            response.sendError(500);
-        }
-    }
+///*    */
+//
+//    /**
+//     * Prints a list of items to response
+//     *
+//     * @param request  request
+//     * @param response response
+//     * @param list     of items to print
+//     * @param c        class of items stored in the list
+//     * @param <T>      type of items stored in the list
+//     * @throws IOException if an input or output exception occurred
+//     */
+//    protected <T> void print(HttpServletRequest request, HttpServletResponse response, List<T> list, Class<T> c) throws IOException {
+//        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
+//        if (serializer == null) {
+//            response.sendError(404);
+//            return;
+//        }
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType(serializer.getContentType());
+//        try {
+//            serializer.serializeList(response.getOutputStream(), list, c);
+//        } catch (SerializerException e) {
+//            LOGGER.warn("Cannot serialize list of objects", e);
+//            response.setContentType("text/html");
+//            response.sendError(500);
+//        }
+//    }
 
 
     /**
@@ -135,18 +117,12 @@ public abstract class BaseServlet extends AbstractServlet {
      */
     protected void sendError(HttpServletRequest request, HttpServletResponse response, Validator validator)
             throws ServletException, IOException {
-        //request.setAttribute("messages", validator.getMessages());
-
         LOGGER.trace("Errors found while processing operation");
-
-        // print(request, response, validator.getMessages());
-
         StringBuilder error = new StringBuilder();
 
         for (Map.Entry<String, String> errorEntry : validator.getMessages().entrySet()) {
             error.append(errorEntry.getKey()).append(": ").append(errorEntry.getValue()).append("\n");
         }
-
         response.sendError(HttpServletResponse.SC_BAD_REQUEST, error.toString());
 
     }
@@ -188,19 +164,6 @@ public abstract class BaseServlet extends AbstractServlet {
 //            validator.putIssue("title", "validator.titleTaken");
 //        }
 //    }
-
-    protected Integer getEntityId(HttpServletRequest req) {
-        String path = req.getRequestURI();
-        String servletPath = req.getServletPath();
-        String[] slicedPath = path.split("/");
-        String[] slicedServletPath = servletPath.split("/");
-        String variableString = slicedPath[slicedPath.length - 1];
-        if (slicedServletPath[slicedServletPath.length - 1].contains(variableString)) {
-            return null;
-        }
-        return Integer.parseInt(variableString);
-    }
-
 
 //    /**
 //     * Checks if the specified login unique

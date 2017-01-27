@@ -3,9 +3,14 @@
     <header>
         <div class="box">
             <div><label id="logged">
-                {{translation.logged}}:
-                <c:out value="${sessionScope.currentUser.getRole()}"/>
-                <c:out value="${sessionScope.currentUser.getLogin()}"/>
+                {{translation.logged}}
+                <c:if test="${sessionScope.currentUser.getRole()== 'ADMINISTRATOR'}">
+                    <c:out value="{{translation.admin}}"/>
+                </c:if>
+                <c:if test="${sessionScope.currentUser.getRole() == 'DISPATCHER'}">
+                    <c:out value="{{translation.dispatcher}}"/>
+                </c:if>
+                <c:out value="${sessionScope.currentUser.getName()}"/>
             </label></div>
             <div>
                 <c:if test="${sessionScope.currentUser.getRole() == 'ADMINISTRATOR'}">

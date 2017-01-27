@@ -33,8 +33,8 @@ public class AccessFilter extends BaseFilter {
             new ModuleAccessConfiguration(
                     Role.ADMINISTRATOR,
                     Constants.ServletPaths.Admin.ADMIN,
-                    Constants.ServletPaths.ERROR
-//                    Constants.ServletPaths.Admin.MAIN
+                    Constants.ServletPaths.ERROR,
+                    Constants.ServletPaths.Admin.PICK_UP
             )
     };
 

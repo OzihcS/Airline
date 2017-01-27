@@ -64,6 +64,10 @@ public class UserValidator extends AbstractValidator {
         putIssue("password", validatePassword(password));
     }
 
+    public UserValidator(String locale) {
+        super(locale);
+    }
+
     private String validateName(String name) {
         if (name == null || name.isEmpty()) {
             return Validation.CANT_BE_EMPTY;

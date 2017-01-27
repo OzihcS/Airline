@@ -19,23 +19,23 @@ public class MainPageServlet extends BaseServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Flight> flights;
         flights = getFlightService().getAll();
-        req.setAttribute("flights", flights);
+        req.setAttribute(Constants.Attributes.FLIGHTS, flights);
         forward(Constants.Pages.Dispatcher.MAIN, req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
+        String id = getStringParam(req, Constants.Attributes.ID);
         List<Flight> flights;
         if (!(id == null)) {
             flights = new ArrayList<>();
             flights.add(getFlightService().getById(Integer.parseInt(id)));
-            req.setAttribute("flights", flights);
+            req.setAttribute(Constants.Attributes.FLIGHTS, flights);
             forward(Constants.Pages.Dispatcher.MAIN, req, resp);
             return;
         }
         flights = getFlightService().getAll();
-        req.setAttribute("flights", flights);
+        req.setAttribute(Constants.Attributes.FLIGHTS, flights);
         forward(Constants.Pages.Dispatcher.MAIN, req, resp);
     }
 }

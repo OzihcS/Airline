@@ -6,6 +6,8 @@ import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
+import ua.nure.piontkovskyi.SummaryTask4.validator.UserValidator;
+import ua.nure.piontkovskyi.SummaryTask4.validator.Validator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,42 +22,63 @@ public class CreateBrigadeServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
-        req.getSession().setAttribute("flightId", id);
+        String id = getStringParam(req, Constants.Attributes.ID);
+        req.getSession().setAttribute(Constants.Attributes.FLIGHT_ID, id);
 
-        req.setAttribute("pilots", getFlightService().getStaffersByRole(StaffRole.PILOT));
-        req.setAttribute("radiomen", getFlightService().getStaffersByRole(StaffRole.RADIOMAN));
-        req.setAttribute("navigators", getFlightService().getStaffersByRole(StaffRole.NAVIGATOR));
-        req.setAttribute("stewardesses", getFlightService().getStaffersByRole(StaffRole.STEWARDESS));
+        req.setAttribute(Constants.Attributes.PILOTS, getFlightService().getStaffersByRole(StaffRole.PILOT));
+        req.setAttribute(Constants.Attributes.RADIOMEN, getFlightService().getStaffersByRole(StaffRole.RADIOMAN));
+        req.setAttribute(Constants.Attributes.NAVIGATORS, getFlightService().getStaffersByRole(StaffRole.NAVIGATOR));
+        req.setAttribute(Constants.Attributes.STEWARDESSES, getFlightService().getStaffersByRole(StaffRole.STEWARDESS));
         forward(Constants.Pages.Dispatcher.CREATE_BRIGADE, req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pilot = req.getParameter("pilot");
-        String radioman = req.getParameter("radioman");
-        String navigator = req.getParameter("navigator");
-        String firstStewardess = req.getParameter("firstStewardess");
-        String secondStewardess = getStringParam(req, "secondStewardess");
-        String thirdStewardess = getStringParam(req, "thirdStewardess");
+
+        String pilot = getStringParam(req, Constants.Attributes.PILOT);
+        String radioman = getStringParam(req, Constants.Attributes.RADIOMAN);
+        String navigator = getStringParam(req, Constants.Attributes.NAVIGATOR);
+        String firstStewardess = getStringParam(req, Constants.Attributes.FIRST_STEWARDESS);
+        String secondStewardess = getStringParam(req, Constants.Attributes.SECOND_STEWARDESS);
+        String thirdStewardess = getStringParam(req, Constants.Attributes.THIRD_STEWARDESS);
 
         Brigade brigade = new Brigade();
 
-        //TODO validate
+        Validator validator = new UserValidator(getLocale(req));
+        if (radioman == null || radioman.isEmpty()) {
+            validator.putIssue(Constants.Attributes.RADIOMAN, Constants.Validation.CANT_BE_EMPTY);
+            sendError(req, resp, validator);
+            return;
+        }
+        if (pilot == null || pilot.isEmpty()) {
+            validator.putIssue(Constants.Attributes.PILOT, Constants.Validation.CANT_BE_EMPTY);
+            sendError(req, resp, validator);
+            return;
+        }
+        if (navigator == null || navigator.isEmpty()) {
+            validator.putIssue(Constants.Attributes.NAVIGATOR, Constants.Validation.CANT_BE_EMPTY);
+            sendError(req, resp, validator);
+            return;
+        }
+        if (firstStewardess == null || firstStewardess.isEmpty()) {
+            validator.putIssue(Constants.Attributes.FIRST_STEWARDESS, Constants.Validation.CANT_BE_EMPTY);
+            sendError(req, resp, validator);
+            return;
+        }
 
         brigade.setRadioman(getFlightService().getStaffer(Integer.parseInt(radioman)));
         brigade.setNavigator(getFlightService().getStaffer(Integer.parseInt(navigator)));
         brigade.setPilot(getFlightService().getStaffer(Integer.parseInt(pilot)));
-        if (!firstStewardess.isEmpty()) {
-            brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(firstStewardess)));
-        }
-        if (!secondStewardess.isEmpty()) {
+        brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(firstStewardess)));
+
+        if (!(secondStewardess == null)) {
             brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(secondStewardess)));
         }
-        if (!thirdStewardess.isEmpty()) {
+        if (!(thirdStewardess == null)) {
             brigade.addStewardess(getFlightService().getStaffer(Integer.parseInt(thirdStewardess)));
         }
-        getFlightService().setBrigade(Integer.parseInt(String.valueOf(req.getSession().getAttribute("flightId"))), brigade);
+        getFlightService().setBrigade(Integer.parseInt(String.valueOf(req.getSession().
+                getAttribute(Constants.Attributes.FLIGHT_ID))), brigade);
         redirectToAction(Constants.ServletPaths.Dispatcher.MAIN, req, resp);
     }
 }

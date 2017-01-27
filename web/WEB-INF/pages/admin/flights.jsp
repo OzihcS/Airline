@@ -17,10 +17,11 @@
             <td><input class="sinput" type="text" name="id" class="placeholder" placeholder="№"></td>
             <section>
                 <div class="style-5">
-                    <td><input class="input" type="text" name="from" placeholder="{{translation.from}} ">
-                        <input class="input" type="text" name="to" placeholder="{{translation.to}}"></td>
-                    <td><input class="input" type="text" name="departure" placeholder="{{translation.departureDate}}">
-                        <input class="input" type="text" name="arrive" placeholder="{{translation.arriveDate}}">
+                    <td><input class="input" type="text" name="departureLocation" placeholder="{{translation.from}} ">
+                        <input class="input" type="text" name="arriveLocation" placeholder="{{translation.to}}"></td>
+                    <td><input class="input" type="text" name="departureDate"
+                               placeholder="{{translation.departureDate}}">
+                        <input class="input" type="text" name="arriveDate" placeholder="{{translation.arriveDate}}">
                     </td>
                 </div>
             </section>
@@ -75,7 +76,6 @@
         </tr>
     </c:forEach>
     </tbody>
-
     <td></td>
     <td></td>
     <td></td>

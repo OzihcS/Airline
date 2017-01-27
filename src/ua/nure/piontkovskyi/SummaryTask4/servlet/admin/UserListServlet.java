@@ -24,7 +24,7 @@ public class UserListServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
+        String id = getStringParam(req, Constants.Attributes.ID);
         List<User> users;
         if (!(id == null)) {
             users = new ArrayList<>();

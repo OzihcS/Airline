@@ -25,8 +25,8 @@ public class MainPageServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Request request = new Request();
-        request.setId(Integer.parseInt(req.getParameter("id")));
-        request.setStatus(RequestStatus.valueOf(req.getParameter("status")));
+        request.setId(Integer.parseInt(getStringParam(req, Constants.Attributes.ID)));
+        request.setStatus(RequestStatus.valueOf(getStringParam(req, Constants.Attributes.STATUS)));
         getRequestService().update(request);
         redirectToAction(Constants.ServletPaths.Admin.MAIN, req, resp);
 

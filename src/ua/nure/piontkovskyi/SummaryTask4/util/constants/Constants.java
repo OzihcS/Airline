@@ -21,6 +21,30 @@ public final class Constants {
         public static final String REQUESTS = "requests";
         public static final String ADMINS = "admins";
         public static final String FLIGHTS = "flights";
+        public static final java.lang.String ID = "id";
+        public static final java.lang.String STATUS = "status";
+        public static final String PILOT = "pilot";
+        public static final String RADIOMAN = "radioman";
+        public static final String NAVIGATOR = "navigator";
+        public static final String FIRST_STEWARDESS = "firstStewardess";
+        public static final String SECOND_STEWARDESS = "secondStewardess";
+        public static final String THIRD_STEWARDESS = "thirdStewardess";
+        public static final String FLIGHT_ID = "flightId";
+        public static final String FROM_ID = "fromId";
+        public static final String TO_ID = "toId";
+        public static final String MESSAGE = "message";
+        public static final java.lang.String TITLE = "title";
+        public static final java.lang.String DEPARTURE_LOCATION = "departureLocation";
+        public static final java.lang.String ARRIVE_LOCATION = "arriveLocation";
+        public static final String USER = "user";
+        public static final String DEPARTURE_DATE = "departureDate";
+        public static final String ARRIVE_DATE = "arriveDate";
+        public static final String DATE = "date";
+        public static final String FLIGHT = "flight";
+        public static final String STEWARDESSES = "stewardesses";
+        public static final String PILOTS = PILOT + "s";
+        public static final String RADIOMEN = "radiomen";
+        public static final String NAVIGATORS = NAVIGATOR + "s";
     }
 
     public static final class Service {
@@ -73,6 +97,10 @@ public final class Constants {
         public static final String LEN_4_TO_100 = "validator.lengthFrom4to100";
         public static final String CANT_BE_THE_SAME = "validator.cannotBeTheSame";
         public static final String DATE_EROR = "validator.dateError";
+        public static final String LEN_3_TO_25 = "validator.lengthFrom3to25";
+        public static final String NUMBERS_ONLY = "validator.numbersOnly";
+        public static final String DATE_FORMAT = "validator.invalidDate";
+        public static final String DIFFERENT_PASSWORDS = "validator.differentPasswords";
     }
 
     public static final class Pages {

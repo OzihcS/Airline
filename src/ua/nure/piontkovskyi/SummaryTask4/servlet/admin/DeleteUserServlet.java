@@ -18,7 +18,7 @@ public class DeleteUserServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = getStringParam(req, "id");
+        String id = getStringParam(req, Constants.Attributes.ID);
         getUserService().remove(Integer.parseInt(id));
         LOGGER.trace("User with id {} was deleted", id);
         redirectToAction(Constants.ServletPaths.Admin.USER_LIST, req, resp);

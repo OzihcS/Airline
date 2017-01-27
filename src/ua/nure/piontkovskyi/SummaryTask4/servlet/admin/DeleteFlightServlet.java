@@ -18,7 +18,7 @@ public class DeleteFlightServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = getStringParam(req, "id");
+        String id = getStringParam(req, Constants.Attributes.ID);
         getFlightService().remove(Integer.parseInt(id));
         LOGGER.trace("Flight with id {} was deleted", id);
         redirectToAction(Constants.ServletPaths.Admin.FLIGHT_LIST, req, resp);

@@ -51,7 +51,7 @@ public class LoginServlet extends BaseServlet {
 
         User user = getUserService().getByLogin(login);
         if (user == null || !user.getLogin().equals(login)) {
-            validator.putIssue("login", "validator.invalidLogin");
+            validator.putIssue(Constants.Attributes.LOGIN, "validator.invalidLogin");
             sendError(req, resp, validator);
             return;
         }
@@ -59,7 +59,7 @@ public class LoginServlet extends BaseServlet {
         LOGGER.debug("User found. The id is {} and login is {}", user.getId(), user.getLogin());
 
         if (!user.getPassword().equals(password)) {
-            validator.putIssue("password", "validator.invalidPassword");
+            validator.putIssue(Constants.Attributes.PASSWORD, "validator.invalidPassword");
             sendError(req, resp, validator);
             return;
         }

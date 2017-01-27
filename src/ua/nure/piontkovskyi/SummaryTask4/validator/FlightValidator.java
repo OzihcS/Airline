@@ -14,7 +14,12 @@ public class FlightValidator extends AbstractValidator {
     private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я-]+",
             Pattern.CASE_INSENSITIVE);
 
-
+    /**
+     * Instantiates a new UserValidator that validates only user's login and password immediately.
+     *
+     * @param flight flight to validate
+     * @param locale current locale value
+     */
     public FlightValidator(Flight flight, String locale) {
         super(locale);
         if (flight == null) {
@@ -24,6 +29,14 @@ public class FlightValidator extends AbstractValidator {
         putIssue("locations", validateLocations(flight.getDepartureLocation(), flight.getArriveLocation()));
     }
 
+    /**
+     * Instantiates a new UserValidator that validates only user's login and password immediately.
+     *
+     * @param name              name to validate
+     * @param departureLocation departureLocation to validate
+     * @param arriveLocation    arriveLocation to validate
+     * @param locale            current locale value
+     */
     public FlightValidator(String name, String departureLocation, String arriveLocation, String locale) {
         super(locale);
         putIssue("name", validateName(name));

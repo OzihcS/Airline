@@ -15,13 +15,11 @@ public class ChangeStatusServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = getStringParam(req, "id");
-        String status = getStringParam(req, "status");
+        String id = getStringParam(req, Constants.Attributes.ID);
+        String status = getStringParam(req, Constants.Attributes.STATUS);
 
         getFlightService().chaneStatus(Integer.parseInt(id), Status.valueOf(status));
 
         redirectToAction(Constants.ServletPaths.Dispatcher.MAIN, req, resp);
-
-
     }
 }

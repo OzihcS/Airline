@@ -597,9 +597,8 @@ select#status, select#status {
     width: 100%;
     height:40px;
 }
-.request textarea input {
+.request textarea {
     resize: none;
-
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -615,7 +614,32 @@ select#status, select#status {
     transition: color 1s, background-color 1s;
 }
 
-.request .textarea:focus .input:focus {
+.request input {
+    resize: none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-left: 2px solid #d2bf94;
+    padding: 10px 20px;
+    color: #888;
+    background-color: #eee;
+    -moz-transition: color 1s, background-color 1s;
+    -webkit-transition: color 1s, background-color 1s;
+    -o-transition: color 1s, background-color 1s;
+    transition: color 1s, background-color 1s;
+}
+.request .input:focus{
+    resize: both;
+    overflow: auto;
+    max-height: 100%;
+    color: #000;
+    background-color: #fff;
+
+}
+
+.request .textarea:focus  {
     resize: both;
     overflow: auto;
     max-height: 100%;

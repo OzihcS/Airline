@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * DatabaseConfig class.
+ * DatabaseConfiguration class.
  */
 public final class DatabaseConfiguration {
 
@@ -74,10 +74,6 @@ public final class DatabaseConfiguration {
 
     public static String getTransactionIsolation() {
         return TRANSACTION_ISOLATION;
-    }
-
-    public static String getConnectionUrl() {
-        return CONNECTION_URL;
     }
 
     private static String defineConnectionUrl() {

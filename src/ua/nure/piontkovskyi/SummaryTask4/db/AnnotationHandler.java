@@ -112,7 +112,6 @@ public class AnnotationHandler implements InvocationHandler {
             connection.setAutoCommit(false);
             try {
                 result = method.invoke(serviceToInvoke, args);
-
             } catch (Exception e) {
                 LOGGER.warn(INVOCATION_FAILED, e);
                 throw new DataAccessException(INVOCATION_FAILED, e);

@@ -48,8 +48,9 @@ public class NewUserServlet extends BaseServlet {
         }
 
         if (!confirmPassword.equals(user.getPassword())) {
-            validator.putIssue("password", "validator.differentPasswords");
-
+            validator.putIssue(Constants.Attributes.PASSWORD, Constants.Validation.DIFFERENT_PASSWORDS);
+            sendError(req, resp, validator);
+            return;
         }
         getUserService().add(user);
         LOGGER.trace("New user " + user.getName() + " added");

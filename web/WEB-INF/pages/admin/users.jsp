@@ -3,8 +3,8 @@
 <%@ include file="../../jspf/header.jspf" %>
 
 <%--<form action="admin/users" method="post">--%>
-    <%--<input type="text" name="id">--%>
-    <%--<input type="submit" value="{{translation.search}}">--%>
+<%--<input type="text" name="id">--%>
+<%--<input type="submit" value="{{translation.search}}">--%>
 <%--</form>--%>
 <table class="sortable">
     <thead>

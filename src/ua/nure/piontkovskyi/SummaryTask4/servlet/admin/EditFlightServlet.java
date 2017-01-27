@@ -21,10 +21,9 @@ public class EditFlightServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = getStringParam(req, "id");
-        System.out.println(id);
+        String id = getStringParam(req, Constants.Attributes.ID);
         Flight flight = getFlightService().getById(Integer.parseInt(id));
-        req.setAttribute("flight", flight);
+        req.setAttribute(Constants.Attributes.FLIGHT, flight);
         forward(Constants.Pages.Admin.EDIT_FLIGHT, req, resp);
     }
 
@@ -33,20 +32,29 @@ public class EditFlightServlet extends BaseServlet {
         Flight flightToEdit = getFlightService().getById(Integer.parseInt(getStringParam(req, "id")));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 
-        String name = getStringParam(req, "name");
-        String departureLocation = getStringParam(req, "departureLocation");
-        String arriveLocation = getStringParam(req, "arriveLocation");
-        Date departureDate = null;
-        Date arriveDate = null;
-        try {
-            departureDate = format.parse(getStringParam(req, "departureDate"));
-            System.out.println("D"+ departureDate);
-            arriveDate = format.parse(getStringParam(req, "arriveDate"));
-        } catch (ParseException e) {
-            //TODO exc
-        }
+        String name = getStringParam(req, Constants.Attributes.NAME);
+        String departureLocation = getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION);
+        String arriveLocation = getStringParam(req, Constants.Attributes.ARRIVE_LOCATION);
+        Date departureDate;
+        Date arriveDate;
+
 
         Validator validator = new FlightValidator(name, departureLocation, arriveLocation, getLocale(req));
+
+        if (validator.hasErrors()) {
+            sendError(req, resp, validator);
+            return;
+        }
+
+        try {
+            departureDate = format.parse(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
+            arriveDate = format.parse(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
+        } catch (ParseException e) {
+            validator.putIssue(Constants.Attributes.DATE, "validator.invalidDate");
+            sendError(req, resp, validator);
+            return;
+        }
+
         if (validator.hasErrors()) {
             sendError(req, resp, validator);
             return;
