@@ -4,12 +4,11 @@ import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
-import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Brigade;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 
 import java.sql.Date;

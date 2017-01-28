@@ -1,9 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.dispatcher;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
-import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Brigade;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.UserValidator;
@@ -14,8 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(urlPatterns = Constants.ServletPaths.Dispatcher.CREATE_BRIGADE)
 public class CreateBrigadeServlet extends BaseServlet {

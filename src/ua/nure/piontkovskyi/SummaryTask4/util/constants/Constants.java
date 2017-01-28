@@ -45,6 +45,7 @@ public final class Constants {
         public static final String PILOTS = PILOT + "s";
         public static final String RADIOMEN = "radiomen";
         public static final String NAVIGATORS = NAVIGATOR + "s";
+        public static final String NEW_LOCALE = "newLocale";
     }
 
     public static final class Service {
@@ -57,6 +58,7 @@ public final class Constants {
         public static final String LOGIN = "/log/login";
         public static final String LOGOUT = "/log/logout";
         public static final String ERROR = "/error";
+        public static final String LOCALE = "/log/locale";
 
         public static final class Dispatcher {
             public static final String DISPATCHER = "/dispatcher/";

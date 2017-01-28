@@ -23,7 +23,7 @@ public class LocaleFilter extends BaseFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(LocaleFilter.class);
 
     private static final String COOKIES_LOCALE = "lang";
-    private static final String COMMON_DEFAULT_LOCALE = "ru";
+    private static final String COMMON_DEFAULT_LOCALE = "en";
     private String[] locales;
     private ServletContext servletContext;
     private String defaultLocale;

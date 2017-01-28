@@ -4,8 +4,8 @@ import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.RequestStatus;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
 import ua.nure.piontkovskyi.SummaryTask4.repository.RequestRepository;
 
 import java.sql.PreparedStatement;

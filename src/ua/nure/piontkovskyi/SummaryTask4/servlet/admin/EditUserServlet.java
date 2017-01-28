@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.UserValidator;

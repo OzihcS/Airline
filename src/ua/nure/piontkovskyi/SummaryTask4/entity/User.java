@@ -1,10 +1,11 @@
-package ua.nure.piontkovskyi.SummaryTask4.model;
+package ua.nure.piontkovskyi.SummaryTask4.entity;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 
-public class User {
+import java.io.Serializable;
 
-    private int id;
+public class User extends AbstractEntity {
+
     private String name;
     private String login;
     private String password;
@@ -19,14 +20,6 @@ public class User {
         this.login = login;
         this.password = password;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

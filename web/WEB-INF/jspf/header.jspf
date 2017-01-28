@@ -1,22 +1,22 @@
-<%@ include file="head.jspf" %>
 <div ng-app="myApp" ng-controller="myController">
     <header>
         <div class="box">
             <div><label id="logged">
                 {{translation.logged}}
-                <c:if test="${sessionScope.currentUser.getRole()== 'ADMINISTRATOR'}">
+                <%--<c:if test="${sessionScope.currentUser.getRole()== 'ADMINISTRATOR'}">--%>
+                <c:if test="${f:isAdmin(sessionScope.currentUser)}">
                     <c:out value="{{translation.admin}}"/>
                 </c:if>
-                <c:if test="${sessionScope.currentUser.getRole() == 'DISPATCHER'}">
+                <c:if test="${f:isDispatcher(sessionScope.currentUser)}">
                     <c:out value="{{translation.dispatcher}}"/>
                 </c:if>
                 <c:out value="${sessionScope.currentUser.getName()}"/>
             </label></div>
             <div>
-                <c:if test="${sessionScope.currentUser.getRole() == 'ADMINISTRATOR'}">
+                <c:if test="${f:isAdmin(sessionScope.currentUser)}">
                 <form action="admin/home" method="get">
                     </c:if>
-                    <c:if test="${sessionScope.currentUser.getRole() == 'DISPATCHER'}">
+                    <c:if test="${f:isDispatcher(sessionScope.currentUser)}">
                     <form action="dispatcher/home" method="get">
                         </c:if>
                         <input id="home" type="submit" value="{{translation.home}}">

@@ -1,5 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
 <form action="dispatcher/newRequest" method="get">
     <input class="btn" type="submit" value="{{translation.sendRequest}}">

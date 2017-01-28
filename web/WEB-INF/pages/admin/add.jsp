@@ -1,5 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
 <form id="slick-login" action="admin/add" method="post">
     <input type="text" name="name" class="placeholder" placeholder="{{translation.flightName}}" required>

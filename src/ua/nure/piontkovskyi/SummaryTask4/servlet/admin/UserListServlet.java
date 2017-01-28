@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
@@ -17,7 +17,7 @@ public class UserListServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> userList = getUserService().getAll();
+        List<User> userList = getUserService().getAllUsers();
         req.setAttribute(Constants.Attributes.USERS, userList);
         forward(Constants.Pages.Admin.USERS, req, resp);
     }
@@ -33,7 +33,7 @@ public class UserListServlet extends BaseServlet {
             forward(Constants.Pages.Admin.USERS, req, resp);
             return;
         }
-        users = getUserService().getAll();
+        users = getUserService().getAllUsers();
         req.setAttribute(Constants.Attributes.USERS, users);
         forward(Constants.Pages.Admin.USERS, req, resp);
     }

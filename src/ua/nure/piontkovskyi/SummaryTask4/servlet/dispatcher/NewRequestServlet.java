@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.dispatcher;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.RequestStatus;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.RequestValidator;

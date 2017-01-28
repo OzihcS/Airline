@@ -1,4 +1,4 @@
-package ua.nure.piontkovskyi.SummaryTask4.model.enums;
+package ua.nure.piontkovskyi.SummaryTask4.entity.enums;
 
 public enum Role {
 

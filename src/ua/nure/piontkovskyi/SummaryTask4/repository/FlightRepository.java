@@ -1,11 +1,11 @@
 package ua.nure.piontkovskyi.SummaryTask4.repository;
 
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Brigade;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 
 import java.util.List;
 

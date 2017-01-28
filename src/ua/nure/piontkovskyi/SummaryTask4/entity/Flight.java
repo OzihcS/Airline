@@ -1,13 +1,13 @@
-package ua.nure.piontkovskyi.SummaryTask4.model;
+package ua.nure.piontkovskyi.SummaryTask4.entity;
 
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Flight {
+public class Flight extends AbstractEntity {
 
-    private int id;
     private String name;
     private String departureLocation;
     private String arriveLocation;
@@ -28,14 +28,6 @@ public class Flight {
         this.departureDate = departureDate;
         this.arriveDate = arriveDate;
         this.brigade = brigade;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

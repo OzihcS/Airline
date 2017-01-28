@@ -1,7 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
-
 <table>
     <thead>
     <tr>
@@ -47,10 +49,10 @@
             <td>${flight.departureLocation} / ${flight.arriveLocation}</td>
             <td>${flight.departureDate} / ${flight.arriveDate}</td>
             <td>
-                <c:if test="${flight.status == 'FINISHED'}">
+                <c:if test="${f:isFinished(flight)}">
                     ${flight.status}
                 </c:if>
-                <c:if test="${flight.status != 'FINISHED'}">
+                <c:if test="${!f:isFinished(flight)}">
                     <details>
                         <summary>${flight.status} </summary>
                         <form action="dispatcher/changeStatus" method="post">

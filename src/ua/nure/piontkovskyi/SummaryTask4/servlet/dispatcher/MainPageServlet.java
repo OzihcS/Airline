@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.dispatcher;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
@@ -18,7 +18,7 @@ public class MainPageServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Flight> flights;
-        flights = getFlightService().getAll();
+        flights = getFlightService().getAllFlights();
         req.setAttribute(Constants.Attributes.FLIGHTS, flights);
         forward(Constants.Pages.Dispatcher.MAIN, req, resp);
     }
@@ -34,7 +34,7 @@ public class MainPageServlet extends BaseServlet {
             forward(Constants.Pages.Dispatcher.MAIN, req, resp);
             return;
         }
-        flights = getFlightService().getAll();
+        flights = getFlightService().getAllFlights();
         req.setAttribute(Constants.Attributes.FLIGHTS, flights);
         forward(Constants.Pages.Dispatcher.MAIN, req, resp);
     }

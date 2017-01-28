@@ -1,11 +1,11 @@
-package ua.nure.piontkovskyi.SummaryTask4.model;
+package ua.nure.piontkovskyi.SummaryTask4.entity;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.RequestStatus;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Request {
-    private int id;
+public class Request extends AbstractEntity{
     private String from;
     private int toId;
     private String title;
@@ -27,14 +27,6 @@ public class Request {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getToId() {

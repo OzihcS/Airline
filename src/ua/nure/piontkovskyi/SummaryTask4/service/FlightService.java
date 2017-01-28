@@ -3,18 +3,18 @@ package ua.nure.piontkovskyi.SummaryTask4.service;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Cacheable;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.EvictCache;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Transactional;
-import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Brigade;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 
 import java.util.List;
 
 public interface FlightService {
 
-    //    @Cacheable
-    List<Flight> getAll();
+    @Cacheable
+    List<Flight> getAllFlights();
 
     Flight getById(int id);
 
@@ -30,7 +30,6 @@ public interface FlightService {
     @EvictCache
     boolean update(Flight flight);
 
-    @Cacheable
     Brigade getBrigade(int id);
 
     Staffer getStaffer(int id);

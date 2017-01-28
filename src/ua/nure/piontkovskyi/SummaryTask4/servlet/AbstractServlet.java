@@ -1,6 +1,5 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
 import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 import ua.nure.piontkovskyi.SummaryTask4.service.RequestService;
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;

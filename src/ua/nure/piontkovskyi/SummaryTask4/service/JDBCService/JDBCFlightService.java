@@ -2,11 +2,11 @@ package ua.nure.piontkovskyi.SummaryTask4.service.JDBCService;
 
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Autowired;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Service;
-import ua.nure.piontkovskyi.SummaryTask4.model.Brigade;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.Staffer;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Brigade;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Staffer;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 
@@ -19,7 +19,7 @@ public class JDBCFlightService implements FlightService {
     private FlightRepository repository;
 
     @Override
-    public List<Flight> getAll() {
+    public List<Flight> getAllFlights() {
         return repository.getAll();
     }
 

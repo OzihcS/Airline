@@ -2,7 +2,7 @@ package ua.nure.piontkovskyi.SummaryTask4.service.JDBCService;
 
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Autowired;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Service;
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
 import ua.nure.piontkovskyi.SummaryTask4.repository.RequestRepository;
 import ua.nure.piontkovskyi.SummaryTask4.service.RequestService;
 

@@ -1,11 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
-
-<%--<form action="admin/users" method="post">--%>
-<%--<input type="text" name="id">--%>
-<%--<input type="submit" value="{{translation.search}}">--%>
-<%--</form>--%>
 <table class="sortable">
     <thead>
     <tr>
@@ -13,7 +11,7 @@
         <th>{{translation.userName}}</th>
         <th>{{translation.userLogin}}</th>
         <th>{{translation.role}}</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>

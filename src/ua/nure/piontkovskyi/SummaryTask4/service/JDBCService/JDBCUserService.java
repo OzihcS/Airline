@@ -2,7 +2,7 @@ package ua.nure.piontkovskyi.SummaryTask4.service.JDBCService;
 
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Autowired;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Service;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 import ua.nure.piontkovskyi.SummaryTask4.repository.UserRepository;
 import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
 
@@ -35,7 +35,7 @@ public class JDBCUserService implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAllUsers() {
         return repository.getAll();
     }
 

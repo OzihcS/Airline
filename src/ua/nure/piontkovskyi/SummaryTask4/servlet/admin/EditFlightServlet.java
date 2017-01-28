@@ -1,7 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.FlightValidator;

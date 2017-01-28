@@ -2,8 +2,8 @@ package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.UserValidator;
@@ -40,7 +40,9 @@ public class NewUserServlet extends BaseServlet {
         user.setPassword(password);
         user.setRole(Role.valueOf(role));
 
+
         Validator validator = new UserValidator(user, getLocale(req));
+        checkUserUniqueness(user, validator);
 
         if (validator.hasErrors()) {
             sendError(req, resp, validator);

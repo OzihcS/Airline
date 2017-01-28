@@ -1,8 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.validator;
 
-import junit.framework.TestCase;
 import org.junit.Test;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

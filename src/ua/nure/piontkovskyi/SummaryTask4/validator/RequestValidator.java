@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.validator;
 
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import java.util.regex.Pattern;

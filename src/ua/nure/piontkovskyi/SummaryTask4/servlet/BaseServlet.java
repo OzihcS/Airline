@@ -3,7 +3,7 @@ package ua.nure.piontkovskyi.SummaryTask4.servlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.nure.piontkovskyi.SummaryTask4.exception.SerializerException;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.util.FileService;
 import ua.nure.piontkovskyi.SummaryTask4.util.serializer.StreamSerializer;
@@ -77,34 +77,52 @@ public abstract class BaseServlet extends AbstractServlet {
         response.sendRedirect(request.getContextPath() + uri);
     }
 
-///*    */
-//
-//    /**
-//     * Prints a list of items to response
-//     *
-//     * @param request  request
-//     * @param response response
-//     * @param list     of items to print
-//     * @param c        class of items stored in the list
-//     * @param <T>      type of items stored in the list
-//     * @throws IOException if an input or output exception occurred
-//     */
-//    protected <T> void print(HttpServletRequest request, HttpServletResponse response, List<T> list, Class<T> c) throws IOException {
-//        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
-//        if (serializer == null) {
-//            response.sendError(404);
-//            return;
-//        }
-//        response.setCharacterEncoding("UTF-8");
-//        response.setContentType(serializer.getContentType());
-//        try {
-//            serializer.serializeList(response.getOutputStream(), list, c);
-//        } catch (SerializerException e) {
-//            LOGGER.warn("Cannot serialize list of objects", e);
-//            response.setContentType("text/html");
-//            response.sendError(500);
-//        }
-//    }
+
+    protected void print(HttpServletRequest request, HttpServletResponse response, Object o) throws IOException {
+        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
+        if (serializer == null) {
+            response.sendError(404);
+            return;
+        }
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType(serializer.getContentType());
+        try {
+            serializer.serialize(response.getOutputStream(), o);
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + o);
+        } catch (SerializerException e) {
+            LOGGER.warn("Cannot serialize object", e);
+            response.setContentType("text/html");
+            response.sendError(500);
+        }
+
+    }
+
+    /**
+     * Prints a list of items to response
+     *
+     * @param request  request
+     * @param response response
+     * @param list     of items to print
+     * @param c        class of items stored in the list
+     * @param <T>      type of items stored in the list
+     * @throws IOException if an input or output exception occurred
+     */
+    protected <T> void print(HttpServletRequest request, HttpServletResponse response, List<T> list, Class<T> c) throws IOException {
+        StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
+        if (serializer == null) {
+            response.sendError(404);
+            return;
+        }
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType(serializer.getContentType());
+        try {
+            serializer.serializeList(response.getOutputStream(), list, c);
+        } catch (SerializerException e) {
+            LOGGER.warn("Cannot serialize list of objects", e);
+            response.setContentType("text/html");
+            response.sendError(500);
+        }
+    }
 
 
     /**
@@ -127,62 +145,17 @@ public abstract class BaseServlet extends AbstractServlet {
 
     }
 
-//    protected User saveUser(String image, User user) {
-//        User savedUser = getUserService().save(user);
-//        if (image != null && image.length() > 0) {
-//            String imageName = getFileService().saveFile(savedUser.getId(), Settings.getUploadUsersDirectory(), image);
-//
-//            savedUser.setImage(imageName);
-//            savedUser = getUserService().update(savedUser);
-//        }
-//        return savedUser;
-//    }
-
-//    protected User updateUser(String image, User user) {
-//        if (image != null) {
-//            String imageName = getFileService().saveFile(user.getId(), SettingsAndFolderPaths.getUploadUsersDirectory(), image);
-//            user.setImage(imageName);
-//        }
-//
-//        return getUserService().update(user);
-//    }
-
-//    protected void checkUserUniqueness(User user, Validator validator) {
-//        User existingUser = getUserService().getByLogin(user.getLogin());
-//        if (existingUser != null) {
-//            validator.putIssue("login", "validator.loginTaken");
-//        }
-//        existingUser = getUserService().getByEmail(user.getEmail());
-//        if (existingUser != null) {
-//            validator.putIssue("email", "validator.emailTaken");
-//        }
-//    }
-//
-//    protected void checkCourseUniqueness(Course course, Validator validator) {
-//        Course existingCourse = getCourseService().getByTitle(course.getTitle());
-//        if (existingCourse != null) {
-//            validator.putIssue("title", "validator.titleTaken");
-//        }
-//    }
-
-//    /**
-//     * Checks if the specified login unique
-//     *
-//     * @param usr       {@link User} to check
-//     * @param validator {@link Validator} entity for testing.
-//     */
-//    protected void checkUserUniqueness(User usr, Validator validator) {
-//        User existingUser = getUserService().getByLogin(usr.getLogin(), usr.getId());
-//        if (existingUser != null) {
-//
-//            validator.putIssue("login", "validator.loginTaken");
-//        }
-//        existingUser = getService().getByEmail(usr.getEmail(), usr.getId());
-//        if (existingUser != null) {
-//
-//            validator.putIssue("email", "validator.emailTaken");
-//        }
-//    }
-
+    /**
+     * Checks if the specified login unique
+     *
+     * @param user      {@link User} to check
+     * @param validator {@link Validator} entity for testing.
+     */
+    protected void checkUserUniqueness(User user, Validator validator) {
+        User existingUser = getUserService().getByLogin(user.getLogin());
+        if (existingUser != null) {
+            validator.putIssue(Constants.Attributes.LOGIN, "validator.loginTaken");
+        }
+    }
 }
 

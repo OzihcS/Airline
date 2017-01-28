@@ -4,8 +4,8 @@ import ua.nure.piontkovskyi.SummaryTask4.filter.security.AccessConfiguration;
 import ua.nure.piontkovskyi.SummaryTask4.filter.security.ActionAccessConfiguration;
 import ua.nure.piontkovskyi.SummaryTask4.filter.security.ModuleAccessConfiguration;
 import ua.nure.piontkovskyi.SummaryTask4.filter.security.Tuple;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import javax.servlet.FilterChain;
@@ -28,7 +28,10 @@ public class AccessFilter extends BaseFilter {
                     Role.DISPATCHER,
                     Constants.ServletPaths.ERROR,
                     Constants.ServletPaths.Dispatcher.MAIN,
-                    Constants.ServletPaths.Dispatcher.CREATE_BRIGADE
+                    Constants.ServletPaths.Dispatcher.CREATE_BRIGADE,
+                    Constants.ServletPaths.Dispatcher.CHANGE_STATUS,
+                    Constants.ServletPaths.Dispatcher.FLIGHTS,
+                    Constants.ServletPaths.Dispatcher.NEW_REQUEST
             ),
             new ModuleAccessConfiguration(
                     Role.ADMINISTRATOR,

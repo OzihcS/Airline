@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8"%>
 <%@include file="../jspf/directive.jspf" %>
 <html>
 <%@ include file="../jspf/head.jspf" %>
@@ -13,7 +14,7 @@
     <form id="slick-login" action="log/login" method="post">
         <input type="text" name="login" class="placeholder" placeholder="{{translation.login}}" required>
         <input type="password" name="password" class="placeholder" placeholder="{{translation.password}}" required>
-        <input type="submit" value="{{translation.login}} {{lang.login}}"><br>
+        <input type="submit" value="{{translation.login}} "><br>
     </form>
 </div>
 </body>

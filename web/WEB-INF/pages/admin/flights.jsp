@@ -1,14 +1,16 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
-
 <table>
     <thead>
     <tr>
         <th>{{translation.flight}}</th>
         <th>{{translation.from}} / {{translation.to}}</th>
         <th>{{translation.departureDate}} / {{translation.arriveDate}}</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -38,7 +40,7 @@
         <th>{{translation.departureDate}} / {{translation.arriveDate}}</th>
         <th>{{translation.status}}</th>
         <th>{{translation.brigade}}</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>

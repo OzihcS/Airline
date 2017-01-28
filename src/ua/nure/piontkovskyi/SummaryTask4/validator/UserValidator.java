@@ -1,10 +1,10 @@
 package ua.nure.piontkovskyi.SummaryTask4.validator;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.regex.Pattern;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants.Validation;
 
 /**

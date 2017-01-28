@@ -37,10 +37,5 @@
   "edit": "Edit",
   "noBrigade": "No brigade",
   "title": "Theme",
-  "message": "Message",
-  "sender": "Sender",
-  "rejected": "Rejected",
-  "executed": "Executed",
-  "unconfirmed":"Unconfirmed",
-  "change":"Change"
+  "message": "Message..."
 }

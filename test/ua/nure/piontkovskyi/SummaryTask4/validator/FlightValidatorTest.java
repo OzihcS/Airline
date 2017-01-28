@@ -1,9 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.validator;
 
 import org.junit.Test;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.validator.FlightValidator;
-import ua.nure.piontkovskyi.SummaryTask4.validator.Validator;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

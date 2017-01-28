@@ -8,10 +8,11 @@ app.controller('myController', ['$scope', 'translationService',
             translationService.getTranslation($scope, $scope.selectedLanguage);
         };
         // Инициализация
-        $scope.selectedLanguage = 'en';
-        $scope.translate();
 
+        $scope.selectedLanguage = 'ru';
+        $scope.translate();
     }]);
+
 
 app.service('translationService', function ($resource) {
     this.getTranslation = function ($scope, language) {

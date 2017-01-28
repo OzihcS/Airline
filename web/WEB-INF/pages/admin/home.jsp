@@ -1,7 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
-
 <form action="admin/users" method="get">
     <input class="btn" type="submit" value="{{translation.users}}">
 </form>
@@ -15,20 +17,20 @@
             № ${request.id} ${request.title}
         </div>
         <div class="spoiler-text">
-            <label>From: ${request.from}</label>
+            <label>{{translation.sender}}: ${request.from}</label>
             <hr>
-            <label>Message: ${request.message}</label>
-            <c:if test="${request.status == 'UNCONFIRMED'}">
+            <label>{{translation.message}}: ${request.message}</label>
+            <c:if test="${f:isUnconfirmed(request)}">
                 <form class="st-change" action="admin/home" method="post">
                     <input type="hidden" name="id" value="${request.id}">
                     <select id="status" name="status">
-                        <option value="EXECUTED">Executed</option>
-                        <option selected value="REJECTED">Rejected</option>
+                        <option value="EXECUTED">{{translation.executed}}</option>
+                        <option selected value="REJECTED">{{translation.rejected}}</option>
                     </select>
-                    <input class="btn" type="submit" value="Change">
+                    <input class="btn" type="submit" value="{{translation.change}}">
                 </form>
             </c:if>
-            <c:if test="${request.status != 'UNCONFIRMED'}">
+            <c:if test="${!f:isUnconfirmed(request)}">
                 <p>${request.status}</p>
             </c:if>
         </div>

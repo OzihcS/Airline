@@ -4,7 +4,7 @@ package ua.nure.piontkovskyi.SummaryTask4.service;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Cacheable;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.EvictCache;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Transactional;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.List;
 
@@ -24,7 +24,8 @@ public interface UserService {
     @EvictCache
     boolean update(User user);
 
-    List<User> getAll();
+    @Cacheable
+    List<User> getAllUsers();
 
     List<User> getAdmins();
 

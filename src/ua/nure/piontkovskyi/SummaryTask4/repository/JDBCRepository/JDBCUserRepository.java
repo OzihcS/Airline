@@ -1,15 +1,13 @@
 package ua.nure.piontkovskyi.SummaryTask4.repository.JDBCRepository;
 
-import com.sun.org.apache.regexp.internal.RE;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.repository.UserRepository;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

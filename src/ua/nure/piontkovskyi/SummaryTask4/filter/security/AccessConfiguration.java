@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.filter.security;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 /**
  * Defines whether the current users can access the specified path.

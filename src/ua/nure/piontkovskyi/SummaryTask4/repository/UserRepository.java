@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.repository;
 
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.List;
 

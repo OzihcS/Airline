@@ -6,8 +6,8 @@ import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ThreadLocalConnectionHolder;
 import ua.nure.piontkovskyi.SummaryTask4.db.manager.HikariCPManager;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.repository.FlightRepository;
 
 import java.util.Date;

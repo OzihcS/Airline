@@ -1,22 +1,15 @@
-package ua.nure.piontkovskyi.SummaryTask4.model;
+package ua.nure.piontkovskyi.SummaryTask4.entity;
 
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.StaffRole;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
 
-public class Staffer {
+import java.io.Serializable;
 
-    private int id;
+public class Staffer extends AbstractEntity {
+
     private String firstName;
     private String lastName;
     private StaffRole role;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

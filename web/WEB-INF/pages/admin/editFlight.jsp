@@ -1,5 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@include file="../../jspf/directive.jspf" %>
 <html>
+<%@ include file="../../jspf/head.jspf" %>
+<body>
 <%@ include file="../../jspf/header.jspf" %>
 <form id="slick-login" action="admin/editFlight" method="post">
     <input type="hidden" name="id" value="${flight.id}">

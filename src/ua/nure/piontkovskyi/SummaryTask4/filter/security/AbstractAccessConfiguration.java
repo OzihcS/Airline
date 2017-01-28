@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.filter.security;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.User;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.User;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 
 /**
  * Provides basic functionality of {@link AccessConfiguration} interface.

@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.repository;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Request;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
 
 import java.util.List;
 

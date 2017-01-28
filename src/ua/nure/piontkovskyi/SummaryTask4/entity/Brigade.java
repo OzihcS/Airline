@@ -1,9 +1,10 @@
-package ua.nure.piontkovskyi.SummaryTask4.model;
+package ua.nure.piontkovskyi.SummaryTask4.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Brigade {
+public class Brigade extends AbstractEntity{
 
     private Staffer pilot;
     private Staffer navigator;

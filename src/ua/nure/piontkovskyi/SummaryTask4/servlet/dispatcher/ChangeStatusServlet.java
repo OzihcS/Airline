@@ -1,6 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.dispatcher;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Status;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 

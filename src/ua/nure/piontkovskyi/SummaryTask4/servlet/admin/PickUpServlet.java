@@ -1,7 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
-import ua.nure.piontkovskyi.SummaryTask4.model.Flight;
-import ua.nure.piontkovskyi.SummaryTask4.model.enums.Role;
+import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.PickValidator;
@@ -36,7 +36,7 @@ public class PickUpServlet extends BaseServlet {
             flights = new ArrayList<>();
             flights.add(getFlightService().getById(Integer.parseInt(id)));
         } else {
-            flights = getFlightService().getAll();
+            flights = getFlightService().getAllFlights();
             flights = getByDepartureLocation(flights, from);
             flights = getByArriveLocation(flights, to);
             flights = getByDepartureDate(flights, departure);
