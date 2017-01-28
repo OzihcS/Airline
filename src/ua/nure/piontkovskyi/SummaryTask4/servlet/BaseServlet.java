@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -77,6 +78,10 @@ public abstract class BaseServlet extends AbstractServlet {
         response.sendRedirect(request.getContextPath() + uri);
     }
 
+    protected String decodeParameter(String parameter) throws UnsupportedEncodingException {
+        return new String(parameter.getBytes("ISO-8859-1"), "UTF8");
+    }
+
 
     protected void print(HttpServletRequest request, HttpServletResponse response, Object o) throws IOException {
         StreamSerializer serializer = (StreamSerializer) getServletContext().getAttribute(Constants.Attributes.SERIALIZER);
@@ -88,7 +93,6 @@ public abstract class BaseServlet extends AbstractServlet {
         response.setContentType(serializer.getContentType());
         try {
             serializer.serialize(response.getOutputStream(), o);
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + o);
         } catch (SerializerException e) {
             LOGGER.warn("Cannot serialize object", e);
             response.setContentType("text/html");

@@ -1,4 +1,3 @@
-<%@ page pageEncoding="UTF-8"%>
 <%@include file="../jspf/directive.jspf" %>
 <html>
 <%@ include file="../jspf/head.jspf" %>

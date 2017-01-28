@@ -31,9 +31,9 @@ public class EditFlightServlet extends BaseServlet {
         Flight flightToEdit = getFlightService().getById(Integer.parseInt(getStringParam(req, "id")));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 
-        String name = getStringParam(req, Constants.Attributes.NAME);
-        String departureLocation = getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION);
-        String arriveLocation = getStringParam(req, Constants.Attributes.ARRIVE_LOCATION);
+        String name = decodeParameter(getStringParam(req, Constants.Attributes.NAME));
+        String departureLocation = decodeParameter(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
+        String arriveLocation = decodeParameter(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
         Date departureDate;
         Date arriveDate;
 

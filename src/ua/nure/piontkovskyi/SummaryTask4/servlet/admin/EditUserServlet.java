@@ -28,9 +28,9 @@ public class EditUserServlet extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User userToEdit = getUserService().getById(Integer.parseInt(getStringParam(req, Constants.Attributes.ID)));
 
-        String name = getStringParam(req, Constants.Attributes.NAME);
-        String login = getStringParam(req, Constants.Attributes.LOGIN);
-        String password = getStringParam(req, Constants.Attributes.PASSWORD);
+        String name = decodeParameter(getStringParam(req, Constants.Attributes.NAME));
+        String login = decodeParameter(getStringParam(req, Constants.Attributes.LOGIN));
+        String password = decodeParameter(getStringParam(req, Constants.Attributes.PASSWORD));
         Role role = Role.valueOf(getStringParam(req, Constants.Attributes.ROLE));
 
         if (password.isEmpty()) {

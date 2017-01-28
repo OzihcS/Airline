@@ -14,12 +14,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.NEW_USER)
 public class NewUserServlet extends BaseServlet {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NewUserServlet.class);
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,10 +28,10 @@ public class NewUserServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = getStringParam(req, Constants.Attributes.NAME);
-        String login = getStringParam(req, Constants.Attributes.LOGIN);
-        String password = getStringParam(req, Constants.Attributes.PASSWORD);
-        String confirmPassword = getStringParam(req, Constants.Attributes.CONFIRM_PASSWORD);
+        String name = decodeParameter(getStringParam(req, Constants.Attributes.NAME));
+        String login = decodeParameter(getStringParam(req, Constants.Attributes.LOGIN));
+        String password = decodeParameter(getStringParam(req, Constants.Attributes.PASSWORD));
+        String confirmPassword = decodeParameter(getStringParam(req, Constants.Attributes.CONFIRM_PASSWORD));
         String role = getStringParam(req, Constants.Attributes.ROLE);
 
         User user = new User();
@@ -39,7 +39,6 @@ public class NewUserServlet extends BaseServlet {
         user.setLogin(login);
         user.setPassword(password);
         user.setRole(Role.valueOf(role));
-
 
         Validator validator = new UserValidator(user, getLocale(req));
         checkUserUniqueness(user, validator);

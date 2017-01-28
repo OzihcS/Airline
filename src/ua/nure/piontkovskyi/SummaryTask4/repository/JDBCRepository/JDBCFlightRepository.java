@@ -31,6 +31,7 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
     private static final String CHANGE_STATUS = "flight.change.status";
     private static final String GET_BY_ROLE = "staffer.get.all.by.role";
     private static final String ADD_BRIGADE = "flight.set.brigade";
+    private static final String REMOVE_BRIGADE = "flight.remove.brigade";
 
     /**
      * Creates a new repository.
@@ -99,7 +100,24 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
 
     @Override
     public boolean remove(int id) {
-        return delete(id, Query.get(REMOVE_FLIGHT));
+        if (removeBrigade(id)) {
+            return delete(id, Query.get(REMOVE_FLIGHT));
+        }
+        return false;
+    }
+
+    private boolean removeBrigade(int id) {
+        String sql = Query.get(REMOVE_BRIGADE);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+        return false;
     }
 
     @Override

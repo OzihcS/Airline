@@ -39,8 +39,8 @@ public class LoginServlet extends BaseServlet {
             return;
         }
 
-        String login = getStringParam(req, Constants.Attributes.LOGIN);
-        String password = getStringParam(req, Constants.Attributes.PASSWORD);
+        String login = decodeParameter(getStringParam(req, Constants.Attributes.LOGIN));
+        String password = decodeParameter(getStringParam(req, Constants.Attributes.PASSWORD));
 
         Validator validator = new UserValidator(login, password, getLocale(req));
 

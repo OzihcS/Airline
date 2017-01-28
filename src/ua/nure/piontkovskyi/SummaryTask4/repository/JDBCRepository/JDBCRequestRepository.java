@@ -20,6 +20,7 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
     private static final String UPDATE_REQUEST = "request.update";
     private static final String GET_REQUEST = "request.get";
     private static final String ADD_REQUEST = "request.add";
+    private static final String REMOVE_REQUEST = "request.remove";
 
 
     /**
@@ -96,5 +97,10 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
             throw new DataAccessException(getMessage(sql), e);
         }
         return false;
+    }
+
+    @Override
+    public boolean remove(int id) {
+        return delete(id, Query.get(REMOVE_REQUEST));
     }
 }

@@ -26,10 +26,10 @@ public class NewRequestServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String from = getStringParam(req, Constants.Attributes.FROM_ID);
+        String from = decodeParameter(getStringParam(req, Constants.Attributes.FROM_ID));
         String toId = getStringParam(req, Constants.Attributes.TO_ID);
-        String message = getStringParam(req, Constants.Attributes.MESSAGE);
-        String title = getStringParam(req, Constants.Attributes.TITLE);
+        String message = decodeParameter(getStringParam(req, Constants.Attributes.MESSAGE));
+        String title = decodeParameter(getStringParam(req, Constants.Attributes.TITLE));
 
         Request request = new Request();
         request.setToId(Integer.parseInt(toId));

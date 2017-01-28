@@ -29,4 +29,9 @@ public class JDBCRequestService implements RequestService {
     public boolean update(Request request) {
         return repository.update(request);
     }
+
+    @Override
+    public boolean remove(int id) {
+        return repository.remove(id);
+    }
 }

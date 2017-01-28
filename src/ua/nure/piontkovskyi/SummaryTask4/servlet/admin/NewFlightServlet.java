@@ -29,9 +29,9 @@ public class NewFlightServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String name = getStringParam(req, Constants.Attributes.NAME);
-        String from = getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION);
-        String to = getStringParam(req, Constants.Attributes.ARRIVE_LOCATION);
+        String name = decodeParameter(getStringParam(req, Constants.Attributes.NAME));
+        String from = decodeParameter(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
+        String to = decodeParameter(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
         String departureDate = getStringParam(req, Constants.Attributes.DEPARTURE_DATE);
         String arriveDate = getStringParam(req, Constants.Attributes.ARRIVE_DATE);
 

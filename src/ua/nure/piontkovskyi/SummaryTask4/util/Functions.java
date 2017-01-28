@@ -7,6 +7,8 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
 import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 
+import java.util.List;
+
 /**
  * Contains functions used for EL function in JSP.
  **/
@@ -60,7 +62,14 @@ public final class Functions {
      * @return true if flight is finished
      */
     public static boolean isFinished(Flight flight) {
-        if (flight.getStatus().equals(Status.FINISHED)) {
+        if (flight != null && flight.getStatus().equals(Status.FINISHED)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isEmpty(List list) {
+        if (list == null || list.size() == 0 || list.isEmpty()) {
             return true;
         }
         return false;

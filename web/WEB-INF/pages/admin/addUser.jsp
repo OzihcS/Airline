@@ -2,9 +2,10 @@
 <%@include file="../../jspf/directive.jspf" %>
 <html>
 <%@ include file="../../jspf/head.jspf" %>
+
 <body>
 <%@ include file="../../jspf/header.jspf" %>
-<form id="slick-login" action="admin/newUser" method="post">
+<form id="slick-login" accept-charset="UTF-8" action="admin/newUser" method="post">
     <input type="text" name="name" class="placeholder" placeholder="{{translation.userName}}" required>
     <input type="text" name="login" class="placeholder" placeholder="{{translation.userLogin}}" required>
     <input type="password" name="password" class="placeholder" placeholder="{{translation.password}}" required>

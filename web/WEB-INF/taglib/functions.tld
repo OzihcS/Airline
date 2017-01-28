@@ -34,4 +34,10 @@
         <function-signature>boolean isFinished(ua.nure.piontkovskyi.SummaryTask4.entity.Flight)</function-signature>
     </function>
 
+    <function>
+        <name>isEmpty</name>
+        <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
+        <function-signature>boolean isEmpty(java.util.List)</function-signature>
+    </function>
+
 </taglib>

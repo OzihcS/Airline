@@ -1,22 +1,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title><fmt:message key="app.title"/></title>
+    <link rel="shortcut icon" href="assets/img/airplane_8439.png" type="image/png">
     <c:set var="url">${pageContext.request.requestURL}</c:set>
     <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/"/>
-    <link href="<c:url value="style/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-resource.min.js"></script>
-    <script src="js/translation.js"></script>
-    <script src="js/sorttable.js"></script>
-    <script src="js/a.js"></script>
+    <script src="assets/js/translation.js"></script>
+    <script src="assets/js/sorttable.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script>jQuery(document).ready(function () {
-        jQuery('.spoiler-text').hide()
-        jQuery('.spoiler').click(function () {
-            jQuery(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle()
-        })
-    })
-    </script>
+    <script src="assets/js/spoiler.js"></script>
     <style type="text/css">
         [ng\:cloak], [ng-cloak], .ng-cloak {
             display: none !important;

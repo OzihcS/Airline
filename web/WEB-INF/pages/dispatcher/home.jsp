@@ -52,7 +52,7 @@
                 <c:if test="${f:isFinished(flight)}">
                     ${flight.status}
                 </c:if>
-                <c:if test="${!f:isFinished(flight)}">
+                <c:if test="${!f:isFinished(flight) && flight != null}">
                     <details>
                         <summary>${flight.status} </summary>
                         <form action="dispatcher/changeStatus" method="post">
@@ -67,7 +67,7 @@
                 </c:if>
             </td>
             <td>
-                <c:if test="${flight.brigade == null}">
+                <c:if test="${flight.brigade == null && flight != null}">
                     <form action="dispatcher/newBrigade" method="get">
                         <input type="text" name="id" value="${flight.id}" hidden="hidden">
                         <input class="btn" type="submit" value="{{translation.create}}">

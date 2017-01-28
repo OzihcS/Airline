@@ -21,8 +21,8 @@ public class PickUpServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = getStringParam(req, Constants.Attributes.ID);
-        String from = getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION);
-        String to = getStringParam(req, Constants.Attributes.ARRIVE_LOCATION);
+        String from = decodeParameter(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
+        String to = decodeParameter(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
         String departure = getStringParam(req, Constants.Attributes.DEPARTURE_DATE);
         String arrive = getStringParam(req, Constants.Attributes.ARRIVE_DATE);
 

@@ -12,4 +12,6 @@ public interface RequestRepository {
 
     boolean add(Request request);
 
+    boolean remove(int id);
+
 }

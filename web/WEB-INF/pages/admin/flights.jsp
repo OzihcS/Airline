@@ -61,7 +61,7 @@
                         {{translation.stewardess}}: ${stewardess.firstName} ${stewardess.lastName}<br>
                     </c:forEach>
                 </c:if>
-                <c:if test="${flight.brigade == null}">
+                <c:if test="${flight.brigade == null && flight !=null}">
                     {{translation.noBrigade}}
                 </c:if>
             </td>

@@ -15,4 +15,6 @@ public interface RequestService {
     @Transactional
     boolean update(Request request);
 
+    boolean remove(int id);
+
 }

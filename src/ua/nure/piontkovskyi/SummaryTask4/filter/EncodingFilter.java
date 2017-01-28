@@ -35,9 +35,8 @@ public class EncodingFilter extends BaseFilter {
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         LOGGER.debug("Filter starts");
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-
+        request.setCharacterEncoding(encoding);
+        response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding(encoding);
 
         LOGGER.debug("Filter finished");
