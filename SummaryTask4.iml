@@ -60,5 +60,16 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jcaptcha-1.0" level="project" />
+    <orderEntry type="library" name="simplecaptcha-1.2.1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/jcaptcha-api-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="jcaptcha-1.0-all" level="project" />
   </component>
 </module>

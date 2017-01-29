@@ -8,7 +8,6 @@
         <welcome-file>log/login</welcome-file>
     </welcome-file-list>
 
-
     <listener>
         <listener-class>ua.nure.piontkovskyi.SummaryTask4.listener.ContextLoadListener</listener-class>
     </listener>

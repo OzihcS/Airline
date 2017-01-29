@@ -39,5 +39,4 @@
         <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
         <function-signature>boolean isEmpty(java.util.List)</function-signature>
     </function>
-
 </taglib>

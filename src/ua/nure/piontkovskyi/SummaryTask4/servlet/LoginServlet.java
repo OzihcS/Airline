@@ -1,5 +1,6 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet;
 
+import nl.captcha.Captcha;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ua.nure.piontkovskyi.SummaryTask4.entity.User;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 @WebServlet(urlPatterns = Constants.ServletPaths.LOGIN)
@@ -36,6 +38,14 @@ public class LoginServlet extends BaseServlet {
         if (currentUser != null) {
             LOGGER.error("User already logged in");
             redirect(currentUser, req, resp);
+            return;
+        }
+
+        Captcha captcha = (Captcha) req.getSession().getAttribute(Constants.Attributes.CAPTCHA);
+        System.out.println("POST" + captcha.getAnswer());
+
+        if (!captcha.getAnswer().equals(getStringParam(req, Constants.Attributes.CAPTCHA))) {
+            redirectToAction(Constants.ServletPaths.LOGIN, req, resp);
             return;
         }
 

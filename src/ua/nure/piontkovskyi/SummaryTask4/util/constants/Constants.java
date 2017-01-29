@@ -46,6 +46,7 @@ public final class Constants {
         public static final String RADIOMEN = "radiomen";
         public static final String NAVIGATORS = NAVIGATOR + "s";
         public static final String NEW_LOCALE = "newLocale";
+        public static final java.lang.String CAPTCHA = "captcha";
     }
 
     public static final class Service {
@@ -59,6 +60,7 @@ public final class Constants {
         public static final String LOGOUT = "/log/logout";
         public static final String ERROR = "/error";
         public static final String LOCALE = "/log/locale";
+        public static final String CAPTCHA = "/log/captcha";
 
         public static final class Dispatcher {
             public static final String DISPATCHER = "/dispatcher/";

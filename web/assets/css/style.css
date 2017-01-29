@@ -143,7 +143,7 @@ body {
     transition: all .1s ease-in-out;
 }
 
-#slick-login input[type="text"]:focus, #slick-login input[type="password"]:focus {
+#slick-login input[type="text"]:focus, #slick-login input[type="password"]:focus  {
     -webkit-box-shadow: inset 0px 2px 0px #a7a7a7;
     box-shadow: inset 0px 2px 0px #a7a7a7;
 }
@@ -184,6 +184,18 @@ body {
     -o-transition: all .1s ease-in-out;
     -ms-transition: all .1s ease-in-out;
     transition: all .1s ease-in-out;
+}
+
+#slick-login img{
+    width: 100%;
+    height: 50px;
+    positon: relative;
+    margin-top: 7px;
+    border: 1px solid rgba(0, 0, 0, .49);
+
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border-radius: 6px;
 }
 
 #slick-login input[type="submit"]:hover {

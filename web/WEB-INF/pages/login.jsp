@@ -13,7 +13,9 @@
     <form id="slick-login" action="log/login" method="post">
         <input type="text" name="login" class="placeholder" placeholder="{{translation.login}}" required>
         <input type="password" name="password" class="placeholder" placeholder="{{translation.password}}" required>
-        <input type="submit" value="{{translation.login}} "><br>
+        <img src="http://localhost:8080/Airline/log/captcha"/>
+        <input type="text" name="captcha">
+        <input type="submit" value="{{translation.login}}">
     </form>
 </div>
 </body>
