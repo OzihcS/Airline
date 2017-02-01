@@ -8,6 +8,10 @@ import ua.nure.piontkovskyi.SummaryTask4.service.UserService;
 
 import java.util.List;
 
+/**
+ * Implementation of UserService
+ */
+
 @Service
 public class JDBCUserService implements UserService {
 

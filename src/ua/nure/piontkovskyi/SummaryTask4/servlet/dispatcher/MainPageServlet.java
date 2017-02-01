@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Dispatcher's homepage servlet
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Dispatcher.MAIN)
 public class MainPageServlet extends BaseServlet {
 

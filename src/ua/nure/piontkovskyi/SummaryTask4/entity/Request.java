@@ -5,7 +5,10 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Request extends AbstractEntity{
+/**
+ * Entity class of request
+ */
+public class Request extends AbstractEntity {
     private String from;
     private int toId;
     private String title;

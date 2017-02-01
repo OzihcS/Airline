@@ -3,6 +3,7 @@ package ua.nure.piontkovskyi.SummaryTask4.repository.JDBCRepository;
 import ua.nure.piontkovskyi.SummaryTask4.annotation.Repository;
 import ua.nure.piontkovskyi.SummaryTask4.db.Query;
 import ua.nure.piontkovskyi.SummaryTask4.db.holder.ConnectionHolder;
+import ua.nure.piontkovskyi.SummaryTask4.entity.AdminStatistic;
 import ua.nure.piontkovskyi.SummaryTask4.exception.DataAccessException;
 import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
 import ua.nure.piontkovskyi.SummaryTask4.entity.enums.RequestStatus;
@@ -14,6 +15,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of RequestRepository
+ */
+
 @Repository
 public class JDBCRequestRepository extends JDBCAbstractRepository implements RequestRepository {
 
@@ -21,6 +26,8 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
     private static final String GET_REQUEST = "request.get";
     private static final String ADD_REQUEST = "request.add";
     private static final String REMOVE_REQUEST = "request.remove";
+    private static final String GET_STATISTIC = "user.admin.get.statistic";
+    private static final String UPDATE_STATISTIC = "user.admin.update.statistic";
 
 
     /**
@@ -77,6 +84,40 @@ public class JDBCRequestRepository extends JDBCAbstractRepository implements Req
             throw new DataAccessException(getMessage(sql), e);
         }
         return false;
+    }
+
+    public boolean updateStatistic(int id, AdminStatistic statistic) {
+        String sql = Query.get(UPDATE_STATISTIC);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, statistic.getReject());
+            ps.setInt(2, statistic.getExecute());
+            ps.setInt(3, id);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+        return false;
+    }
+
+    public AdminStatistic getStatistic(int id) {
+        String sql = Query.get(GET_STATISTIC);
+        AdminStatistic statistic;
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+            statistic = new AdminStatistic();
+            while (resultSet.next()) {
+                statistic.setReject(resultSet.getInt("reject"));
+                statistic.setExecute(resultSet.getInt("execute"));
+            }
+            return statistic;
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
     }
 
     @Override

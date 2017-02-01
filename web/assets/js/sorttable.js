@@ -337,8 +337,6 @@ sorttable = {
  Supporting functions: bundled here to avoid depending on a library
  ****************************************************************** */
 
-// Dean Edwards/Matthias Miller/John Resig
-
 /* for Mozilla/Opera9 */
 if (document.addEventListener) {
     document.addEventListener("DOMContentLoaded", sorttable.init, false);

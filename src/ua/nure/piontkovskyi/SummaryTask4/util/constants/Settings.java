@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+/**
+ * Some base setting
+ */
 public class Settings {
 
     private static final Logger LOGGER = Logger.getLogger(Settings.class);
@@ -26,7 +30,7 @@ public class Settings {
             prop.load(resource);
             UPLOAD_DIRECTORY = prop.getProperty("upload.dir");
         } catch (IOException e) {
-            LOGGER.error("Cannot load file: '{}'" + CONFIG_FILE);
+            LOGGER.error("Cannot load file: {}" + CONFIG_FILE);
             throw new FileProcessingException("Cannot load file: '" + CONFIG_FILE + "'", e);
         }
     }

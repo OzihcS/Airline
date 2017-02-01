@@ -49,7 +49,15 @@
             <td>${flight.id}</td>
             <td>${flight.departureLocation} / ${flight.arriveLocation}</td>
             <td>${flight.departureDate} / ${flight.arriveDate}</td>
-            <td>${flight.status}</td>
+            <c:if test="${f:isFlightUnconfirmed(flight)}">
+                <td>{{translation.unconfirmed}}</td>
+            </c:if>
+            <c:if test="${f:isFinished(flight)}">
+                <td>{{translation.finished}}</td>
+            </c:if>
+            <c:if test="${f:isInProgress(flight)}">
+                <td>{{translation.in_progress}}</td>
+            </c:if>
             <td>
                 <c:if test="${flight.brigade != null}">
                     {{translation.pilot}}: ${flight.brigade.pilot.firstName} ${flight.brigade.pilot.lastName}<br>

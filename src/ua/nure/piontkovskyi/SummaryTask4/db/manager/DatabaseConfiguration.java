@@ -43,7 +43,7 @@ public final class DatabaseConfiguration {
             AUTO_RECONNECT = properties.getProperty("autoReconnect");
             CONNECTION_URL = defineConnectionUrl();
         } catch (IOException e) {
-            LOGGER.error("Cannot load config file: '{}'" + DATABASE_CONFIG_FILE);
+            LOGGER.error("Cannot load config file: '{}'", DATABASE_CONFIG_FILE);
             throw new FileProcessingException("Cannot load config file: '" + DATABASE_CONFIG_FILE + "'", e);
         }
     }

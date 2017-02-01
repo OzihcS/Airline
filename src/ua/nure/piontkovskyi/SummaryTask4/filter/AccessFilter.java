@@ -49,7 +49,7 @@ public class AccessFilter extends BaseFilter {
         User user = (User) session.getAttribute(Constants.Attributes.CURRENT_USER);
         String redirect = isAllowed(path, user);
         if (redirect != null) {
-            response.sendRedirect(redirect);
+            response.sendRedirect(request.getContextPath() + redirect);
             return;
         }
         chain.doFilter(request, response);

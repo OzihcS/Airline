@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * User list servlet which get all users from DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.USER_LIST)
 public class UserListServlet extends BaseServlet {
 

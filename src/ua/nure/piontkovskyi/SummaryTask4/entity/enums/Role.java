@@ -1,5 +1,8 @@
 package ua.nure.piontkovskyi.SummaryTask4.entity.enums;
 
+/**
+ * Enum which contain user role
+ */
 public enum Role {
 
     ADMINISTRATOR, DISPATCHER;

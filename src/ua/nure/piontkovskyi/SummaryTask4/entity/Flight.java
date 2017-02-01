@@ -6,6 +6,10 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import java.io.Serializable;
 import java.util.Date;
 
+
+/**
+ * Entity class of flight
+ */
 public class Flight extends AbstractEntity {
 
     private String name;

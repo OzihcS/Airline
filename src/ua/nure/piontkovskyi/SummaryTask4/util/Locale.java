@@ -40,7 +40,7 @@ public class Locale {
     public String translate(String key, String locale) {
         LOGGER.debug("{} translation {}", key, locale);
         ResourceBundle bundle = resBundles.get(locale);
-        LOGGER.debug((bundle != null) ? bundle.getLocale().toString() : "bundle for " + locale + " is empty");
+        LOGGER.debug((bundle != null) ? bundle.getLocale().toString() : "bundle for {} is empty" , locale);
 
         if (bundle == null) {
             return null;

@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Create brigade servlet
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Dispatcher.CREATE_BRIGADE)
 public class CreateBrigadeServlet extends BaseServlet {
 
@@ -21,10 +24,10 @@ public class CreateBrigadeServlet extends BaseServlet {
         String id = getStringParam(req, Constants.Attributes.ID);
         req.getSession().setAttribute(Constants.Attributes.FLIGHT_ID, id);
 
-        req.setAttribute(Constants.Attributes.PILOTS, getFlightService().getStaffersByRole(StaffRole.PILOT));
-        req.setAttribute(Constants.Attributes.RADIOMEN, getFlightService().getStaffersByRole(StaffRole.RADIOMAN));
-        req.setAttribute(Constants.Attributes.NAVIGATORS, getFlightService().getStaffersByRole(StaffRole.NAVIGATOR));
-        req.setAttribute(Constants.Attributes.STEWARDESSES, getFlightService().getStaffersByRole(StaffRole.STEWARDESS));
+        req.getSession().setAttribute(Constants.Attributes.PILOTS, getFlightService().getStaffersByRole(StaffRole.PILOT));
+        req.getSession().setAttribute(Constants.Attributes.RADIOMEN, getFlightService().getStaffersByRole(StaffRole.RADIOMAN));
+        req.getSession().setAttribute(Constants.Attributes.NAVIGATORS, getFlightService().getStaffersByRole(StaffRole.NAVIGATOR));
+        req.getSession().setAttribute(Constants.Attributes.STEWARDESSES, getFlightService().getStaffersByRole(StaffRole.STEWARDESS));
         forward(Constants.Pages.Dispatcher.CREATE_BRIGADE, req, resp);
     }
 

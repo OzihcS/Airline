@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entity class of brigade
+ */
 public class Brigade extends AbstractEntity{
 
     private Staffer pilot;

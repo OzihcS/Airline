@@ -22,7 +22,7 @@ public final class Functions {
      * @return true if user is dispatcher
      */
     public static boolean isDispatcher(User user) {
-        if (user.getRole().equals(Role.DISPATCHER)) {
+        if (user != null && user.getRole().equals(Role.DISPATCHER)) {
             return true;
         }
         return false;
@@ -35,7 +35,7 @@ public final class Functions {
      * @return true if user is admin
      */
     public static boolean isAdmin(User user) {
-        if (user.getRole().equals(Role.ADMINISTRATOR)) {
+        if (user != null && user.getRole().equals(Role.ADMINISTRATOR)) {
             return true;
         }
         return false;
@@ -55,6 +55,13 @@ public final class Functions {
         return false;
     }
 
+    public static boolean isFlightUnconfirmed(Flight flight) {
+        if (flight != null && flight.getStatus().equals("UNCONFIRMED")) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Check flight status
      *
@@ -62,11 +69,33 @@ public final class Functions {
      * @return true if flight is finished
      */
     public static boolean isFinished(Flight flight) {
-        if (flight != null && flight.getStatus().equals(Status.FINISHED)) {
+        if (flight != null && flight.getStatus().equals("FINISHED")) {
             return true;
         }
         return false;
     }
+
+    public static boolean isInProgress(Flight flight) {
+        if (flight != null && flight.getStatus().equals("IN_PROGRESS")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isExecuted(Request request) {
+        if (request != null && request.getStatus().equals(RequestStatus.EXECUTED)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRejected(Request request) {
+        if (request != null && request.getStatus().equals(RequestStatus.REJECTED)) {
+            return true;
+        }
+        return false;
+    }
+
 
     public static boolean isEmpty(List list) {
         if (list == null || list.size() == 0 || list.isEmpty()) {
@@ -74,5 +103,6 @@ public final class Functions {
         }
         return false;
     }
+
 
 }

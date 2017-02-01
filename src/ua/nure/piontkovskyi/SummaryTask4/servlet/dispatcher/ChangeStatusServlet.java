@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Change flight status servlet
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Dispatcher.CHANGE_STATUS)
 public class ChangeStatusServlet extends BaseServlet {
 

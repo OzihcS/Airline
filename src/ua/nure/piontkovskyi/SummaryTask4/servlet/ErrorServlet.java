@@ -8,15 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Logout servlet which unset user from session
- */
-@WebServlet(urlPatterns = Constants.ServletPaths.LOGOUT)
-public class LogoutServlet extends BaseServlet {
-
+@WebServlet(urlPatterns = Constants.ServletPaths.ERROR)
+public class ErrorServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        unsetCurrentUser(req);
-        redirectToAction(Constants.ServletPaths.LOGIN, req, resp);
+        forward(Constants.Pages.ERROR, req, resp);
     }
 }

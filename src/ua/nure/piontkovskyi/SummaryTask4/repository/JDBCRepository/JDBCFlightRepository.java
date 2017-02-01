@@ -18,6 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * implementation of FlightRepository
+ */
+
 @Repository
 public class JDBCFlightRepository extends JDBCAbstractRepository implements FlightRepository {
 
@@ -100,10 +104,8 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
 
     @Override
     public boolean remove(int id) {
-        if (removeBrigade(id)) {
-            return delete(id, Query.get(REMOVE_FLIGHT));
-        }
-        return false;
+        removeBrigade(id);
+        return delete(id, Query.get(REMOVE_FLIGHT));
     }
 
     private boolean removeBrigade(int id) {
@@ -121,7 +123,7 @@ public class JDBCFlightRepository extends JDBCAbstractRepository implements Flig
     }
 
     @Override
-    public boolean update(Flight flight) {
+    public boolean updateFlight(Flight flight) {
         String sql = Query.get(UPDATE_FLIGHT);
         try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
             int k = 1;

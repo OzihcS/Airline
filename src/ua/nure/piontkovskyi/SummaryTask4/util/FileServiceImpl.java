@@ -50,7 +50,7 @@ public class FileServiceImpl implements FileService {
         String fileName = generateFileName(name, extension);
 
         String path = folderPath + subDirectory + fileName;
-        LOGGER.debug("File saved to {} " + path);
+        LOGGER.debug("File saved to {} " , path);
         return fileName;
     }
 
@@ -128,9 +128,9 @@ public class FileServiceImpl implements FileService {
     private void removeFile(String path) {
         File file = new File(path);
         if (file.delete()) {
-            LOGGER.debug("File deleted from {} " + path);
+            LOGGER.debug("File deleted from {} " , path);
         } else {
-            LOGGER.error("File deletion failed. Path: {}" + path);
+            LOGGER.error("File deletion failed. Path: {}" , path);
         }
     }
 

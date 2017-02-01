@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Servlet which provide adding new user to DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.NEW_USER)
 public class NewUserServlet extends BaseServlet {
 
@@ -54,7 +57,7 @@ public class NewUserServlet extends BaseServlet {
             return;
         }
         getUserService().add(user);
-        LOGGER.trace("New user " + user.getName() + " added");
+        LOGGER.trace("New user {} added", user.getName());
         redirectToAction(Constants.ServletPaths.Admin.USER_LIST, req, resp);
     }
 }

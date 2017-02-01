@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Servlet provide adding new flight to DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.NEW_FLIGHT)
 public class NewFlightServlet extends BaseServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(NewFlightServlet.class);
@@ -38,6 +41,12 @@ public class NewFlightServlet extends BaseServlet {
         Validator validator = new FlightValidator(name, from, to, getLocale(req));
 
         if (validator.hasErrors()) {
+            sendError(req, resp, validator);
+            return;
+        }
+
+        if (departureDate.compareTo(arriveDate) == 1) {
+            validator.putIssue(Constants.Attributes.DEPARTURE_DATE, Constants.Validation.DATE_ERROR);
             sendError(req, resp, validator);
             return;
         }

@@ -1,6 +1,8 @@
 package ua.nure.piontkovskyi.SummaryTask4.entity.enums;
 
-
+/**
+ * Enum which contain flight status
+ */
 public enum Status {
 
     UNCONFIRMED, IN_PROGRESS, FINISHED;

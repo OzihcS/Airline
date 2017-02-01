@@ -5,11 +5,16 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.Request;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import java.util.regex.Pattern;
-
+/**
+ * Performs validation of {@link Request} objects.
+ */
 public class RequestValidator extends AbstractValidator {
 
     private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я- ]+",
             Pattern.CASE_INSENSITIVE);
+    private static final int MIN_LENGTH = 3;
+    private static final int MAX_LENGTH = 25;
+    private static final int MAX_MESSAGE_LENGTH = 100;
 
     /**
      * Instantiates a new UserValidator for validating {@link Request}s.
@@ -33,7 +38,7 @@ public class RequestValidator extends AbstractValidator {
         if (!TEMPLATE.matcher(title).matches()) {
             return Constants.Validation.LETTERS_ONLY;
         }
-        if (title.length() < 3 || title.length() > 25) {
+        if (title.length() < MIN_LENGTH || title.length() > MAX_LENGTH) {
             return Constants.Validation.LEN_3_TO_25;
         }
         return null;
@@ -46,10 +51,9 @@ public class RequestValidator extends AbstractValidator {
         if (!TEMPLATE.matcher(message).matches()) {
             return Constants.Validation.LETTERS_ONLY;
         }
-        if (message.length() < 3 || message.length() > 100) {
+        if (message.length() < MIN_LENGTH || message.length() > MAX_MESSAGE_LENGTH) {
             return Constants.Validation.LEN_3_TO_100;
         }
         return null;
     }
-
 }

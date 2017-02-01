@@ -12,19 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Delete flight servlet which delete flight in DB.
+ * Delete request servlet which delete request in DB.
  */
-@WebServlet(urlPatterns = Constants.ServletPaths.Admin.DELETE_FLIGHT)
-public class DeleteFlightServlet extends BaseServlet {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DeleteUserServlet.class);
+@WebServlet(urlPatterns = Constants.ServletPaths.Admin.DELETE_REQUEST)
+public class DeleteRequestServlet extends BaseServlet {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DeleteRequestServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = getStringParam(req, Constants.Attributes.ID);
-        getFlightService().remove(Integer.parseInt(id));
-        LOGGER.trace("Flight with id {} was deleted", id);
-        redirectToAction(Constants.ServletPaths.Admin.FLIGHT_LIST, req, resp);
+        getRequestService().remove(Integer.parseInt(id));
+        LOGGER.trace("Request with id {} was deleted", id);
+        redirectToAction(Constants.ServletPaths.Admin.MAIN, req, resp);
     }
 
 }

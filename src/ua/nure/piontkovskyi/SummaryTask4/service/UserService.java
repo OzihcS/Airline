@@ -8,6 +8,9 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.List;
 
+/**
+ * User service
+ */
 public interface UserService {
 
     User getByLogin(String login);

@@ -41,6 +41,9 @@
   "sender": "Sender",
   "rejected": "Rejected",
   "executed": "Executed",
-  "unconfirmed":"Unconfirmed",
-  "change":"Change"
+  "unconfirmed": "Unconfirmed",
+  "change": "Change",
+  "finished": "Finished",
+  "in_progress": "In progress",
+  "permission":"You don't have permissions"
 }

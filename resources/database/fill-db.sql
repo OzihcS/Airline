@@ -4,6 +4,8 @@ USE airlinedb;
 INSERT INTO roles VALUE (DEFAULT, 'Administrator');
 INSERT INTO roles VALUE (DEFAULT, 'Dispatcher');
 
+INSERT INTO admin_statistic VALUE (1, DEFAULT, DEFAULT);
+
 -- Staff roles
 INSERT INTO staff_roles VALUE (DEFAULT, 'Pilot');
 INSERT INTO staff_roles VALUE (DEFAULT, 'Navigator');
@@ -45,8 +47,15 @@ INSERT INTO flight_brigade VALUE(2, 6);
 INSERT INTO flight_brigade VALUE(2, 8);
 INSERT INTO flight_brigade VALUE(2, 9);
 
-INSERT INTO requests VALUE(DEFAULT, 'Petr Petrov', 1, 'Test', 'Test request', DEFAULT, DEFAULT);
-INSERT INTO requests VALUE(DEFAULT, 'Petr Petrov', 1, 'Test2', 'Test reques2222t', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE(DEFAULT, 'Petr Petrov', 1, 'Need pilot', 'For flight №3 need pilot', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE
+    (DEFAULT, 'Petr Petrov', 1, 'Need navigator', 'For flight №3 need navigator', DEFAULT, DEFAULT);
+
+INSERT INTO requests VALUE(DEFAULT, 'TEST USER', 1, 'TEST 1', 'TEST', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE(DEFAULT, 'TEST USER', 1, 'TEST 2', 'TEST', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE(DEFAULT, 'TEST USER', 1, 'TEST 3', 'TEST', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE(DEFAULT, 'TEST USER', 1, 'TEST 4', 'TEST', DEFAULT, DEFAULT);
+INSERT INTO requests VALUE(DEFAULT, 'TEST USER', 1, 'TEST 5', 'TEST', DEFAULT, DEFAULT);
 
 SELECT *
 FROM requests;

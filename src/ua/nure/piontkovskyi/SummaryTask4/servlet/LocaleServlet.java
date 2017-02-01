@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-
+/**
+ * Servlet for instant locale changing
+ */
 @WebServlet(urlPatterns = {Constants.ServletPaths.LOCALE})
 public class LocaleServlet extends BaseServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(LocaleServlet.class);

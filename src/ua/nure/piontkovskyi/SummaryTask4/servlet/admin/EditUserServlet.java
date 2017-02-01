@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Edit user servlet which update user in DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.EDIT_USER)
 public class EditUserServlet extends BaseServlet {
 

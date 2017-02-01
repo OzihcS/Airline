@@ -143,7 +143,7 @@ body {
     transition: all .1s ease-in-out;
 }
 
-#slick-login input[type="text"]:focus, #slick-login input[type="password"]:focus  {
+#slick-login input[type="text"]:focus, #slick-login input[type="password"]:focus {
     -webkit-box-shadow: inset 0px 2px 0px #a7a7a7;
     box-shadow: inset 0px 2px 0px #a7a7a7;
 }
@@ -186,7 +186,7 @@ body {
     transition: all .1s ease-in-out;
 }
 
-#slick-login img{
+#slick-login img {
     width: 100%;
     height: 50px;
     positon: relative;
@@ -660,3 +660,19 @@ select#status, select#status {
     color: #000;
     background-color: #fff;
 }
+
+#error-panel {
+    position: relative;
+    color: darkred;
+    font-size: 40px;
+    top: 250px;
+    left: 450px;
+}
+
+/*#st {*/
+    /*font-family: 'Patua One', cursive;*/
+    /*font-size: 18px;*/
+    /*position: relative;*/
+    /*margin-top: 50px;*/
+    /*margin-left: 25px;*/
+/*}*/

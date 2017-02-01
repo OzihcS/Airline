@@ -21,7 +21,6 @@ public abstract class AbstractAccessConfiguration implements AccessConfiguration
         if (user.getRole().equals(userRole)) {
             return true;
         }
-
         return false;
     }
 }

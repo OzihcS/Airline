@@ -25,7 +25,7 @@ public class EncodingFilter extends BaseFilter {
         LOGGER.trace("Filter initialization starts");
         encoding = fConfig.getInitParameter("encoding");
         if (encoding == null) {
-            LOGGER.trace("Encoding from Filter Config --> " + encoding);
+            LOGGER.trace("Encoding from Filter Config --> {} ",  encoding);
             encoding = DEFAULT_ENCODING;
         }
         LOGGER.trace("Filter initialization finished");

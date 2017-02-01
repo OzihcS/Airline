@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-
+/**
+ * New request servlet which create {@link Request} and add it to DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Dispatcher.NEW_REQUEST)
 public class NewRequestServlet extends BaseServlet {
 

@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet provide sorting all flight by param
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.PICK_UP)
 public class PickUpServlet extends BaseServlet {
 

@@ -4,6 +4,9 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Role;
 
 import java.io.Serializable;
 
+/**
+ * Entity class of user
+ */
 public class User extends AbstractEntity {
 
     private String name;

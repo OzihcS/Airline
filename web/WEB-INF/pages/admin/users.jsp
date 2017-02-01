@@ -20,7 +20,12 @@
             <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.login}</td>
-            <td>${user.role}</td>
+            <c:if test="${f:isAdmin(user)}">
+                <td>{{translation.admin}}</td>
+            </c:if>
+            <c:if test="${f:isDispatcher(user)}">
+                <td>{{translation.dispatcher}}</td>
+            </c:if>
             <td>
                 <form action="admin/editUser" method="get">
                     <input type="hidden" name="id" value="${user.id}">

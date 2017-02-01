@@ -1,6 +1,8 @@
 package ua.nure.piontkovskyi.SummaryTask4.util.constants;
 
-
+/**
+ * Constants
+ */
 public final class Constants {
 
     public final class Attributes {
@@ -55,10 +57,9 @@ public final class Constants {
 
     public static final class ServletPaths {
 
-
         public static final String LOGIN = "/log/login";
         public static final String LOGOUT = "/log/logout";
-        public static final String ERROR = "/error";
+        public static final String ERROR = "/log/error";
         public static final String LOCALE = "/log/locale";
         public static final String CAPTCHA = "/log/captcha";
 
@@ -85,6 +86,7 @@ public final class Constants {
             public static final String PICK_UP = ADMIN + "pickUp";
             public static final String EDIT_USER = ADMIN + "editUser";
             public static final String EDIT_FLIGHT = ADMIN + "editFlight";
+            public static final String DELETE_REQUEST = ADMIN + "deleteRequest";
         }
     }
 
@@ -100,17 +102,22 @@ public final class Constants {
         public static final String CANT_BE_EMPTY = "validator.cannotBeEmpty";
         public static final String LEN_4_TO_100 = "validator.lengthFrom4to100";
         public static final String CANT_BE_THE_SAME = "validator.cannotBeTheSame";
-        public static final String DATE_EROR = "validator.dateError";
+        public static final String DATE_ERROR = "validator.dateError";
         public static final String LEN_3_TO_25 = "validator.lengthFrom3to25";
         public static final String NUMBERS_ONLY = "validator.numbersOnly";
         public static final String DATE_FORMAT = "validator.invalidDate";
         public static final String DIFFERENT_PASSWORDS = "validator.differentPasswords";
+        public static final String LEN_3_TO_45 = "validator.lengthFrom4to45";
+        public static final String LEN_4_TO_10 = "validator.lengthFrom4to10";
+        public static final String LEN_5_TO_15 = "validator.lengthFrom4to15";
+        public static final String CANT_DELETE_YOURSELF = "validator.cant.delete.yourself";
     }
 
     public static final class Pages {
         private static final String PREFIX = "/WEB-INF/pages/";
 
         public static final String LOGIN = PREFIX + "/login.jsp";
+        public static final String ERROR = PREFIX + "error.jsp";
 
         public static final class Dispatcher {
             private static final String USER_PREFIX = PREFIX + "dispatcher/";

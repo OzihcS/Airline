@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Flight list servlet which get all flights from DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.FLIGHT_LIST)
 public class FlightListServlet extends BaseServlet {
 

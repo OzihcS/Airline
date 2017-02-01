@@ -39,4 +39,30 @@
         <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
         <function-signature>boolean isEmpty(java.util.List)</function-signature>
     </function>
+
+    <function>
+        <name>isInProgress</name>
+        <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
+        <function-signature>boolean isInProgress(ua.nure.piontkovskyi.SummaryTask4.entity.Flight)</function-signature>
+    </function>
+
+    <function>
+        <name>isFlightUnconfirmed</name>
+        <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
+        <function-signature>boolean isFlightUnconfirmed(ua.nure.piontkovskyi.SummaryTask4.entity.Flight)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>isExecuted</name>
+        <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
+        <function-signature>boolean isExecuted(ua.nure.piontkovskyi.SummaryTask4.entity.Request)</function-signature>
+    </function>
+
+    <function>
+        <name>isRejected</name>
+        <function-class>ua.nure.piontkovskyi.SummaryTask4.util.Functions</function-class>
+        <function-signature>boolean isRejected(ua.nure.piontkovskyi.SummaryTask4.entity.Request)</function-signature>
+    </function>
+
 </taglib>

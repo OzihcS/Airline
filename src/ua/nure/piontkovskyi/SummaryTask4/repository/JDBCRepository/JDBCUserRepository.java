@@ -14,6 +14,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of UserRepository
+ */
+
 @Repository
 public class JDBCUserRepository extends JDBCAbstractRepository implements UserRepository {
 
@@ -24,6 +28,8 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
     private static final String GET_ALL_USERS = "user.get.all";
     private static final String GET_ADMINS = "user.get.all.admins";
     private static final String GET_USER_BY_ID = "user.get.by.id";
+    private static final String INIT_ADMIN_STATISTIC = "user.admin.add.statistic";
+    private static final String DELETE_ADMIN_STATISTIC = "user.admin.delete.statistic";
 
     /**
      * Creates a new repository.
@@ -72,6 +78,11 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
             ps.setString(k++, user.getPassword());
             ps.setInt(k++, Role.getRoleId(user.getRole()));
             if (ps.executeUpdate() > 0) {
+                if (user.getRole().equals(Role.ADMINISTRATOR)) {
+                    User user1 = getByLogin(user.getLogin());
+                    System.out.println("!!!!!!!!!!!!!!" + user1.getId());
+                    initStatistic(user1.getId());
+                }
                 return true;
             }
         } catch (SQLException e) {
@@ -81,10 +92,30 @@ public class JDBCUserRepository extends JDBCAbstractRepository implements UserRe
         return false;
     }
 
+    private boolean initStatistic(int id) {
+        String sql = Query.get(INIT_ADMIN_STATISTIC);
+        try (PreparedStatement ps = getConnection().prepareStatement(sql)) {
+            ps.setInt(1, id);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.warn(ERROR_MESSAGE, sql, e);
+            throw new DataAccessException(getMessage(sql), e);
+        }
+        return false;
+    }
+
+    private boolean deleteStatistic(int id) {
+        return delete(id, Query.get(DELETE_ADMIN_STATISTIC));
+    }
+
     @Override
     public boolean remove(int id) {
+        deleteStatistic(id);
         return delete(id, Query.get(REMOVE_USER));
     }
+
 
     @Override
     public boolean update(User user) {

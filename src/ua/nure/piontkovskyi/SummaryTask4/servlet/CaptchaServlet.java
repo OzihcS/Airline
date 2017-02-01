@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Captcha servlet which create captcha and put it on response
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.CAPTCHA)
 public class CaptchaServlet extends BaseServlet {
 

@@ -11,6 +11,9 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 
 import java.util.List;
 
+/**
+ * Flight service
+ */
 public interface FlightService {
 
     @Cacheable
@@ -28,9 +31,7 @@ public interface FlightService {
 
     @Transactional
     @EvictCache
-    boolean update(Flight flight);
-
-    Brigade getBrigade(int id);
+    boolean updateFlight(Flight flight);
 
     Staffer getStaffer(int id);
 

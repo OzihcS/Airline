@@ -7,10 +7,16 @@ USE airlinedb;
 
 CREATE TABLE IF NOT EXISTS users (
   id       INT UNIQUE PRIMARY KEY     NOT NULL AUTO_INCREMENT,
-  name     VARCHAR(45)                NOT NULL,
+  name     VARCHAR(25)                NOT NULL,
   login    VARCHAR(10) UNIQUE         NOT NULL,
   password VARCHAR(15)                NOT NULL,
   role_id  INT                        NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS admin_statistic (
+  id      INT UNIQUE  NOT NULL,
+  reject  INT         NOT NULL DEFAULT 0,
+  execute INT         NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS roles (
@@ -47,11 +53,11 @@ CREATE TABLE IF NOT EXISTS flight_brigade (
 );
 
 CREATE TABLE IF NOT EXISTS requests (
-  id      INT UNIQUE    NOT NULL AUTO_INCREMENT,
-  fromUser   VARCHAR(25)   NOT NULL,
-  to_id   INT           NOT NULL,
-  title   VARCHAR(25)   NOT NULL,
-  message VARCHAR(100)  NOT NULL,
-  status  TINYINT(1)    NOT NULL DEFAULT 0,
-  DATE    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+  id       INT UNIQUE    NOT NULL AUTO_INCREMENT,
+  fromUser VARCHAR(25)   NOT NULL,
+  to_id    INT           NOT NULL,
+  title    VARCHAR(25)   NOT NULL,
+  message  VARCHAR(100)  NOT NULL,
+  status   TINYINT(1)    NOT NULL DEFAULT 0,
+  DATE     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

@@ -20,6 +20,7 @@ import java.io.IOException;
  */
 @WebFilter(filterName = "LocaleFilter")
 public class LocaleFilter extends BaseFilter {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(LocaleFilter.class);
 
     private static final String COOKIES_LOCALE = "lang";
@@ -45,7 +46,7 @@ public class LocaleFilter extends BaseFilter {
             locale = getLocaleFromSession(request);
         }
 
-        LOGGER.info("Locale filter set locale to " + locale);
+        LOGGER.info("Locale filter set locale to {}" , locale);
         setLocale(request, response, locale);
         chain.doFilter(request, response);
     }
@@ -59,7 +60,7 @@ public class LocaleFilter extends BaseFilter {
         locales = filterConfig.getServletContext().getInitParameter(Constants.Attributes.LOCALES).split(" ");
 
         if (locales.length == 0) {
-            LOGGER.error("Locales loading error, locale are set to default - " + COMMON_DEFAULT_LOCALE);
+            LOGGER.error("Locales loading error, locale are set to default - {}" , COMMON_DEFAULT_LOCALE);
             defaultLocale = COMMON_DEFAULT_LOCALE;
             locales = new String[]{defaultLocale};
         } else {
@@ -69,7 +70,7 @@ public class LocaleFilter extends BaseFilter {
         servletContext.setAttribute(Constants.Attributes.LOCALES, locales);
         servletContext.setAttribute(Constants.Attributes.DEFAULT_LOCALE, defaultLocale);
 
-        LOGGER.debug("Default locale loaded to " + defaultLocale);
+        LOGGER.debug("Default locale loaded to {}" , defaultLocale);
     }
 
     private String getLocaleFromSession(HttpServletRequest request) {

@@ -10,7 +10,7 @@
         <th>{{translation.flight}}</th>
         <th>{{translation.from}} / {{translation.to}}</th>
         <th>{{translation.departureDate}} / {{translation.arriveDate}}</th>
-        <th>Action</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -50,17 +50,24 @@
             <td>${flight.departureDate} / ${flight.arriveDate}</td>
             <td>
                 <c:if test="${f:isFinished(flight)}">
-                    ${flight.status}
+                    {{translation.finished}}
                 </c:if>
                 <c:if test="${!f:isFinished(flight) && flight != null}">
                     <details>
-                        <summary>${flight.status} </summary>
+                        <summary>
+                            <c:if test="${f:isFlightUnconfirmed(flight)}">
+                                {{translation.unconfirmed}}
+                            </c:if>
+                            <c:if test="${f:isInProgress(flight)}">
+                                {{translation.in_progress}}
+                            </c:if>
+                        </summary>
                         <form action="dispatcher/changeStatus" method="post">
                             <input type="hidden" name="id" value="${flight.id}">
                             <select id="status" name="status" onchange="form.submit()">
                                 <option selected disabled>{{translation.status}}</option>
-                                <option value="IN_PROGRESS">In progress</option>
-                                <option value="FINISHED">Finished</option>
+                                <option value="IN_PROGRESS">{{translation.in_progress}}</option>
+                                <option value="FINISHED">{{translation.finished}}</option>
                             </select><br>
                         </form>
                     </details>

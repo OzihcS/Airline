@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Login servlet which authenticate user and redirect to users homepage
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.LOGIN)
 public class LoginServlet extends BaseServlet {
 
@@ -42,7 +45,6 @@ public class LoginServlet extends BaseServlet {
         }
 
         Captcha captcha = (Captcha) req.getSession().getAttribute(Constants.Attributes.CAPTCHA);
-        System.out.println("POST" + captcha.getAnswer());
 
         if (!captcha.getAnswer().equals(getStringParam(req, Constants.Attributes.CAPTCHA))) {
             redirectToAction(Constants.ServletPaths.LOGIN, req, resp);

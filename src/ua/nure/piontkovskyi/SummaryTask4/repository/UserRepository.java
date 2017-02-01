@@ -5,6 +5,9 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.User;
 
 import java.util.List;
 
+/**
+ * User repository class which contain methods interaction with user table in DB.
+ */
 public interface UserRepository {
 
     User getByLogin(String login);

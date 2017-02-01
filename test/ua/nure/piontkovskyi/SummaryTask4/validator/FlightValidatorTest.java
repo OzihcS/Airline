@@ -2,6 +2,7 @@ package ua.nure.piontkovskyi.SummaryTask4.validator;
 
 import org.junit.Test;
 import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,26 +26,26 @@ public class FlightValidatorTest {
         Validator validator = new FlightValidator(flight, "ru");
         ((FlightValidator) validator).setBundle(ResourceBundle.getBundle("messages", new Locale("ru")));
 
-        assertNotNull(validator.getMessages().get("name"));
+        assertNotNull(validator.getMessages().get(Constants.Attributes.NAME));
         flight.setName("");
         validator = new FlightValidator(flight, "ru");
-        assertNotNull(validator.getMessages().get("name"));
+        assertNotNull(validator.getMessages().get(Constants.Attributes.NAME));
         flight.setName("d");
         validator = new FlightValidator(flight, "ru");
-        assertNotNull(validator.getMessages().get("name"));
+        assertNotNull(validator.getMessages().get(Constants.Attributes.NAME));
         flight.setName("123");
         validator = new FlightValidator(flight, "ru");
-        assertNotNull(validator.getMessages().get("name"));
+        assertNotNull(validator.getMessages().get(Constants.Attributes.NAME));
         StringBuilder name = new StringBuilder();
         for (int i = 0; i < 101; i++) {
             name.append("a");
         }
         flight.setName(name.toString());
         validator = new FlightValidator(flight, "ru");
-        assertNotNull(validator.getMessages().get("name"));
+        assertNotNull(validator.getMessages().get(Constants.Attributes.NAME));
         flight.setName("Ivan");
         validator = new FlightValidator(flight, "ru");
-        assertNull(validator.getMessages().get("name"));
+        assertNull(validator.getMessages().get(Constants.Attributes.NAME));
     }
 
     @Test

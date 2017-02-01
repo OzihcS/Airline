@@ -62,7 +62,7 @@ public class JDBCFlightRepositoryTest extends TestCase {
         after.setArriveDate(new Date());
         after.setStatus(Status.IN_PROGRESS);
         after.setId(flight.getId());
-        rep.update(after);
+        rep.updateFlight(after);
         assertNotSame(flight.getName(), after.getName());
     }
 
@@ -72,7 +72,7 @@ public class JDBCFlightRepositoryTest extends TestCase {
         flight.setDepartureDate(new Date());
         flight.setArriveDate(new Date());
         flight.setStatus(Status.IN_PROGRESS);
-        rep.update(flight);
+        rep.updateFlight(flight);
     }
 
 

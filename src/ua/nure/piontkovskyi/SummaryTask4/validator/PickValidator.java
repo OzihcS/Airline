@@ -4,6 +4,9 @@ import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 
 import java.util.regex.Pattern;
 
+/**
+ * Performs validation of pick params of flight.
+ */
 public class PickValidator extends AbstractValidator {
 
     private static final Pattern ID_TEMPLATE = Pattern.compile(
@@ -12,7 +15,8 @@ public class PickValidator extends AbstractValidator {
             Pattern.CASE_INSENSITIVE);
     private static final Pattern DATE_TEMPLATE = Pattern.compile("^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$",
             Pattern.CASE_INSENSITIVE);
-
+    private static final int MIN_LENGTH = 3;
+    private static final int MAX_LENGTH = 25;
     /**
      * Instantiates a new UserValidator that validates only user's login and password immediately.
      *
@@ -41,6 +45,9 @@ public class PickValidator extends AbstractValidator {
         if (location != null && !location.isEmpty()) {
             if (!LOCATION_TEMPLATE.matcher(location).matches()) {
                 return Constants.Validation.LETTERS_ONLY;
+            }
+            if (location.length() < MIN_LENGTH || location.length() > MAX_LENGTH) {
+                return Constants.Validation.LEN_3_TO_25;
             }
         }
         return null;

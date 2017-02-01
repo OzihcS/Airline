@@ -1,5 +1,9 @@
 package ua.nure.piontkovskyi.SummaryTask4.entity.enums;
 
+
+/**
+ * Enum which contain request status
+ */
 public enum RequestStatus {
 
     UNCONFIRMED, EXECUTED, REJECTED;

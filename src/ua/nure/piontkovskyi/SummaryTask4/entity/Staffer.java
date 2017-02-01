@@ -5,6 +5,9 @@ import ua.nure.piontkovskyi.SummaryTask4.entity.enums.StaffRole;
 
 import java.io.Serializable;
 
+/**
+ * Entity class of staffer
+ */
 public class Staffer extends AbstractEntity {
 
     private String firstName;

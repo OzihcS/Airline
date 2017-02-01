@@ -10,8 +10,10 @@ import java.util.regex.Pattern;
  */
 public class FlightValidator extends AbstractValidator {
 
-    private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я-]+",
+    private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я- ]+",
             Pattern.CASE_INSENSITIVE);
+    private static final int MIN_LENGTH = 3;
+    private static final int MAX_LENGTH = 25;
 
     /**
      * Instantiates a new UserValidator that validates only user's login and password immediately.
@@ -49,8 +51,8 @@ public class FlightValidator extends AbstractValidator {
         if (!TEMPLATE.matcher(name).matches()) {
             return Constants.Validation.LETTERS_ONLY;
         }
-        if (name.length() < 3 || name.length() > 100) {
-            return Constants.Validation.LEN_3_TO_100;
+        if (name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+            return Constants.Validation.LEN_3_TO_25;
         }
 
         return null;
@@ -65,6 +67,10 @@ public class FlightValidator extends AbstractValidator {
         }
         if (departure.equals(arrive)) {
             return Constants.Validation.CANT_BE_THE_SAME;
+        }
+        if (departure.length() < MIN_LENGTH || departure.length() > MAX_LENGTH ||
+                arrive.length() < MIN_LENGTH || arrive.length() > MAX_LENGTH) {
+            return Constants.Validation.LEN_3_TO_25;
         }
         return null;
     }

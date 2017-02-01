@@ -12,6 +12,10 @@ import ua.nure.piontkovskyi.SummaryTask4.service.FlightService;
 
 import java.util.List;
 
+/**
+ * Implementation of FlightService
+ */
+
 @Service
 public class JDBCFlightService implements FlightService {
 
@@ -39,13 +43,8 @@ public class JDBCFlightService implements FlightService {
     }
 
     @Override
-    public boolean update(Flight flight) {
-        return repository.update(flight);
-    }
-
-    @Override
-    public Brigade getBrigade(int id) {
-        return repository.getBrigade(id);
+    public boolean updateFlight(Flight flight) {
+        return repository.updateFlight(flight);
     }
 
     @Override

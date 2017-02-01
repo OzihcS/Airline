@@ -16,7 +16,14 @@ public class UserValidator extends AbstractValidator {
             "^[A-ZА-Яа-яa-z0-9_-]+$", Pattern.CASE_INSENSITIVE);
     private static final Pattern NAME_TEMPLATE = Pattern.compile("^(\\p{L}+)(,\\s\\p{L}+\\s\\p{L}\\.)?(\\s?\\p{L}+)?$",
             Pattern.CASE_INSENSITIVE);
-
+    private static final Pattern TEMPLATE = Pattern.compile("[a-zA-zа-яА-Я- ]+",
+            Pattern.CASE_INSENSITIVE);
+    private static final int MIN_LENGTH = 3;
+    private static final int MAX_LENGTH = 25;
+    private static final int MIN_LOGIN_LENGTH = 4;
+    private static final int MAX_LOGIN_LENGTH = 10;
+    private static final int MIN_PASSWORD_LENGTH = 5;
+    private static final int MAX_PASSWORD_LENGTH = 15;
 
     /**
      * Instantiates a new UserValidator for validating {@link User}s.
@@ -72,11 +79,11 @@ public class UserValidator extends AbstractValidator {
         if (name == null || name.isEmpty()) {
             return Validation.CANT_BE_EMPTY;
         }
-        if (!NAME_TEMPLATE.matcher(name).matches()) {
+        if (!TEMPLATE.matcher(name).matches()) {
             return Validation.LETTERS_ONLY;
         }
-        if (name.length() < 3 || name.length() > 100) {
-            return Validation.LEN_3_TO_100;
+        if (name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
+            return Validation.LEN_3_TO_25;
         }
         return null;
     }
@@ -96,8 +103,8 @@ public class UserValidator extends AbstractValidator {
         if (!LOGIN_TEMPLATE.matcher(login).matches()) {
             return Validation.PATT_MATCH;
         }
-        if (login.length() < 4 || login.length() > 100) {
-            return Validation.LEN_4_TO_100;
+        if (login.length() < MIN_LOGIN_LENGTH || login.length() > MAX_LOGIN_LENGTH) {
+            return Validation.LEN_4_TO_10;
         }
         return null;
     }
@@ -109,8 +116,8 @@ public class UserValidator extends AbstractValidator {
         if (password.contains(" ")) {
             return Validation.NO_WHITESPACES;
         }
-        if (password.length() < 5 || password.length() > 100) {
-            return Validation.LEN_5_TO_100;
+        if (password.length() < MIN_PASSWORD_LENGTH || password.length() > MAX_PASSWORD_LENGTH) {
+            return Validation.LEN_5_TO_15;
         }
         return null;
     }

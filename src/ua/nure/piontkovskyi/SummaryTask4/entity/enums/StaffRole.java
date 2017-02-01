@@ -1,6 +1,8 @@
 package ua.nure.piontkovskyi.SummaryTask4.entity.enums;
 
-
+/**
+ *  Enum which contain staff role
+ */
 public enum StaffRole {
 
     PILOT, NAVIGATOR, RADIOMAN, STEWARDESS;

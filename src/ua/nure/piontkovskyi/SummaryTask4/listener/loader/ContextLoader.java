@@ -119,7 +119,7 @@ public class ContextLoader extends AbstractContextLoader {
         if (s != null) {
             beans.put(s, o);
         } else {
-            LOGGER.debug("Repository {} wasnt logged because its not repository", o);
+            LOGGER.debug("Repository {} wasn't logged because its not repository", o);
         }
     }
 
@@ -136,7 +136,7 @@ public class ContextLoader extends AbstractContextLoader {
             services.put(s, o);
             return;
         }
-        LOGGER.debug("Service {} wasnt logged Because its not repository", o);
+        LOGGER.debug("Service {} wasn't logged Because its not repository", o);
     }
 
     private void autowireBeans() throws IllegalAccessException {

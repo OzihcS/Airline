@@ -1,6 +1,7 @@
 package ua.nure.piontkovskyi.SummaryTask4.servlet.admin;
 
 import ua.nure.piontkovskyi.SummaryTask4.entity.Flight;
+import ua.nure.piontkovskyi.SummaryTask4.entity.enums.Status;
 import ua.nure.piontkovskyi.SummaryTask4.servlet.BaseServlet;
 import ua.nure.piontkovskyi.SummaryTask4.util.constants.Constants;
 import ua.nure.piontkovskyi.SummaryTask4.validator.FlightValidator;
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
+/**
+ * Edit flight servlet which update flight in DB.
+ */
 @WebServlet(urlPatterns = Constants.ServletPaths.Admin.EDIT_FLIGHT)
 public class EditFlightServlet extends BaseServlet {
 
@@ -28,47 +31,41 @@ public class EditFlightServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Flight flightToEdit = getFlightService().getById(Integer.parseInt(getStringParam(req, "id")));
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Flight flightToEdit = getFlightService().getById(Integer.parseInt(getStringParam(req, Constants.Attributes.ID)));
 
         String name = decodeParameter(getStringParam(req, Constants.Attributes.NAME));
         String departureLocation = decodeParameter(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
         String arriveLocation = decodeParameter(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
-        Date departureDate;
-        Date arriveDate;
+        String departureDate = getStringParam(req, Constants.Attributes.DEPARTURE_DATE);
+        String arriveDate = getStringParam(req, Constants.Attributes.ARRIVE_DATE);
 
-
+        Flight flight = new Flight();
+        flight.setName(name);
+        flight.setArriveLocation(arriveLocation);
+        flight.setDepartureLocation(departureLocation);
+        flight.setStatus(Status.UNCONFIRMED);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
         Validator validator = new FlightValidator(name, departureLocation, arriveLocation, getLocale(req));
-
-        if (validator.hasErrors()) {
-            sendError(req, resp, validator);
-            return;
-        }
-
         try {
-            departureDate = format.parse(getStringParam(req, Constants.Attributes.DEPARTURE_LOCATION));
-            arriveDate = format.parse(getStringParam(req, Constants.Attributes.ARRIVE_LOCATION));
+            flight.setDepartureDate(format.parse(departureDate));
+            flight.setArriveDate(format.parse(arriveDate));
         } catch (ParseException e) {
             validator.putIssue(Constants.Attributes.DATE, "validator.invalidDate");
             sendError(req, resp, validator);
             return;
         }
-
         if (validator.hasErrors()) {
             sendError(req, resp, validator);
             return;
         }
 
-        flightToEdit.setName(name);
-        flightToEdit.setDepartureLocation(departureLocation);
-        flightToEdit.setArriveLocation(arriveLocation);
-        if (departureDate != null) {
-            flightToEdit.setDepartureDate(departureDate);
+        if (departureDate.compareTo(arriveDate) == 1) {
+            validator.putIssue(Constants.Attributes.DEPARTURE_DATE, Constants.Validation.DATE_ERROR);
+            sendError(req, resp, validator);
+            return;
         }
-        if (arriveDate != null) {
-            flightToEdit.setArriveDate(arriveDate);
-        }
-        getFlightService().update(flightToEdit);
+
+        getFlightService().updateFlight(flightToEdit);
         redirectToAction(Constants.ServletPaths.Admin.FLIGHT_LIST, req, resp);
     }
 }
