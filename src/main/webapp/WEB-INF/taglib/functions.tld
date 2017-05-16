@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <display-name>Custom Functions</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>functions</short-name>
+    <uri>http://www.SummaryTask4.ua/functions</uri>
+
+    <function>
+        <name>isAdmin</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isAdmin(entity.User)</function-signature>
+    </function>
+
+    <function>
+        <name>isDispatcher</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isDispatcher(entity.User)</function-signature>
+    </function>
+
+    <function>
+        <name>isUnconfirmed</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isUnconfirmed(entity.Request)</function-signature>
+    </function>
+
+    <function>
+        <name>isFinished</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isFinished(entity.Flight)</function-signature>
+    </function>
+
+    <function>
+        <name>isEmpty</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isEmpty(java.util.List)</function-signature>
+    </function>
+
+    <function>
+        <name>isInProgress</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isInProgress(entity.Flight)</function-signature>
+    </function>
+
+    <function>
+        <name>isFlightUnconfirmed</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isFlightUnconfirmed(entity.Flight)
+        </function-signature>
+    </function>
+
+    <function>
+        <name>isExecuted</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isExecuted(entity.Request)</function-signature>
+    </function>
+
+    <function>
+        <name>isRejected</name>
+        <function-class>util.Functions</function-class>
+        <function-signature>boolean isRejected(entity.Request)</function-signature>
+    </function>
+
+</taglib>
